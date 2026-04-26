@@ -492,6 +492,96 @@
     border: 1px solid var(--border);
   }
 
+  /* ── PUBLISER FORM ───────────────────────────────── */
+  .form-block { margin-bottom: 18px; }
+  .form-label {
+    display: block;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .form-input, .form-textarea {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid var(--border);
+    background: var(--paper);
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink);
+    border-radius: 0;
+    -webkit-appearance: none;
+  }
+  .form-textarea {
+    resize: vertical;
+    min-height: 320px;
+    line-height: 1.55;
+  }
+  .form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(184,154,78,0.25);
+  }
+  .form-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+  .form-btn {
+    padding: 12px 22px;
+    font-family: var(--sans);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+  .form-btn.primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .form-btn.primary:hover { background: var(--ink-soft); }
+  .form-btn.primary:disabled { background: var(--muted); border-color: var(--muted); cursor: not-allowed; }
+  .form-btn.ghost {
+    background: transparent;
+    color: var(--ink);
+  }
+  .form-btn.ghost:hover { background: var(--surface); }
+  .form-btn.ghost-small {
+    font-size: 10px;
+    padding: 8px 14px;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--muted);
+    letter-spacing: 0.14em;
+  }
+  .validation-msg {
+    padding-top: 10px;
+    font-size: 12.5px;
+    min-height: 18px;
+  }
+  .validation-msg.ok { color: var(--accent); font-weight: 500; }
+  .validation-msg.err { color: var(--danger); font-weight: 500; }
+  .publish-status {
+    padding: 14px 16px;
+    margin-top: 18px;
+    border: 1px solid var(--border);
+    font-size: 13px;
+    line-height: 1.5;
+    border-left: 4px solid var(--muted);
+  }
+  .publish-status.success { border-left-color: var(--accent); background: rgba(10,97,64,0.06); color: var(--ink); }
+  .publish-status.error   { border-left-color: var(--danger);  background: rgba(139,28,28,0.04); color: var(--danger); }
+  .publish-status.loading { border-left-color: var(--gold); color: var(--muted); font-style: italic; }
+  .publish-status:empty   { display: none; }
+
   /* ── DISCLAIMER ──────────────────────────────────── */
   .disclaimer {
     background: rgba(139,28,28,0.04);
@@ -567,10 +657,11 @@
 
   <!-- NAV -->
   <nav class="nav">
-    <button class="nav-item active" onclick="showView('notat',this)">Ukentlig notat</button>
+    <button class="nav-item active" onclick="showView('notat',this)">Notat</button>
     <button class="nav-item" onclick="showView('univers',this)">Univers</button>
     <button class="nav-item" onclick="showView('regler',this)">Regler</button>
     <button class="nav-item" onclick="showView('om',this)">Om</button>
+    <button class="nav-item" onclick="showView('publiser',this)">Publiser</button>
   </nav>
 
   <!-- ── VIEW 1: UKENTLIG NOTAT ── -->
@@ -790,6 +881,63 @@
     </div>
   </section>
 
+  <!-- ── VIEW 5: PUBLISER ── -->
+  <section class="view" id="view-publiser">
+    <div class="view-header">
+      <div class="view-eyebrow">Redaksjon</div>
+      <div class="view-title">Publiser nytt notat</div>
+      <div class="view-lede">Lim inn JSON fra Claude og publiser direkte til GitHub – ingen filhåndtering</div>
+    </div>
+
+    <!-- Engangsoppsett – vises hvis ingen token er lagret -->
+    <div id="token-setup">
+      <div class="rule-block">
+        <div class="rule-heading">Engangsoppsett – GitHub Token</div>
+        <div class="rule-content">
+          <p style="margin-bottom:10px">For å publisere må du opprette en personlig token på GitHub. Det tar ca. 1 minutt og gjøres bare én gang.</p>
+          <ol style="padding-left:20px">
+            <li style="margin-bottom:6px">Åpne <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a></li>
+            <li style="margin-bottom:6px"><strong>Token name:</strong> <code>Espen-Co-publish</code></li>
+            <li style="margin-bottom:6px"><strong>Expiration:</strong> 1 år (eller velg lengre)</li>
+            <li style="margin-bottom:6px"><strong>Repository access:</strong> velg «Only select repositories» → finn og velg <code>Markedsnotat</code></li>
+            <li style="margin-bottom:6px"><strong>Repository permissions:</strong> scroll ned til <em>Contents</em> → sett til «Read and write»</li>
+            <li style="margin-bottom:6px">Trykk <strong>Generate token</strong> nederst</li>
+            <li style="margin-bottom:6px"><strong>Kopier token-en</strong> (begynner med <code>github_pat_</code>) – GitHub viser den bare én gang!</li>
+            <li>Lim inn token-en nedenfor og trykk Lagre</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="form-block" style="margin-top:20px">
+        <label class="form-label" for="pat-input">GitHub Personal Access Token</label>
+        <input type="password" id="pat-input" class="form-input" placeholder="github_pat_..." autocomplete="off" spellcheck="false">
+        <div class="form-actions">
+          <button class="form-btn primary" onclick="saveToken()">Lagre token</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Publiser-skjema – vises når token er lagret -->
+    <div id="publish-form" style="display:none">
+      <div class="form-block">
+        <label class="form-label" for="json-input">Lim inn ny JSON</label>
+        <textarea id="json-input" class="form-textarea" placeholder='{"edition": 2, "date": "2026-05-03", "regime": {...}, "categories": [...], "summary": {...}}' spellcheck="false"></textarea>
+        <div id="validation-msg" class="validation-msg"></div>
+      </div>
+
+      <div class="form-actions">
+        <button class="form-btn primary" id="publish-btn" onclick="publishNote()">Publiser nå</button>
+        <button class="form-btn ghost" onclick="validateJSON(true)">Bare valider</button>
+      </div>
+
+      <div id="publish-status" class="publish-status"></div>
+
+      <div style="margin-top:32px; padding-top:18px; border-top:1px solid var(--border)">
+        <button class="form-btn ghost-small" onclick="clearToken()">Fjern lagret token</button>
+      </div>
+    </div>
+  </section>
+
   <footer class="app-footer">
     <span class="footer-brand">Espen &amp; Co Private Wealth Management</span>
     <span id="footer-date">Simulering · Ikke investeringsråd</span>
@@ -947,6 +1095,179 @@ function showView(id, btn) {
   document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
   document.getElementById('view-' + id).classList.add('active');
   btn.classList.add('active');
+  if (id === 'publiser') initPublishView();
+}
+
+// ─── PUBLISER ──────────────────────────────────────────
+const REPO = 'fagbrevsomvoksen-alt/Markedsnotat';
+const FILE_PATH = 'current-note.json';
+const STORAGE_KEY = 'espenco_github_pat';
+
+function initPublishView() {
+  const pat = localStorage.getItem(STORAGE_KEY);
+  if (pat) {
+    document.getElementById('token-setup').style.display = 'none';
+    document.getElementById('publish-form').style.display = 'block';
+  } else {
+    document.getElementById('token-setup').style.display = 'block';
+    document.getElementById('publish-form').style.display = 'none';
+  }
+}
+
+function saveToken() {
+  const input = document.getElementById('pat-input');
+  const val = input.value.trim();
+  if (!val) {
+    alert('Lim inn en token først.');
+    return;
+  }
+  if (!val.startsWith('github_pat_') && !val.startsWith('ghp_')) {
+    if (!confirm('Token-en ser uvanlig ut (mangler "github_pat_" eller "ghp_"). Lagre likevel?')) return;
+  }
+  localStorage.setItem(STORAGE_KEY, val);
+  input.value = '';
+  initPublishView();
+}
+
+function clearToken() {
+  if (!confirm('Vil du fjerne den lagrede token-en? Du må sette opp på nytt for å publisere.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  initPublishView();
+}
+
+function showStatus(msg, type) {
+  const el = document.getElementById('publish-status');
+  el.className = 'publish-status ' + (type || '');
+  el.textContent = msg || '';
+}
+
+function validateJSON(showOK) {
+  const input = document.getElementById('json-input').value;
+  const msg = document.getElementById('validation-msg');
+
+  if (!input.trim()) {
+    msg.className = 'validation-msg err';
+    msg.textContent = 'Tomt felt – lim inn JSON først.';
+    return null;
+  }
+
+  let parsed;
+  try {
+    parsed = JSON.parse(input);
+  } catch (e) {
+    msg.className = 'validation-msg err';
+    msg.textContent = 'Ugyldig JSON: ' + e.message;
+    return null;
+  }
+
+  const required = ['date', 'regime', 'categories', 'summary'];
+  for (const key of required) {
+    if (!(key in parsed)) {
+      msg.className = 'validation-msg err';
+      msg.textContent = 'Mangler nødvendig felt: "' + key + '"';
+      return null;
+    }
+  }
+
+  if (!Array.isArray(parsed.categories) || parsed.categories.length === 0) {
+    msg.className = 'validation-msg err';
+    msg.textContent = 'Feltet "categories" må være en liste med minst ett element.';
+    return null;
+  }
+
+  if (!parsed.regime.status || !parsed.regime.cssClass) {
+    msg.className = 'validation-msg err';
+    msg.textContent = 'Feltet "regime" må ha både "status" og "cssClass".';
+    return null;
+  }
+
+  if (showOK) {
+    const week = getWeekNumber(parsed.date);
+    msg.className = 'validation-msg ok';
+    msg.textContent = '✓ Gyldig JSON – uke ' + week + ', ' + parsed.categories.length + ' kategorier, regime: ' + parsed.regime.status;
+  } else {
+    msg.textContent = '';
+  }
+  return parsed;
+}
+
+function utf8ToBase64(str) {
+  // Sikker base64-koding for UTF-8 (æøå)
+  return btoa(unescape(encodeURIComponent(str)));
+}
+
+async function publishNote() {
+  const parsed = validateJSON(true);
+  if (!parsed) return;
+
+  const pat = localStorage.getItem(STORAGE_KEY);
+  if (!pat) {
+    showStatus('Token mangler – kjør oppsettet først.', 'error');
+    return;
+  }
+
+  const btn = document.getElementById('publish-btn');
+  btn.disabled = true;
+  showStatus('Henter gjeldende fil fra GitHub …', 'loading');
+
+  try {
+    const apiUrl = 'https://api.github.com/repos/' + REPO + '/contents/' + FILE_PATH;
+    const headers = {
+      'Authorization': 'Bearer ' + pat,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28'
+    };
+
+    // GET current SHA (or 404 hvis filen ikke finnes)
+    let sha = null;
+    const getRes = await fetch(apiUrl, { headers });
+    if (getRes.status === 404) {
+      sha = null; // filen finnes ikke ennå – vi oppretter den
+    } else if (!getRes.ok) {
+      const errBody = await getRes.text();
+      throw new Error('Kunne ikke hente fil (HTTP ' + getRes.status + '). ' +
+        (getRes.status === 401 ? 'Token ser ugyldig ut – sjekk at den er riktig kopiert.' :
+         getRes.status === 403 ? 'Mangler tilgang – sjekk at token har Contents:write på Markedsnotat.' :
+         errBody.slice(0, 200)));
+    } else {
+      const fileData = await getRes.json();
+      sha = fileData.sha;
+    }
+
+    showStatus('Publiserer ny versjon …', 'loading');
+
+    const newContent = JSON.stringify(parsed, null, 2);
+    const base64Content = utf8ToBase64(newContent);
+    const week = getWeekNumber(parsed.date);
+    const commitMsg = 'Uke ' + week + ' (' + parsed.date + ') – publisert fra mobil';
+
+    const body = {
+      message: commitMsg,
+      content: base64Content
+    };
+    if (sha) body.sha = sha;
+
+    const putRes = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+
+    if (!putRes.ok) {
+      const errBody = await putRes.text();
+      throw new Error('Publisering feilet (HTTP ' + putRes.status + '): ' + errBody.slice(0, 200));
+    }
+
+    showStatus('✓ Publisert! Notatet for uke ' + week + ' er sendt til GitHub. ' +
+               'Vent ~30–60 sek for at GitHub Pages oppdateres, last deretter appen på nytt.', 'success');
+    document.getElementById('json-input').value = '';
+    document.getElementById('validation-msg').textContent = '';
+
+  } catch (err) {
+    showStatus('Feil: ' + err.message, 'error');
+  } finally {
+    btn.disabled = false;
+  }
 }
 
 // ─── INIT ──────────────────────────────────────────────
