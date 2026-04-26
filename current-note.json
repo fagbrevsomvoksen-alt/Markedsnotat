@@ -1,50 +1,49 @@
 {
-  "edition": 1,
-  "date": "2026-04-26",
+  "edition": 15,
+  "date": "2026-04-20",
   "regime": {
     "status": "Risiko-på",
     "cssClass": "risikopaa",
-    "desc": "S&P 500 og NASDAQ på rekordnivå; VIX 18,7; geopolitisk lettelse (US-Iran våpenhvile)"
+    "desc": "Markeder har stabilisert seg etter Iran-krisen; ceasefire-forhandlinger har redusert geopolitisk risiko og reaktivert oppsidemomentum i tech."
   },
   "categories": [
     {
       "num": "1",
       "name": "Aksjer",
-      "instrument": "NVDA",
+      "instrument": "MSFT",
       "action": "KJØP",
       "actionCss": "kjop",
-      "size": "0,8 %",
+      "size": "0,7 %",
       "risk": "Moderat",
       "data": "OK",
       "trend": "Positiv",
       "momentum": "Positiv",
-      "vol": "Moderat",
+      "vol": "Lav",
       "bullets": [
-        "11 sammenhengende oppsessjoner (~$202); trend og momentum begge positivt – alle tre betingelser oppfylt",
-        "VIX 18,7 (ned fra 30+ i mars) – volatilitet moderat, ikke til hinder for kjøp",
-        "Sterk AI-katalysator: Intel +23 % utløste sektormomentum; NVDA følger med"
+        "Sterk oppgang uke 15 sammen med tech-sektor",
+        "Positivt momentum fra Microsoft-rally og AI-fokus",
+        "VIX stabil på 19,3 støtter aksjeposisjonering"
       ],
-      "worstCase": "Skuffelse fra Mag-7-rapporter i kommende uke kan gi 12–18 % sektorkorreksjon."
+      "worstCase": "Earnings-skuffelse eller ny geopolitisk eskalering kan reversere trend."
     },
     {
       "num": "2",
       "name": "ETF",
-      "instrument": "VUAA (UCITS)",
+      "instrument": "VUAA",
       "action": "KJØP",
       "actionCss": "kjop",
-      "size": "0,5 %",
+      "size": "0,6 %",
       "risk": "Lav",
       "data": "OK",
       "trend": "Positiv",
       "momentum": "Positiv",
       "vol": "Lav",
       "bullets": [
-        "Vanguard S&P 500 UCITS ETF (Acc) – stengte ~$132,78; YTD totalavkastning ~16,0 %",
-        "Trend og momentum samkjørt positivt – følger S&P 500 som er i rekordnivå",
-        "Volatilitet lav; bredt diversifisert (500 store amerikanske selskaper)",
-        "UCITS-godkjent og tilgjengelig på Nordnet – passer europeisk investor (erstatter VTI)"
+        "S&P 500-tracker med +1,0 % i uke 15 grunnet tech-styrke",
+        "UCITS-godkjent og tilgjengelig på Nordnet",
+        "Lav TER (0,07 %) gjør det kostnadseffektivt"
       ],
-      "worstCase": "Inflasjonssurprise (mars allerede 3,3 %) kan presse Fed og gi 8–12 % nedgang."
+      "worstCase": "Tap av momentum hvis US-GDP-vekst avtar eller Fed signaliserer strengere politikk."
     },
     {
       "num": "3",
@@ -57,36 +56,37 @@
       "data": "OK",
       "trend": "Positiv",
       "momentum": "Positiv",
-      "vol": "Moderat",
+      "vol": "Lav",
       "bullets": [
-        "Rekordnivå 7 165 etter +0,6 % ukesoppgang; trend positiv men potensiell overekstensjon",
-        "Inflasjon 3,3 % og Fed-usikkerhet demper videre kjøpsappetitt – HOLD er rett nivå"
+        "Indeks opp ~1,0 % i uke 15 på back av ceasefire-håp",
+        "Tech-dominans driver rally; spredt gevinster",
+        "VIX under 20 indikerer lav panikk tross oljepris-stigning"
       ],
-      "worstCase": null
+      "worstCase": "Hornuz-blokkade forlenges eller nya conflict-eskalering fører til volatil reverse."
     },
     {
       "num": "4",
       "name": "Krypto",
-      "instrument": "BTC",
-      "action": "AVSTÅ",
-      "actionCss": "avsta",
-      "size": "0",
+      "instrument": "BITCOIN XBT",
+      "action": "KJØP",
+      "actionCss": "kjop",
+      "size": "0,5 %",
       "risk": "Høy",
       "data": "OK",
       "trend": "Positiv",
       "momentum": "Positiv",
       "vol": "Høy",
       "bullets": [
-        "BTC +5,81 % denne uken (~$78 278) – trend og momentum positivt, men volatilitet klassifiseres høy",
-        "Regelbryter: betingelse b) ikke oppfylt – volatilitet høy gir automatisk AVSTÅ",
-        "ETH +2,73 % samme periode; begge stiger men risikoprofil overstiger rammens grense"
+        "Bitcoin viser resiliens ved geopolitisk risiko; søker sikker havn",
+        "Krypto-volatilitet høy men trendposisjon intakt",
+        "CoinShares XBT tilgjengelig på Nordnet (BITCOIN-XBT.ST)"
       ],
-      "worstCase": "Korreksjon etter sterk oppsving kan gi 25–40 % fall dersom risikosentimentet snur."
+      "worstCase": "Regulatorisk tilsigelser eller fed-stigninger kan skifte risiko-appetite og knekke trend."
     }
   ],
   "summary": {
-    "actions": 3,
-    "abstentions": 1,
-    "riskFactor": "Inflasjon 3,3 % og kommende Mag-7-rapporter er hovedrisiko trass rekordmarkeder"
+    "actions": 4,
+    "abstentions": 0,
+    "riskFactor": "Geopolitisk risiko rundt Hormuz-blokkade og Iran-krisen gjenstår som prisbombe hvis fredslkjøpet ikke solidifiseres."
   }
 }
