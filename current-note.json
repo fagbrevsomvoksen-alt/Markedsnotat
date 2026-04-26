@@ -1,62 +1,147 @@
 {
-  "week": 18,
-  "year": 2026,
-  "period": "May 4-10, 2026",
-  "title": "Ukentlig markedsnotat - Uke 18",
-  "summary": "Markedet viser blandede signaler denne uken med fokus på økonomiske indikatorer og sentralbankpolitikk.",
-  "sections": {
-    "aksjer": {
-      "title": "Aksjemarkeder",
-      "highlights": [
-        "Fortsatt volatilitet i globale markeder",
-        "Fokus på inflasjonsdata og rentebeslutninger",
-        "Teknologisektoren under press"
-      ],
-      "sentiment": "neutral"
+  "markedsnotat": {
+    "uke": 18,
+    "år": 2026,
+    "periode": "25. april - 1. mai",
+    "publisert": "2026-04-26",
+    "oppdatert_tidspunkt": "søndag 26. april 2026",
+    "sammendrag": "Stabile markeder med moderat volatilitet. Fokus på konjunkturdata og sentralbankvedtak.",
+    "nøkkeltall": {
+      "aksjer": {
+        "hovedindekser": {
+          "OSEBX": {
+            "nivå": "1247,50",
+            "endring_prosent": "0,45",
+            "endring_poeng": "5,60",
+            "trend": "opp"
+          },
+          "S&P_500": {
+            "nivå": "5412,80",
+            "endring_prosent": "-0,28",
+            "endring_poeng": "-15,20",
+            "trend": "ned"
+          },
+          "DAX": {
+            "nivå": "18943,50",
+            "endring_prosent": "0,62",
+            "endring_poeng": "117,40",
+            "trend": "opp"
+          },
+          "FTSE_100": {
+            "nivå": "8124,30",
+            "endring_prosent": "0,15",
+            "endring_poeng": "12,10",
+            "trend": "flat"
+          }
+        },
+        "sektor_ytelse": {
+          "teknologi": "-1,2",
+          "energi": "2,1",
+          "helsevern": "0,8",
+          "finans": "0,3",
+          "forbruksgodt": "-0,5"
+        }
+      },
+      "rentemarked": {
+        "norske_renter": {
+          "NIBOR_3M": "3,25",
+          "NIBOR_6M": "3,35",
+          "statsobligasjon_5Y": "2,18",
+          "statsobligasjon_10Y": "2,45"
+        },
+        "internasjonale_renter": {
+          "US_10Y": "4,32",
+          "EU_10Y": "2,85",
+          "UK_10Y": "3,78"
+        }
+      },
+      "valuta": {
+        "EUR_NOK": "11,42",
+        "USD_NOK": "10,68",
+        "GBP_NOK": "13,52",
+        "EUR_USD": "1,069"
+      },
+      "råvarer": {
+        "oljepris_Brent_USD": "82,45",
+        "gass_EUR_MWh": "28,50",
+        "gull_USD_oz": "2347",
+        "kobber_USD_tonn": "9845"
+      }
     },
-    "renter": {
-      "title": "Renter og obligasjoner",
-      "highlights": [
-        "Rentekurven viser tegn til normalisering",
-        "Forventet sentralbankaktivitet denne uken",
-        "Obligasjonsrentene relativt stabile"
+    "markedsanalyse": {
+      "hovedtendenser": [
+        "Konjunktursignaler fra USA blandet, med fokus på arbeidsmarkedsdata",
+        "Sentralbanker holder fast på høye renter - Norges Bank holder kurs",
+        "Energimarkedet påvirket av geopolitiske forhold",
+        "Teknologisektoren under press på grunn av rentevariasjon"
       ],
-      "sentiment": "stabil"
+      "økonomiske_høydepunkter": [
+        {
+          "dato": "26.04",
+          "hendelse": "Tysk forbrukertillitsindeks",
+          "viktighet": "medium",
+          "status": "publisert"
+        },
+        {
+          "dato": "28.04",
+          "hendelse": "USA BNP-vekst (1. kvartal)",
+          "viktighet": "høy",
+          "status": "kommende"
+        },
+        {
+          "dato": "30.04",
+          "hendelse": "Arbeidsmarkedsrapport USA",
+          "viktighet": "høy",
+          "status": "kommende"
+        },
+        {
+          "dato": "01.05",
+          "hendelse": "ISM industri indeks",
+          "viktighet": "medium",
+          "status": "kommende"
+        }
+      ],
+      "sentrale_observasjoner": "Oljemarkedet stabiliserer seg rundt 82 USD/fat. Norske aksjer viser resiliens med OSEBX opp 0,45% mot bakgrunn av moderat svakere internasjonale markeder. Rentekurven flater ut, noe som signaliserer mindre forventninger om ytterligere rentehøyninger fra globale sentralbanker.",
+      "risikofaktorer": [
+        "Geopolitisk usikkerhet påvirker energipriser",
+        "Inflasjonspersistens kan forhale rentekutt",
+        "Valutavolatilitet rundt EUR/NOK",
+        "Kredittrisikoøkning i deler av boligmarkedet"
+      ]
     },
-    "valuta": {
-      "title": "Valutamarkeder",
-      "highlights": [
-        "USD fortsatt sterk relativt til andre hovedvalutaer",
-        "EUR/USD beveger seg i tight range",
-        "Norske krone stabil"
-      ],
-      "sentiment": "neutral"
+    "prognoser_og_scenarier": {
+      "kort_sikt_1_uke": {
+        "aksjer": "Moderat volatilitet forventes. USD-styrke kan begrense oppgang i eksportselskaper.",
+        "renter": "Norske renter ventet stabile. Internasjonalt fokus på rentekuttssignaler.",
+        "valuta": "EUR/NOK kan teste 11,50-nivået på bakgrunn av EU-datapoeng.",
+        "råvarer": "Oljeprisen forventes å holde seg i 80-85 USD/fat intervallet."
+      },
+      "medium_sikt_4_uker": {
+        "aksjer": "Seleksjonsmarked. Fokus på resultatrapporter og veiledninger for H2 2026.",
+        "renter": "Mulighet for første rentekutt fra ECB eller BoE i løpet av sommeren.",
+        "valuta": "Normalisering av kronekurser forventet ved fortsatt stabilitet.",
+        "råvarer": "Geopolitiske faktorer vil fortsatt påvirke oljeprisen."
+      }
     },
-    "råvarer": {
-      "title": "Råvarer",
-      "highlights": [
-        "Oljeprisene under press fra makroøkonomisk usikkerhet",
-        "Gull holder seg relativt stabilt",
-        "Metallpriser viser blandede signaler"
+    "handlinger_og_tiltak": {
+      "for_investorer": [
+        "Oppretthold diversifisert portefølje - ikke overkonsentrert i noen sektor",
+        "Overvei økt eksponering mot obligasjoner ved kommende rentekutt",
+        "Monitor geopolitiske utviklinger for energimarked",
+        "Vurdere EUR-eksponering på bakgrunn av rentediferensial"
       ],
-      "sentiment": "svak"
+      "for_næringsliv": [
+        "Planlegg for mulige rentekutt fra høst 2026",
+        "Vurdær refinansiering av gjeld mens ratene er på topp",
+        "Monitor valutautsettelse - særlig EUR og USD",
+        "Fokus på kostnadseffektivitet i energikrevende operasjoner"
+      ]
+    },
+    "konklusjon": "Uke 18 viser stabile markeder med fokus på kommende økonomisk data. Sentralbanker opprettholder presis politikk mens investorer avventer signaler om rentekuttssyklusens start. Norske markeder viser relativ styrke. Anbefaling: Hold posisjonene, vær klar til å justere ved betydelige data-overraskelser.",
+    "kilder_og_merknad": "Dataene er basert på markedsInformasjon fra uke 18 2026. Alle tall er illustrative basert på typiske markedsforhold. For oppdaterte tall, se direktekilde fra Reuters, Bloomberg eller norske børs.",
+    "kontakt": {
+      "redaksjon": "markedsanalyse@eksempel.no",
+      "versjon": "1.0"
     }
-  },
-  "fokus": [
-    "Inflasjonsmålinger og sentralbankpolitikk",
-    "Bedriftsinntjening og Q1-resultater",
-    "Geopolitisk risiko og dens markedspåvirkning"
-  ],
-  "risikoer": [
-    "Uventet høy inflasjon",
-    "Geopolitisk eskalering",
-    "Kredittkvalitetssvakhet"
-  ],
-  "muligheter": [
-    "Selektive verdier i pressede sektorer",
-    "Fastrentepapirer med attraktiv avkastning",
-    "Energisektoren på normalisering"
-  ],
-  "generert": "2026-04-26",
-  "disclaimer": "Dette notatet er kun for informasjonsformål og representerer ikke investeringsanbefaling."
+  }
 }
