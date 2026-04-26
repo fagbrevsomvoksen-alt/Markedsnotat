@@ -582,6 +582,49 @@
   .publish-status.loading { border-left-color: var(--gold); color: var(--muted); font-style: italic; }
   .publish-status:empty   { display: none; }
 
+  /* ── STEG-BLOKKER ────────────────────────────────── */
+  .step-block {
+    border: 1px solid var(--border);
+    margin-bottom: 18px;
+    background: var(--paper);
+  }
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: var(--serif);
+    font-size: 14px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .step-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .step-body { padding: 16px; }
+  .copy-status {
+    margin-top: 12px;
+    font-size: 12.5px;
+    min-height: 18px;
+    font-weight: 500;
+  }
+  .copy-status.ok  { color: var(--accent); }
+  .copy-status.err { color: var(--danger); }
+
   /* ── DISCLAIMER ──────────────────────────────────── */
   .disclaimer {
     background: rgba(139,28,28,0.04);
@@ -919,18 +962,61 @@
 
     <!-- Publiser-skjema – vises når token er lagret -->
     <div id="publish-form" style="display:none">
-      <div class="form-block">
-        <label class="form-label" for="json-input">Lim inn ny JSON</label>
-        <textarea id="json-input" class="form-textarea" placeholder='{"edition": 2, "date": "2026-05-03", "regime": {...}, "categories": [...], "summary": {...}}' spellcheck="false"></textarea>
-        <div id="validation-msg" class="validation-msg"></div>
+
+      <!-- STEG 1: Hent prompt -->
+      <div class="step-block">
+        <div class="step-header"><span class="step-num">1</span><span class="step-title">Hent prompt til Claude</span></div>
+        <div class="step-body">
+          <p style="font-size:13px; color:var(--ink-soft); margin-bottom:12px">
+            Trykk på knappen for å kopiere ferdig prompt for ukens notat.
+            Bytt deretter til Claude-appen og lim inn.
+          </p>
+          <div class="form-actions">
+            <button class="form-btn primary" onclick="copyPromptForCurrentWeek()">Kopier prompt for denne uken</button>
+            <button class="form-btn ghost" onclick="toggleCustomWeek()" id="custom-toggle">Tilpass uke/dato ▾</button>
+          </div>
+          <div id="custom-week" style="display:none; margin-top:14px; padding:14px; border:1px solid var(--border); background:var(--surface)">
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:10px">
+              <div>
+                <label class="form-label" for="custom-week-num" style="font-size:9.5px">Uke</label>
+                <input type="number" id="custom-week-num" class="form-input" min="1" max="53" style="font-family:var(--sans)">
+              </div>
+              <div>
+                <label class="form-label" for="custom-date" style="font-size:9.5px">Dato</label>
+                <input type="date" id="custom-date" class="form-input" style="font-family:var(--sans)">
+              </div>
+              <div>
+                <label class="form-label" for="custom-edition" style="font-size:9.5px">Utgave</label>
+                <input type="number" id="custom-edition" class="form-input" min="1" style="font-family:var(--sans)">
+              </div>
+            </div>
+            <button class="form-btn primary" onclick="copyPromptCustom()">Kopier tilpasset prompt</button>
+          </div>
+          <div id="copy-status" class="copy-status"></div>
+          <textarea id="prompt-fallback" class="form-textarea" style="display:none; margin-top:10px; min-height:200px" spellcheck="false" readonly></textarea>
+        </div>
       </div>
 
-      <div class="form-actions">
-        <button class="form-btn primary" id="publish-btn" onclick="publishNote()">Publiser nå</button>
-        <button class="form-btn ghost" onclick="validateJSON(true)">Bare valider</button>
-      </div>
+      <!-- STEG 2: Lim inn JSON og publiser -->
+      <div class="step-block">
+        <div class="step-header"><span class="step-num">2</span><span class="step-title">Lim inn JSON og publiser</span></div>
+        <div class="step-body">
+          <p style="font-size:13px; color:var(--ink-soft); margin-bottom:12px">
+            Når Claude har svart med JSON: kopier den, kom tilbake hit, og lim inn under.
+          </p>
+          <div class="form-block" style="margin-bottom:0">
+            <textarea id="json-input" class="form-textarea" placeholder='Lim inn JSON fra Claude her...' spellcheck="false"></textarea>
+            <div id="validation-msg" class="validation-msg"></div>
+          </div>
 
-      <div id="publish-status" class="publish-status"></div>
+          <div class="form-actions">
+            <button class="form-btn primary" id="publish-btn" onclick="publishNote()">Publiser nå</button>
+            <button class="form-btn ghost" onclick="validateJSON(true)">Bare valider</button>
+          </div>
+
+          <div id="publish-status" class="publish-status"></div>
+        </div>
+      </div>
 
       <div style="margin-top:32px; padding-top:18px; border-top:1px solid var(--border)">
         <button class="form-btn ghost-small" onclick="clearToken()">Fjern lagret token</button>
@@ -965,6 +1051,7 @@ function formatDateShort(s) {
 
 // ─── RENDER NOTE ───────────────────────────────────────
 function renderNote(n) {
+  currentNote = n;
   const week = getWeekNumber(n.date);
 
   // Masthead meta
@@ -1102,6 +1189,138 @@ function showView(id, btn) {
 const REPO = 'fagbrevsomvoksen-alt/Markedsnotat';
 const FILE_PATH = 'current-note.json';
 const STORAGE_KEY = 'espenco_github_pat';
+
+// Holder gjeldende notat slik at vi kan beregne neste utgave
+let currentNote = null;
+
+// ─── PROMPT-GENERATOR ──────────────────────────────────
+function todayISO() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return y + '-' + m + '-' + day;
+}
+
+function buildPrompt(week, date, edition) {
+  const year = date.slice(0, 4);
+  return 'Lag ukentlig markedsnotat for uke ' + week + ', ' + year + ' for Espen & Co Private Wealth Management.\n\n' +
+'Søk opp faktiske markedsdata for uken. Anvend reglene fra det faste universet:\n' +
+'- Aksjer: MSFT, AAPL, NVDA, AMZN, GOOGL, META, BRK.B, JNJ\n' +
+'- ETF (UCITS): VWCE, VUAA, EUNL, IEMA, AGGG, IGLN\n' +
+'- Indekser: S&P 500, NASDAQ 100, MSCI World, STOXX Europe 600\n' +
+'- Krypto (ETP): BITCOIN XBT, ETHEREUM XBT (CoinShares via Nordnet)\n\n' +
+'Beslutningsregler:\n' +
+'- Handling tillatt kun når trend og momentum peker samme vei OG volatilitet ikke er høy\n' +
+'- Ved risiko-av: prioriter AVSTÅ/HOLD\n' +
+'- Indeks: kun HOLD eller AVSTÅ (ikke kjøp/salg)\n' +
+'- Foreslått størrelse: 0–1,0 % av hypotetisk kapital\n' +
+'- UCITS-godkjent og tilgjengelig på Nordnet er ufravikelig\n\n' +
+'Lever resultatet som ETT enkelt kodevindu med JSON i nøyaktig dette formatet (alle feltnavn på engelsk):\n\n' +
+'{\n' +
+'  "edition": ' + edition + ',\n' +
+'  "date": "' + date + '",\n' +
+'  "regime": {\n' +
+'    "status": "Risiko-på",\n' +
+'    "cssClass": "risikopaa",\n' +
+'    "desc": "kort beskrivelse av regimet (1 setning)"\n' +
+'  },\n' +
+'  "categories": [\n' +
+'    {\n' +
+'      "num": "1", "name": "Aksjer",\n' +
+'      "instrument": "TICKER", "action": "KJØP", "actionCss": "kjop",\n' +
+'      "size": "0,5 %", "risk": "Lav", "data": "OK",\n' +
+'      "trend": "Positiv", "momentum": "Positiv", "vol": "Lav",\n' +
+'      "bullets": ["punkt 1", "punkt 2", "punkt 3"],\n' +
+'      "worstCase": "kort worst-case (1 linje)"\n' +
+'    },\n' +
+'    { "num": "2", "name": "ETF", ... },\n' +
+'    { "num": "3", "name": "Indeks", ... },\n' +
+'    { "num": "4", "name": "Krypto", ... }\n' +
+'  ],\n' +
+'  "summary": {\n' +
+'    "actions": 3,\n' +
+'    "abstentions": 1,\n' +
+'    "riskFactor": "viktigste risikofaktor (1 setning)"\n' +
+'  }\n' +
+'}\n\n' +
+'Verdi-regler:\n' +
+'- "actionCss": "kjop" | "selg" | "hold" | "avsta" (små bokstaver, uten norske tegn)\n' +
+'- "cssClass": "risikopaa" | "risikoav" | "blandet"\n' +
+'- "action": "KJØP" | "SELG" | "HOLD" | "AVSTÅ" (store bokstaver, med norske tegn)\n' +
+'- For Indeks: "size" og "risk" kan være null\n' +
+'- For AVSTÅ: "size" er "0"\n' +
+'- Alltid alle 4 kategorier i rekkefølge: Aksjer, ETF, Indeks, Krypto\n\n' +
+'Lever som ETT JSON-kodevindu, ingen annen tekst rundt.';
+}
+
+async function copyToClipboard(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+async function copyPromptForCurrentWeek() {
+  const date = todayISO();
+  const week = getWeekNumber(date);
+  const edition = (currentNote && currentNote.edition ? currentNote.edition : 1) + 1;
+  await doCopy(week, date, edition);
+}
+
+async function copyPromptCustom() {
+  const w = parseInt(document.getElementById('custom-week-num').value);
+  const d = document.getElementById('custom-date').value;
+  const e = parseInt(document.getElementById('custom-edition').value);
+  if (!w || !d || !e) {
+    setCopyStatus('Fyll inn alle tre feltene først', 'err');
+    return;
+  }
+  await doCopy(w, d, e);
+}
+
+async function doCopy(week, date, edition) {
+  const text = buildPrompt(week, date, edition);
+  const ok = await copyToClipboard(text);
+  if (ok) {
+    setCopyStatus('✓ Prompt for uke ' + week + ' (utgave ' + edition + ') kopiert. Bytt til Claude-appen og lim inn.', 'ok');
+    document.getElementById('prompt-fallback').style.display = 'none';
+  } else {
+    const ta = document.getElementById('prompt-fallback');
+    ta.value = text;
+    ta.style.display = 'block';
+    ta.focus();
+    ta.select();
+    setCopyStatus('Kunne ikke kopiere automatisk – marker alt i tekstboksen under og kopier manuelt', 'err');
+  }
+}
+
+function setCopyStatus(msg, type) {
+  const el = document.getElementById('copy-status');
+  el.className = 'copy-status ' + (type || '');
+  el.textContent = msg;
+}
+
+function toggleCustomWeek() {
+  const box = document.getElementById('custom-week');
+  const btn = document.getElementById('custom-toggle');
+  const open = box.style.display !== 'none';
+  if (open) {
+    box.style.display = 'none';
+    btn.textContent = 'Tilpass uke/dato ▾';
+  } else {
+    // Pre-fill med dagens verdier
+    const today = todayISO();
+    document.getElementById('custom-week-num').value = getWeekNumber(today);
+    document.getElementById('custom-date').value = today;
+    document.getElementById('custom-edition').value =
+      (currentNote && currentNote.edition ? currentNote.edition : 1) + 1;
+    box.style.display = 'block';
+    btn.textContent = 'Tilpass uke/dato ▴';
+  }
+}
 
 function initPublishView() {
   const pat = localStorage.getItem(STORAGE_KEY);

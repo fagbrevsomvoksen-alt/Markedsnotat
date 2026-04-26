@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'espen-co-v4';
+const CACHE_VERSION = 'espen-co-v5';
 const APP_SHELL = [
   './index.html',
   './manifest.json',
