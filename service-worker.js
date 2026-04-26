@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'markedsnotat-v1';
+const CACHE_VERSION = 'markedsnotat-v2';
 const APP_SHELL = [
   './index.html',
   './manifest.json'
