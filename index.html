@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markedsnotat – Ukentlig Simulering</title>
+<meta name="description" content="Ukentlig markedsnotat – regelbasert simulering. Ingen reell kapital, ingen investeringsråd.">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1B2A3B">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Markedsnotat">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+
+<style>
+  :root {
+    --paper:   #EFF2F6;
+    --ink:     #1B2A3B;
+    --accent:  #0A6140;
+    --caution: #8B6914;
+    --danger:  #8B1C1C;
+    --muted:   #6B7A8D;
+    --border:  rgba(27,42,59,0.18);
+    --surface: #E3E8EF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #C8CDD8;
+    color: var(--ink);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body { padding: 20px 12px 40px; }
+
+  .app {
+    max-width: 780px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    box-shadow: 5px 5px 0 rgba(27,42,59,0.35);
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 20px 24px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .brand-name {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 26px;
+    font-weight: normal;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  .brand-tag {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(239,242,246,0.55);
+    margin-top: 6px;
+  }
+  .regime-chip {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border: 1px solid rgba(239,242,246,0.4);
+    color: var(--paper);
+  }
+  .regime-chip.blandet  { background: var(--caution); border-color: var(--caution); }
+  .regime-chip.risikoav { background: var(--danger);  border-color: var(--danger);  }
+  .regime-chip.risikopaa{ background: var(--accent);  border-color: var(--accent);  }
+
+  /* ── NAV ── */
+  .nav {
+    display: flex;
+    background: #DDE2EA;
+    border-bottom: 1px solid rgba(27,42,59,0.25);
+  }
+  .nav-item {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-right: 1px solid var(--border);
+    padding: 9px 6px;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.12s, color 0.12s;
+    white-space: nowrap;
+  }
+  .nav-item:last-child { border-right: none; }
+  .nav-item:hover { background: rgba(27,42,59,0.06); color: var(--ink); }
+  .nav-item.active {
+    background: var(--paper);
+    color: var(--ink);
+    font-weight: bold;
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: -1px;
+  }
+
+  /* ── SECTIONS ── */
+  section.view { display: none; padding: 24px; }
+  section.view.active { display: block; }
+
+  .view-header {
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .view-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .view-lede { font-size: 12px; color: var(--muted); }
+
+  /* ── REGIME LINE ── */
+  .regime-line {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--caution);
+    padding: 11px 16px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .regime-line.risikoav  { border-left-color: var(--danger); }
+  .regime-line.risikopaa { border-left-color: var(--accent); }
+  .regime-label {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+  .regime-val  { font-size: 14px; font-weight: bold; color: var(--ink); }
+  .regime-desc { font-size: 12px; color: var(--muted); }
+
+  /* ── CATEGORY CARDS ── */
+  .cat-card {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--muted);
+    margin-bottom: 14px;
+    background: var(--paper);
+  }
+  .cat-card.action-kjop  { border-left-color: var(--accent); }
+  .cat-card.action-hold  { border-left-color: var(--caution); }
+  .cat-card.action-selg  { border-left-color: var(--danger); }
+  .cat-card.action-avsta { border-left-color: #9AA5B4; }
+
+  .cat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .cat-num  { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .cat-name { font-size: 14px; font-weight: bold; color: var(--ink); margin-top: 1px; font-family: "Courier New", monospace; }
+
+  .cat-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge {
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border: 1px solid currentColor;
+  }
+  .badge-action.kjop  { color: #fff; background: var(--accent);  border-color: var(--accent);  }
+  .badge-action.hold  { color: #fff; background: var(--caution); border-color: var(--caution); }
+  .badge-action.selg  { color: #fff; background: var(--danger);  border-color: var(--danger);  }
+  .badge-action.avsta { color: var(--muted); background: transparent; border-color: #9AA5B4; }
+  .badge-data.ok   { color: var(--accent); border-color: var(--accent); background: transparent; }
+  .badge-data.util { color: var(--danger);  border-color: var(--danger);  background: transparent; }
+
+  .cat-body { padding: 14px; }
+
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    margin-bottom: 13px;
+  }
+  @media (max-width: 520px) { .cat-grid { grid-template-columns: 1fr 1fr; } }
+
+  .cat-field {
+    padding: 9px 11px;
+    border-right: 1px solid var(--border);
+  }
+  .cat-field:last-child { border-right: none; }
+
+  .field-label {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .field-val {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    font-weight: normal;
+    color: var(--ink);
+  }
+  .field-val.mono { font-family: "Courier New", monospace; font-size: 14px; font-weight: bold; }
+
+  .bullets { margin-bottom: 11px; padding-left: 15px; }
+  .bullets li { font-size: 12px; color: var(--ink); margin-bottom: 5px; line-height: 1.45; }
+
+  .worst-case {
+    font-size: 11px;
+    color: var(--danger);
+    padding: 7px 11px;
+    border: 1px solid rgba(139,28,28,0.22);
+    background: rgba(139,28,28,0.04);
+    border-left: 3px solid var(--danger);
+  }
+  .worst-case::before { content: "⚠  "; }
+
+  /* ── SUMMARY ── */
+  .summary-box {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 14px;
+    margin-top: 6px;
+  }
+  .summary-title {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 80px 80px 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+  @media (max-width: 480px) { .summary-grid { grid-template-columns: 1fr 1fr; } }
+
+  .s-val {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 36px;
+    font-weight: normal;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .s-label {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .s-text { font-size: 12px; color: var(--ink); line-height: 1.5; padding-top: 4px; }
+
+  /* ── UNIVERSE ── */
+  .universe-group { margin-bottom: 22px; }
+  .universe-title {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-bottom: 7px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+  }
+  .instrument-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-top: none;
+    font-size: 12px;
+    transition: background 0.1s;
+  }
+  .instrument-row:first-of-type { border-top: none; }
+  .instrument-row:hover { background: var(--surface); }
+  .instrument-tick { font-family: "Courier New", monospace; font-weight: bold; color: var(--ink); min-width: 80px; }
+  .instrument-name { color: var(--muted); font-size: 11px; flex: 1; padding: 0 10px; }
+  .instrument-cat  { font-size: 10px; letter-spacing: 0.06em; color: var(--accent); text-transform: uppercase; }
+
+  /* ── RULES ── */
+  .method-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+  @media (max-width: 520px) { .method-row { grid-template-columns: 1fr 1fr; } }
+  .method-cell {
+    padding: 11px 13px;
+    border-right: 1px solid var(--border);
+  }
+  .method-cell:last-child { border-right: none; }
+  .method-label { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+  .method-opt { font-size: 12px; color: var(--ink); padding: 2px 0; }
+  .method-opt.pos { color: var(--accent); }
+  .method-opt.neg { color: var(--danger); }
+  .method-opt.neu { color: var(--caution); }
+
+  .rule-block { margin-bottom: 14px; }
+  .rule-heading {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--ink);
+    padding: 8px 12px;
+  }
+  .rule-content {
+    border: 1px solid var(--border);
+    border-top: none;
+    padding: 12px 14px;
+  }
+  .rule-content p  { font-size: 12px; line-height: 1.65; color: var(--ink); }
+  .rule-content ul { padding-left: 18px; }
+  .rule-content li { font-size: 12px; line-height: 1.6; color: var(--ink); margin-bottom: 4px; }
+  .rule-content code {
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    background: var(--surface);
+    padding: 1px 5px;
+    border: 1px solid var(--border);
+  }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    background: rgba(139,28,28,0.04);
+    border: 1px solid rgba(139,28,28,0.22);
+    border-left: 4px solid var(--danger);
+    padding: 13px 15px;
+    margin-bottom: 16px;
+    font-size: 12px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+
+  /* ── FOOTER ── */
+  .app-footer {
+    padding: 11px 24px;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     DATA — Oppdater dette objektet ukentlig
+     ══════════════════════════════════════════════ -->
+<script>
+const NOTE = {
+  date: "2026-04-26",
+  regime: {
+    status: "Risiko-på",
+    cssClass: "risikopaa",
+    desc: "S&P 500 og NASDAQ på rekordnivå; VIX 18,7; geopolitisk lettelse (US-Iran våpenhvile)"
+  },
+  categories: [
+    {
+      num: "1", name: "Aksjer",
+      instrument: "NVDA",
+      action: "KJØP", actionCss: "kjop",
+      size: "0,8 %", risk: "Moderat", data: "OK",
+      trend: "Positiv", momentum: "Positiv", vol: "Moderat",
+      bullets: [
+        "11 sammenhengende oppsessjoner (~$202); trend og momentum begge positivt – alle tre betingelser oppfylt",
+        "VIX 18,7 (ned fra 30+ i mars) – volatilitet moderat, ikke til hinder for kjøp",
+        "Sterk AI-katalysator: Intel +23 % utløste sektormomentum; NVDA følger med"
+      ],
+      worstCase: "Skuffelse fra Mag-7-rapporter i kommende uke kan gi 12–18 % sektorkorreksjon."
+    },
+    {
+      num: "2", name: "ETF",
+      instrument: "VTI",
+      action: "KJØP", actionCss: "kjop",
+      size: "0,5 %", risk: "Lav", data: "OK",
+      trend: "Positiv", momentum: "Positiv", vol: "Lav",
+      bullets: [
+        "Stengte $352,05 – nær 52-ukers topp på $352,37; trend og momentum samkjørt positivt",
+        "Volatilitet lav; bredt diversifisert – laveste enkeltaksjerisiko i universet",
+        "Regime risiko-på støtter passiv bred eksponering fremfor selektive posisjoner"
+      ],
+      worstCase: "Inflasjonssurprise (mars allerede 3,3 %) kan presse Fed og gi 8–12 % nedgang."
+    },
+    {
+      num: "3", name: "Indeks",
+      instrument: "S&P 500",
+      action: "HOLD", actionCss: "hold",
+      size: null, risk: null, data: "OK",
+      trend: "Positiv", momentum: "Positiv", vol: "Moderat",
+      bullets: [
+        "Rekordnivå 7 165 etter +0,6 % ukesoppgang; trend positiv men potensiell overekstensjon",
+        "Inflasjon 3,3 % og Fed-usikkerhet demper videre kjøpsappetitt – HOLD er rett nivå"
+      ],
+      worstCase: null
+    },
+    {
+      num: "4", name: "Krypto",
+      instrument: "BTC",
+      action: "AVSTÅ", actionCss: "avsta",
+      size: "0", risk: "Høy", data: "OK",
+      trend: "Positiv", momentum: "Positiv", vol: "Høy",
+      bullets: [
+        "BTC +5,81 % denne uken (~$78 278) – trend og momentum positivt, men volatilitet klassifiseres høy",
+        "Regelbryter: betingelse b) ikke oppfylt – volatilitet høy gir automatisk AVSTÅ",
+        "ETH +2,73 % samme periode; begge stiger men risikoprofil overstiger rammens grense"
+      ],
+      worstCase: "Korreksjon etter sterk oppsving kan gi 25–40 % fall dersom risikosentimentet snur."
+    }
+  ],
+  summary: {
+    actions: 3,
+    abstentions: 1,
+    riskFactor: "Inflasjon 3,3 % og kommende Mag-7-rapporter er hovedrisiko trass rekordmarkeder"
+  }
+};
+</script>
+
+<div class="app">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div>
+      <div class="brand-name">Markedsnotat</div>
+      <div class="brand-tag" id="brand-tag">Simulering · —</div>
+    </div>
+    <div class="regime-chip" id="regime-chip">—</div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <button class="nav-item active" onclick="showView('notat',this)">Ukentlig notat</button>
+    <button class="nav-item" onclick="showView('univers',this)">Univers</button>
+    <button class="nav-item" onclick="showView('regler',this)">Regler</button>
+    <button class="nav-item" onclick="showView('om',this)">Om</button>
+  </nav>
+
+  <!-- ── VIEW 1: UKENTLIG NOTAT ── -->
+  <section class="view active" id="view-notat">
+    <div class="view-header">
+      <div class="view-title">Ukentlig Markedsnotat</div>
+      <div class="view-lede" id="notat-lede">Simulering – ikke reelle råd eller kapital</div>
+    </div>
+
+    <div class="regime-line" id="regime-line">
+      <div>
+        <div class="regime-label">Markedsregime</div>
+        <div class="regime-val" id="regime-val">—</div>
+      </div>
+      <div class="regime-desc" id="regime-desc">—</div>
+    </div>
+
+    <div id="categories-container"></div>
+
+    <div class="summary-box">
+      <div class="summary-title">Oppsummering</div>
+      <div class="summary-grid">
+        <div>
+          <div class="s-val" id="sum-actions">—</div>
+          <div class="s-label">Handlinger</div>
+        </div>
+        <div>
+          <div class="s-val" id="sum-abstentions">—</div>
+          <div class="s-label">Avståelser</div>
+        </div>
+        <div>
+          <div class="s-text" id="sum-risk">—</div>
+          <div class="s-label">Viktigste risikofaktor</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VIEW 2: UNIVERS ── -->
+  <section class="view" id="view-univers">
+    <div class="view-header">
+      <div class="view-title">Fast Univers</div>
+      <div class="view-lede">Disse instrumentene inngår fast – ingen endringer eller tillegg tillatt</div>
+    </div>
+
+    <div class="universe-group">
+      <div class="universe-title">Aksjer (8)</div>
+      <div class="instrument-row"><span class="instrument-tick">MSFT</span><span class="instrument-name">Microsoft Corporation</span><span class="instrument-cat">Aksje</span></div>
+      <div class="instrument-row"><span class="instrument-tick">AAPL</span><span class="instrument-name">Apple Inc.</span><span class="instrument-cat">Aksje</span></div>
+      <div class="instrument-row"><span class="instrument-tick">NVDA</span><span class="instrument-name">NVIDIA Corporation</span><span class="instrument-cat">Aksje</span></div>
+      <div class="instrument-row"><span class="instrument-tick">AMZN</span><span class="instrument-name">Amazon.com Inc.</span><span class="instrument-cat">Aksje</span></div>
+      <div class="instrument-row"><span class="instrument-tick">GOOGL</span><span class="instrument-name">Alphabet Inc.</span><span class="instrument-cat">Aksje</span></div>
+      <div class="instrument-row"><span class="instrument-tick">META</span><span class="instrument-name">Meta Platforms Inc.</span><span class="instrument-cat">Aksje</span></div>
+      <div class="instrument-row"><span class="instrument-tick">BRK.B</span><span class="instrument-name">Berkshire Hathaway Class B</span><span class="instrument-cat">Aksje</span></div>
+      <div class="instrument-row"><span class="instrument-tick">JNJ</span><span class="instrument-name">Johnson &amp; Johnson</span><span class="instrument-cat">Aksje</span></div>
+    </div>
+
+    <div class="universe-group">
+      <div class="universe-title">ETF – UCITS (6) · Tilgjengelig via Nordnet</div>
+      <div class="instrument-row"><span class="instrument-tick">VWCE</span><span class="instrument-name">Vanguard FTSE All-World UCITS ETF (Acc) · erstatter VT</span><span class="instrument-cat">ETF</span></div>
+      <div class="instrument-row"><span class="instrument-tick">VUAA</span><span class="instrument-name">Vanguard S&amp;P 500 UCITS ETF (Acc) · erstatter VTI</span><span class="instrument-cat">ETF</span></div>
+      <div class="instrument-row"><span class="instrument-tick">EUNL</span><span class="instrument-name">iShares Core MSCI World UCITS ETF (Acc) · erstatter VEA</span><span class="instrument-cat">ETF</span></div>
+      <div class="instrument-row"><span class="instrument-tick">IEMA</span><span class="instrument-name">iShares MSCI Emerging Markets UCITS ETF · erstatter VWO</span><span class="instrument-cat">ETF</span></div>
+      <div class="instrument-row"><span class="instrument-tick">AGGG</span><span class="instrument-name">iShares Core Global Aggregate Bond UCITS ETF · erstatter BND</span><span class="instrument-cat">ETF</span></div>
+      <div class="instrument-row"><span class="instrument-tick">IGLN</span><span class="instrument-name">iShares Physical Gold ETC · erstatter GLD</span><span class="instrument-cat">ETF</span></div>
+    </div>
+
+    <div class="universe-group">
+      <div class="universe-title">Indekser (4)</div>
+      <div class="instrument-row"><span class="instrument-tick">SPX</span><span class="instrument-name">S&amp;P 500</span><span class="instrument-cat">Indeks</span></div>
+      <div class="instrument-row"><span class="instrument-tick">NDX</span><span class="instrument-name">NASDAQ 100</span><span class="instrument-cat">Indeks</span></div>
+      <div class="instrument-row"><span class="instrument-tick">MSCI</span><span class="instrument-name">MSCI World Index</span><span class="instrument-cat">Indeks</span></div>
+      <div class="instrument-row"><span class="instrument-tick">STOXX600</span><span class="instrument-name">STOXX Europe 600</span><span class="instrument-cat">Indeks</span></div>
+    </div>
+
+    <div class="universe-group">
+      <div class="universe-title">Krypto – via EU-regulerte ETPs på Nordnet (2)</div>
+      <div class="instrument-row"><span class="instrument-tick">BITCOIN XBT</span><span class="instrument-name">CoinShares XBT Provider Bitcoin Tracker One · Nasdaq Stockholm</span><span class="instrument-cat">ETP</span></div>
+      <div class="instrument-row"><span class="instrument-tick">ETHEREUM XBT</span><span class="instrument-name">CoinShares XBT Provider Ethereum Tracker One · Nasdaq Stockholm</span><span class="instrument-cat">ETP</span></div>
+    </div>
+  </section>
+
+  <!-- ── VIEW 3: REGLER ── -->
+  <section class="view" id="view-regler">
+    <div class="view-header">
+      <div class="view-title">Beslutningsregler</div>
+      <div class="view-lede">Fast rammeverk for analyse og beslutning – ufravikelig</div>
+    </div>
+
+    <div class="method-row">
+      <div class="method-cell">
+        <div class="method-label">Trend (ukentlig)</div>
+        <div class="method-opt pos">↑ Positiv</div>
+        <div class="method-opt neu">→ Nøytral</div>
+        <div class="method-opt neg">↓ Negativ</div>
+      </div>
+      <div class="method-cell">
+        <div class="method-label">Momentum (4–8 uker)</div>
+        <div class="method-opt pos">↑ Positiv</div>
+        <div class="method-opt neu">→ Nøytral</div>
+        <div class="method-opt neg">↓ Negativ</div>
+      </div>
+      <div class="method-cell">
+        <div class="method-label">Volatilitet</div>
+        <div class="method-opt pos">Lav ✓</div>
+        <div class="method-opt neu">Moderat ✓</div>
+        <div class="method-opt neg">Høy ✗</div>
+      </div>
+      <div class="method-cell">
+        <div class="method-label">Markedsregime</div>
+        <div class="method-opt pos">Risiko-på</div>
+        <div class="method-opt neu">Blandet</div>
+        <div class="method-opt neg">Risiko-av</div>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Handling tillatt kun når alle tre er oppfylt</div>
+      <div class="rule-content">
+        <ul>
+          <li>a) Trend og momentum peker <strong>samme vei</strong></li>
+          <li>b) Volatilitet er <strong>ikke høy</strong></li>
+          <li>c) Begrunnelse kan gis i 2–3 korte punkter uten nyhetstolkning</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Regimeregler</div>
+      <div class="rule-content">
+        <p>Ved <strong>risiko-av</strong>: prioriter AVSTÅ eller HOLD – unngå kjøp-forslag.<br>
+        Standardvalg ved all tvil: <strong>AVSTÅ</strong>.<br>
+        Maks én handling per kategori per uke.</p>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Risiko og størrelse (simulert kapital)</div>
+      <div class="rule-content">
+        <ul>
+          <li>Foreslått størrelse: 0–1,0 % av hypotetisk kapital</li>
+          <li>Kun lav til moderat risiko aksepteres</li>
+          <li>Alltid konservativ worst-case-kommentar på én linje</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Tillatte handlinger per kategori</div>
+      <div class="rule-content">
+        <ul>
+          <li><strong>Aksjer:</strong> KJØP / SELG / HOLD / AVSTÅ</li>
+          <li><strong>ETF:</strong> KJØP / SELG / HOLD / AVSTÅ</li>
+          <li><strong>Indeks:</strong> HOLD / AVSTÅ (ikke kjøp eller salg)</li>
+          <li><strong>Krypto:</strong> KJØP / SELG / HOLD / AVSTÅ</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Sikkerhetsrammer (ufravikelig)</div>
+      <div class="rule-content">
+        <ul>
+          <li>Ingen interne data, personopplysninger eller NAV-tilknyttet informasjon</li>
+          <li>Kun generelle, offentlige markedsforhold på overordnet nivå</li>
+          <li>Ikke investeringsråd – ingen oppfordring til kjøp/salg</li>
+          <li>Ingen avkastningsløfter – nøkternt og regelbasert språk</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">UCITS-krav · Nordnet Europa</div>
+      <div class="rule-content">
+        <ul>
+          <li>Alle ETF-instrumenter skal være UCITS-godkjente og tilgjengelige via Nordnet for europeiske investorer</li>
+          <li>US-domisilerte ETFer (VTI, VT, VEA, VWO, BND, GLD) er <strong>ikke</strong> tillatt – bruk UCITS-ekvivalentene i universet</li>
+          <li>Krypto handles utelukkende via EU-regulerte ETPs (CoinShares XBT Provider) på regulerte børser (Nasdaq Stockholm) – ikke direkte krypto</li>
+          <li>Dersom et instrument ikke er tilgjengelig via Nordnet: skriv «IKKE TILGJENGELIG VIA NORDNET» og velg AVSTÅ</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VIEW 4: OM ── -->
+  <section class="view" id="view-om">
+    <div class="view-header">
+      <div class="view-title">Om Markedsnotat</div>
+      <div class="view-lede">Regelbasert simulering – ikke tilknyttet reelle markeder eller systemer</div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>VIKTIG:</strong> Dette er en ren simulering for lærings- og treningsformål.
+      Ingen reell kapital handles. Ingen personopplysninger benyttes.
+      Ingen tilknytning til NAV, interne systemer eller ansatte.
+      Innholdet er ikke investeringsråd.
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Hva er dette?</div>
+      <div class="rule-content">
+        <p>Et standardisert ukentlig markedsnotat basert på et fast univers av instrumenter.
+        Formålet er å øve på systematisk, regelbasert markedsanalyse. Appen viser notatet for
+        inneværende uke og gir tilgang til universsoversikt og beslutningsregler.</p>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Slik oppdateres appen ukentlig</div>
+      <div class="rule-content">
+        <p>Åpne <code>index.html</code> i en teksteditor. Finn <code>const NOTE = { ... }</code>
+        øverst i skriptet og oppdater feltene med ukens analyse. Lagre og last siden på nytt.
+        Ingen server eller internett-tilkobling er nødvendig.</p>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Analysemetode</div>
+      <div class="rule-content">
+        <p>For hvert instrument vurderes: ukentlig trend (positiv / nøytral / negativ),
+        momentum over 4–8 uker, volatilitetsnivå og gjeldende markedsregime.
+        Beslutning fattes kun ved entydige signaler og lav til moderat volatilitet.</p>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">UCITS og Nordnet</div>
+      <div class="rule-content">
+        <p>Bruker er europeisk investor og handler via <strong>Nordnet</strong>. Alle ETF-instrumenter
+        er UCITS-godkjente og tilgjengelige på Nordnet. US-listede ETFer (VTI, VT osv.) er erstattet
+        med UCITS-ekvivalenter. Krypto-eksponering skjer via CoinShares XBT Provider ETPs på Nasdaq
+        Stockholm – ikke direkte kjøp av kryptovaluta.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="app-footer">
+    <span>Markedsnotat · Simulering · Ikke investeringsråd</span>
+    <span id="footer-date">—</span>
+  </footer>
+</div>
+
+<script>
+// ─── HELPERS ───────────────────────────────────────────
+function getWeekNumber(dateStr) {
+  const d = new Date(dateStr);
+  d.setHours(0,0,0,0);
+  d.setDate(d.getDate() + 3 - (d.getDay() + 6) % 7);
+  const w1 = new Date(d.getFullYear(), 0, 4);
+  return 1 + Math.round(((d - w1) / 86400000 - 3 + (w1.getDay() + 6) % 7) / 7);
+}
+
+function formatDate(s) {
+  return new Date(s).toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+// ─── RENDER NOTE ───────────────────────────────────────
+function renderNote() {
+  const n = NOTE;
+  const week = getWeekNumber(n.date);
+
+  document.getElementById('brand-tag').textContent =
+    `Simulering · Uke ${week} · ${n.date.slice(0,4)}`;
+  document.getElementById('notat-lede').textContent =
+    `Dato: ${formatDate(n.date)} · Simulering – ikke reelle råd eller kapital`;
+  document.getElementById('footer-date').textContent =
+    `Uke ${week}, ${n.date}`;
+
+  // Regime
+  const chip = document.getElementById('regime-chip');
+  chip.textContent = n.regime.status.toUpperCase();
+  chip.className = 'regime-chip ' + n.regime.cssClass;
+
+  const rl = document.getElementById('regime-line');
+  rl.className = 'regime-line ' + n.regime.cssClass;
+  document.getElementById('regime-val').textContent = n.regime.status;
+  document.getElementById('regime-desc').textContent = n.regime.desc;
+
+  // Categories
+  const container = document.getElementById('categories-container');
+  container.innerHTML = '';
+
+  n.categories.forEach(cat => {
+    const dataOK = cat.data === 'OK';
+    const dataLabel = dataOK ? 'Data OK' : 'Datagrunnlag utilstrekkelig';
+
+    // Build data grid cells
+    let gridCells = `
+      <div class="cat-field">
+        <div class="field-label">Instrument</div>
+        <div class="field-val mono">${cat.instrument}</div>
+      </div>
+      <div class="cat-field">
+        <div class="field-label">Trend</div>
+        <div class="field-val" style="font-size:13px">${cat.trend}</div>
+      </div>
+      <div class="cat-field">
+        <div class="field-label">Volatilitet</div>
+        <div class="field-val" style="font-size:13px">${cat.vol}</div>
+      </div>`;
+    if (cat.size !== null) gridCells += `
+      <div class="cat-field">
+        <div class="field-label">Størrelse</div>
+        <div class="field-val">${cat.size}</div>
+      </div>`;
+    if (cat.risk !== null) gridCells += `
+      <div class="cat-field">
+        <div class="field-label">Risiko</div>
+        <div class="field-val" style="font-size:13px">${cat.risk}</div>
+      </div>`;
+
+    const bulletsHTML = cat.bullets.map(b => `<li>${b}</li>`).join('');
+    const worstHTML   = cat.worstCase
+      ? `<div class="worst-case">${cat.worstCase}</div>` : '';
+
+    container.innerHTML += `
+      <div class="cat-card action-${cat.actionCss}">
+        <div class="cat-header">
+          <div>
+            <div class="cat-num">${cat.num}) ${cat.name}</div>
+            <div class="cat-name">${cat.instrument}</div>
+          </div>
+          <div class="cat-badges">
+            <span class="badge badge-action ${cat.actionCss}">${cat.action}</span>
+            <span class="badge badge-data ${dataOK ? 'ok' : 'util'}">${dataLabel}</span>
+          </div>
+        </div>
+        <div class="cat-body">
+          <div class="cat-grid">${gridCells}</div>
+          <ul class="bullets">${bulletsHTML}</ul>
+          ${worstHTML}
+        </div>
+      </div>`;
+  });
+
+  // Summary
+  document.getElementById('sum-actions').textContent     = n.summary.actions;
+  document.getElementById('sum-abstentions').textContent = n.summary.abstentions;
+  document.getElementById('sum-risk').textContent        = n.summary.riskFactor;
+}
+
+// ─── NAV ───────────────────────────────────────────────
+function showView(id, btn) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  document.getElementById('view-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ─── INIT ──────────────────────────────────────────────
+renderNote();
+
+// ─── SERVICE WORKER ────────────────────────────────────
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./service-worker.js');
+}
+</script>
+</body>
+</html>
