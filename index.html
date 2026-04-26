@@ -182,6 +182,13 @@
     border-bottom: 2px solid var(--gold);
     margin-bottom: -1px;
   }
+  @media (max-width: 480px) {
+    .nav-item {
+      padding: 11px 4px;
+      font-size: 10.5px;
+      letter-spacing: 0.06em;
+    }
+  }
 
   /* ── SECTIONS ────────────────────────────────────── */
   section.view { display: none; padding: 28px; }
@@ -396,6 +403,54 @@
   .s-text { font-size: 13px; color: var(--ink); line-height: 1.55; padding-top: 4px; }
 
   /* ── UNIVERSE ────────────────────────────────────── */
+  .universe-filter {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .filter-btn {
+    padding: 7px 14px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.12s;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+  .filter-btn:hover { border-color: var(--ink); color: var(--ink); }
+  .filter-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .universe-cat-header {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 28px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .universe-cat-header:first-child { margin-top: 0; }
+  .universe-subtitle {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    margin-top: 14px;
+    margin-bottom: 6px;
+  }
   .universe-group { margin-bottom: 24px; }
   .universe-title {
     font-size: 11px;
@@ -703,6 +758,7 @@
     <button class="nav-item active" onclick="showView('notat',this)">Notat</button>
     <button class="nav-item" onclick="showView('univers',this)">Univers</button>
     <button class="nav-item" onclick="showView('regler',this)">Regler</button>
+    <button class="nav-item" onclick="showView('kilder',this)">Kilder</button>
     <button class="nav-item" onclick="showView('om',this)">Om</button>
     <button class="nav-item" onclick="showView('publiser',this)">Publiser</button>
   </nav>
@@ -725,44 +781,19 @@
     <div class="view-header">
       <div class="view-eyebrow">Investeringsunivers</div>
       <div class="view-title">Fast Univers</div>
-      <div class="view-lede">Disse instrumentene inngår fast – ingen endringer eller tillegg tillatt</div>
+      <div class="view-lede">Kuratert utvalg fra Nordnet · Norden, Europa, USA · UCITS-godkjente ETFer · indekser globalt</div>
     </div>
 
-    <div class="universe-group">
-      <div class="universe-title">Aksjer (8)</div>
-      <div class="instrument-row"><span class="instrument-tick">MSFT</span><span class="instrument-name">Microsoft Corporation</span><span class="instrument-cat">Aksje</span></div>
-      <div class="instrument-row"><span class="instrument-tick">AAPL</span><span class="instrument-name">Apple Inc.</span><span class="instrument-cat">Aksje</span></div>
-      <div class="instrument-row"><span class="instrument-tick">NVDA</span><span class="instrument-name">NVIDIA Corporation</span><span class="instrument-cat">Aksje</span></div>
-      <div class="instrument-row"><span class="instrument-tick">AMZN</span><span class="instrument-name">Amazon.com Inc.</span><span class="instrument-cat">Aksje</span></div>
-      <div class="instrument-row"><span class="instrument-tick">GOOGL</span><span class="instrument-name">Alphabet Inc.</span><span class="instrument-cat">Aksje</span></div>
-      <div class="instrument-row"><span class="instrument-tick">META</span><span class="instrument-name">Meta Platforms Inc.</span><span class="instrument-cat">Aksje</span></div>
-      <div class="instrument-row"><span class="instrument-tick">BRK.B</span><span class="instrument-name">Berkshire Hathaway Class B</span><span class="instrument-cat">Aksje</span></div>
-      <div class="instrument-row"><span class="instrument-tick">JNJ</span><span class="instrument-name">Johnson &amp; Johnson</span><span class="instrument-cat">Aksje</span></div>
+    <!-- Filterknapper -->
+    <div class="universe-filter">
+      <button class="filter-btn active" data-cat="all" onclick="filterUniverse('all', this)">Alle</button>
+      <button class="filter-btn" data-cat="aksjer" onclick="filterUniverse('aksjer', this)">Aksjer</button>
+      <button class="filter-btn" data-cat="etf" onclick="filterUniverse('etf', this)">ETF</button>
+      <button class="filter-btn" data-cat="indekser" onclick="filterUniverse('indekser', this)">Indekser</button>
+      <button class="filter-btn" data-cat="krypto" onclick="filterUniverse('krypto', this)">Krypto</button>
     </div>
 
-    <div class="universe-group">
-      <div class="universe-title">ETF – UCITS (6) · Tilgjengelig via Nordnet</div>
-      <div class="instrument-row"><span class="instrument-tick">VWCE</span><span class="instrument-name">Vanguard FTSE All-World UCITS ETF (Acc) · erstatter VT</span><span class="instrument-cat">ETF</span></div>
-      <div class="instrument-row"><span class="instrument-tick">VUAA</span><span class="instrument-name">Vanguard S&amp;P 500 UCITS ETF (Acc) · erstatter VTI</span><span class="instrument-cat">ETF</span></div>
-      <div class="instrument-row"><span class="instrument-tick">EUNL</span><span class="instrument-name">iShares Core MSCI World UCITS ETF (Acc) · erstatter VEA</span><span class="instrument-cat">ETF</span></div>
-      <div class="instrument-row"><span class="instrument-tick">IEMA</span><span class="instrument-name">iShares MSCI Emerging Markets UCITS ETF · erstatter VWO</span><span class="instrument-cat">ETF</span></div>
-      <div class="instrument-row"><span class="instrument-tick">AGGG</span><span class="instrument-name">iShares Core Global Aggregate Bond UCITS ETF · erstatter BND</span><span class="instrument-cat">ETF</span></div>
-      <div class="instrument-row"><span class="instrument-tick">IGLN</span><span class="instrument-name">iShares Physical Gold ETC · erstatter GLD</span><span class="instrument-cat">ETF</span></div>
-    </div>
-
-    <div class="universe-group">
-      <div class="universe-title">Indekser (4)</div>
-      <div class="instrument-row"><span class="instrument-tick">SPX</span><span class="instrument-name">S&amp;P 500</span><span class="instrument-cat">Indeks</span></div>
-      <div class="instrument-row"><span class="instrument-tick">NDX</span><span class="instrument-name">NASDAQ 100</span><span class="instrument-cat">Indeks</span></div>
-      <div class="instrument-row"><span class="instrument-tick">MSCI</span><span class="instrument-name">MSCI World Index</span><span class="instrument-cat">Indeks</span></div>
-      <div class="instrument-row"><span class="instrument-tick">STOXX600</span><span class="instrument-name">STOXX Europe 600</span><span class="instrument-cat">Indeks</span></div>
-    </div>
-
-    <div class="universe-group">
-      <div class="universe-title">Krypto – via EU-regulerte ETPs på Nordnet (2)</div>
-      <div class="instrument-row"><span class="instrument-tick">BITCOIN XBT</span><span class="instrument-name">CoinShares XBT Provider Bitcoin Tracker One · Nasdaq Stockholm</span><span class="instrument-cat">ETP</span></div>
-      <div class="instrument-row"><span class="instrument-tick">ETHEREUM XBT</span><span class="instrument-name">CoinShares XBT Provider Ethereum Tracker One · Nasdaq Stockholm</span><span class="instrument-cat">ETP</span></div>
-    </div>
+    <div id="universe-container"></div>
   </section>
 
   <!-- ── VIEW 3: REGLER ── -->
@@ -864,6 +895,87 @@
           <li>Krypto handles utelukkende via EU-regulerte ETPs (CoinShares XBT Provider) på regulerte børser (Nasdaq Stockholm) – ikke direkte krypto</li>
           <li>Dersom et instrument ikke er tilgjengelig via Nordnet: skriv «IKKE TILGJENGELIG VIA NORDNET» og velg AVSTÅ</li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VIEW 3.5: KILDER ── -->
+  <section class="view" id="view-kilder">
+    <div class="view-header">
+      <div class="view-eyebrow">Datagrunnlag</div>
+      <div class="view-title">Kilder</div>
+      <div class="view-lede">Hvilke kilder Claude bruker for å bygge det ukentlige notatet</div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Markedsdata · priser, volum, nøkkeltall</div>
+      <div class="rule-content">
+        <ul>
+          <li><a href="https://finance.yahoo.com" target="_blank" rel="noopener">Yahoo Finance</a> – sanntidskurser, historiske data, nyheter</li>
+          <li><a href="https://www.cnbc.com/markets/" target="_blank" rel="noopener">CNBC Markets</a> – ukessammendrag, sektorbilde, intervjuer</li>
+          <li><a href="https://www.bloomberg.com/markets" target="_blank" rel="noopener">Bloomberg Markets</a> – institusjonell markedsdekning</li>
+          <li><a href="https://www.investing.com" target="_blank" rel="noopener">Investing.com</a> – tekniske indikatorer, økonomisk kalender</li>
+          <li><a href="https://www.google.com/finance" target="_blank" rel="noopener">Google Finance</a> – rask kursoversikt</li>
+          <li><a href="https://www.tradingview.com" target="_blank" rel="noopener">TradingView</a> – avanserte charter og tekniske analyser</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Instrument-info · ETF og aksje-detaljer</div>
+      <div class="rule-content">
+        <ul>
+          <li><a href="https://www.nordnet.no" target="_blank" rel="noopener">Nordnet.no</a> – tilgjengelighet i Norge, ISIN, valuta, gebyrer</li>
+          <li><a href="https://www.justetf.com" target="_blank" rel="noopener">JustETF</a> – ETF-database med UCITS-status og benchmarks</li>
+          <li><a href="https://www.ishares.com" target="_blank" rel="noopener">iShares (BlackRock)</a> – produktblad for iShares-fond</li>
+          <li><a href="https://www.vanguard.co.uk" target="_blank" rel="noopener">Vanguard UK</a> – UCITS-versjoner av Vanguard-ETFer</li>
+          <li><a href="https://www.morningstar.com" target="_blank" rel="noopener">Morningstar</a> – fondsanalyse og rating</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Krypto · ETP og spotmarked</div>
+      <div class="rule-content">
+        <ul>
+          <li><a href="https://www.coindesk.com" target="_blank" rel="noopener">CoinDesk</a> – kryptonyheter og prisdata</li>
+          <li><a href="https://coinmarketcap.com" target="_blank" rel="noopener">CoinMarketCap</a> – markedsverdi og volum</li>
+          <li><a href="https://coinshares.com" target="_blank" rel="noopener">CoinShares</a> – produktblad for XBT Provider ETPs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Makroøkonomi · regime, renter, inflasjon</div>
+      <div class="rule-content">
+        <ul>
+          <li><a href="https://www.federalreserve.gov" target="_blank" rel="noopener">Federal Reserve</a> – amerikansk pengepolitikk</li>
+          <li><a href="https://www.ecb.europa.eu" target="_blank" rel="noopener">European Central Bank</a> – europeisk pengepolitikk</li>
+          <li><a href="https://www.norges-bank.no" target="_blank" rel="noopener">Norges Bank</a> – norsk pengepolitikk og valutakurser</li>
+          <li><a href="https://tradingeconomics.com" target="_blank" rel="noopener">Trading Economics</a> – globale makrodata</li>
+          <li><a href="https://www.cboe.com/tradable_products/vix/" target="_blank" rel="noopener">CBOE VIX</a> – volatilitetsindeks</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Børser og indekser</div>
+      <div class="rule-content">
+        <ul>
+          <li><a href="https://www.euronext.com/nb/markets/oslo" target="_blank" rel="noopener">Oslo Børs (Euronext)</a> – OSEBX og norske aksjer</li>
+          <li><a href="https://www.nasdaq.com" target="_blank" rel="noopener">NASDAQ</a> – amerikanske tech-aksjer og NDX</li>
+          <li><a href="https://www.nyse.com" target="_blank" rel="noopener">NYSE</a> – amerikanske blue-chips</li>
+          <li><a href="https://www.spglobal.com/spdji/en/" target="_blank" rel="noopener">S&amp;P Dow Jones Indices</a> – S&amp;P 500 og relaterte</li>
+          <li><a href="https://www.msci.com" target="_blank" rel="noopener">MSCI</a> – globale indekser (World, EM, ESG)</li>
+          <li><a href="https://www.stoxx.com" target="_blank" rel="noopener">STOXX</a> – europeiske indekser</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Anmerkning</div>
+      <div class="rule-content">
+        <p>Claude søker disse kildene via web-search når det lager ukens notat. Dataene er offentlig tilgjengelige – ingen betalte feeds eller API-er. Tidsforsinkelse på opp til 15–20 minutter kan forekomme på enkelte gratiskilder. Dette er en simulering, ikke et reelt handelssystem.</p>
       </div>
     </div>
   </section>
@@ -1031,6 +1143,221 @@
 </div>
 
 <script>
+// ─── UNIVERS – kuratert utvalg fra Nordnet ─────────────
+const UNIVERSE = {
+  aksjer: {
+    "Norge · Oslo Børs": [
+      { t: "EQNR",  n: "Equinor ASA",            s: "Energi" },
+      { t: "DNB",   n: "DNB Bank ASA",           s: "Finans" },
+      { t: "TEL",   n: "Telenor ASA",            s: "Telekom" },
+      { t: "YAR",   n: "Yara International",     s: "Materialer" },
+      { t: "STB",   n: "Storebrand ASA",         s: "Forsikring" },
+      { t: "AKRBP", n: "Aker BP ASA",            s: "Energi" },
+      { t: "MOWI",  n: "Mowi ASA",               s: "Sjømat" },
+      { t: "NHY",   n: "Norsk Hydro",            s: "Materialer" },
+      { t: "ORK",   n: "Orkla ASA",              s: "Forbruk" },
+      { t: "GJF",   n: "Gjensidige Forsikring",  s: "Forsikring" },
+      { t: "SALM",  n: "SalMar ASA",             s: "Sjømat" },
+      { t: "KOG",   n: "Kongsberg Gruppen",      s: "Forsvar/Industri" }
+    ],
+    "Sverige · Stockholm": [
+      { t: "VOLV-B", n: "Volvo Group B",          s: "Industri" },
+      { t: "ATCO-A", n: "Atlas Copco A",          s: "Industri" },
+      { t: "INVE-B", n: "Investor B",             s: "Investeringsselskap" },
+      { t: "AZN",    n: "AstraZeneca",            s: "Helse" },
+      { t: "HEXA-B", n: "Hexagon B",              s: "Teknologi" }
+    ],
+    "Danmark · København": [
+      { t: "NOVO-B",   n: "Novo Nordisk B",       s: "Helse" },
+      { t: "MAERSK-B", n: "A.P. Møller-Maersk B", s: "Shipping" },
+      { t: "ORSTED",   n: "Ørsted",               s: "Vindkraft" },
+      { t: "DSV",      n: "DSV A/S",              s: "Logistikk" }
+    ],
+    "Finland · Helsinki": [
+      { t: "NOKIA",  n: "Nokia Oyj",              s: "Telekom-utstyr" },
+      { t: "KNEBV",  n: "Kone Oyj",               s: "Industri" }
+    ],
+    "USA · NYSE/NASDAQ": [
+      { t: "MSFT",  n: "Microsoft Corporation",   s: "Teknologi" },
+      { t: "AAPL",  n: "Apple Inc.",              s: "Teknologi" },
+      { t: "NVDA",  n: "NVIDIA Corporation",      s: "Halvledere" },
+      { t: "AMZN",  n: "Amazon.com",              s: "E-handel" },
+      { t: "GOOGL", n: "Alphabet Inc. (Google)",  s: "Teknologi" },
+      { t: "META",  n: "Meta Platforms",          s: "Teknologi" },
+      { t: "BRK.B", n: "Berkshire Hathaway B",    s: "Konglomerat" },
+      { t: "JNJ",   n: "Johnson & Johnson",       s: "Helse" },
+      { t: "TSLA",  n: "Tesla Inc.",              s: "Bil/Energi" },
+      { t: "COST",  n: "Costco Wholesale",        s: "Forbruk" },
+      { t: "JPM",   n: "JPMorgan Chase",          s: "Finans" },
+      { t: "V",     n: "Visa Inc.",               s: "Betalingstjenester" },
+      { t: "UNH",   n: "UnitedHealth Group",      s: "Helse" },
+      { t: "HD",    n: "Home Depot",              s: "Detaljhandel" },
+      { t: "ORCL",  n: "Oracle Corporation",      s: "Teknologi" }
+    ],
+    "Europa (utenfor Norden)": [
+      { t: "MC",   n: "LVMH Moët Hennessy (Paris)",      s: "Luksus" },
+      { t: "ASML", n: "ASML Holding (Amsterdam)",        s: "Halvleder-utstyr" },
+      { t: "SAP",  n: "SAP SE (Frankfurt)",              s: "Programvare" },
+      { t: "NESN", n: "Nestlé SA (Sveits)",              s: "Forbruk" },
+      { t: "ROG",  n: "Roche Holding (Sveits)",          s: "Helse" },
+      { t: "NOVN", n: "Novartis (Sveits)",               s: "Helse" },
+      { t: "SIE",  n: "Siemens AG (Frankfurt)",          s: "Industri" },
+      { t: "SHEL", n: "Shell plc (London)",              s: "Energi" }
+    ]
+  },
+  etf: {
+    "Brede markeder (UCITS)": [
+      { t: "VWCE", n: "Vanguard FTSE All-World UCITS ETF (Acc)",      i: "IE00BK5BQT80", note: "erstatter VT" },
+      { t: "VUAA", n: "Vanguard S&P 500 UCITS ETF (Acc)",             i: "IE00BFMXXD54", note: "erstatter VTI" },
+      { t: "EUNL", n: "iShares Core MSCI World UCITS ETF (Acc)",      i: "IE00B4L5Y983", note: "erstatter VEA" },
+      { t: "IEMA", n: "iShares MSCI Emerging Markets UCITS ETF",      i: "IE00B0M63177", note: "erstatter VWO" },
+      { t: "VEUR", n: "Vanguard FTSE Developed Europe UCITS ETF",     i: "IE00B945VV12" },
+      { t: "EUNN", n: "iShares MSCI Japan UCITS ETF (Acc)",           i: "IE00B53QDK08" }
+    ],
+    "Sektor-ETFer": [
+      { t: "EXV3", n: "iShares STOXX Europe 600 Technology UCITS",    i: "DE000A0H08Q4" },
+      { t: "IS3N", n: "iShares MSCI World Health Care UCITS (Acc)",   i: "IE00BM67HK77" },
+      { t: "EXH1", n: "iShares STOXX Europe 600 Oil & Gas UCITS",     i: "DE000A0H08M3" },
+      { t: "WCBR", n: "WisdomTree Cybersecurity UCITS ETF",           i: "IE00BLPK3577" },
+      { t: "ROBO", n: "iShares Automation & Robotics UCITS ETF",      i: "IE00BYZK4552" },
+      { t: "INRG", n: "iShares Global Clean Energy UCITS ETF",        i: "IE00B1XNHC34" }
+    ],
+    "Faktor-ETFer": [
+      { t: "IWQU", n: "iShares Edge MSCI World Quality UCITS",        i: "IE00BP3QZ601" },
+      { t: "IWMO", n: "iShares Edge MSCI World Momentum UCITS",       i: "IE00BP3QZ825" },
+      { t: "IWVL", n: "iShares Edge MSCI World Value UCITS",          i: "IE00BP3QZB59" },
+      { t: "MVOL", n: "iShares Edge MSCI World Min Vol UCITS",        i: "IE00B8FHGS14" }
+    ],
+    "Norden-spesifikke": [
+      { t: "XACT-OBX",    n: "XACT OBX (norsk OBX-tracker)",          i: "NO0010198255" },
+      { t: "XACT-OMXS30", n: "XACT OMXS30 (svensk)",                  i: "SE0000693570" }
+    ],
+    "Renter (UCITS)": [
+      { t: "AGGG", n: "iShares Core Global Aggregate Bond UCITS",     i: "IE00B3F81409", note: "erstatter BND" },
+      { t: "IBGL", n: "iShares Core EUR Govt Bond UCITS",             i: "IE00B4WXJJ64" },
+      { t: "IB1G", n: "iShares EUR Short Term Govt Bond UCITS",       i: "IE00B14X4Q57" },
+      { t: "SXRP", n: "iShares 1-3 Year Treasury Bond UCITS (USD)",   i: "IE00B14X4S71" }
+    ],
+    "Råvarer / Edelmetaller": [
+      { t: "IGLN", n: "iShares Physical Gold ETC",                    i: "IE00B4ND3602", note: "erstatter GLD" }
+    ],
+    "Dividend / ESG": [
+      { t: "VHYL", n: "Vanguard FTSE All-World High Dividend Yield",  i: "IE00B8GKDB10" },
+      { t: "SUSW", n: "iShares MSCI World ESG Screened UCITS",        i: "IE00BFNM3J75" }
+    ]
+  },
+  indekser: {
+    "Norden": [
+      { t: "OSEBX",  n: "Oslo Børs Benchmark Index",   r: "Norge"   },
+      { t: "OMXS30", n: "OMX Stockholm 30",            r: "Sverige" },
+      { t: "OMXC25", n: "OMX København 25",            r: "Danmark" }
+    ],
+    "USA": [
+      { t: "SPX",    n: "S&P 500",                     r: "USA · large cap" },
+      { t: "NDX",    n: "NASDAQ 100",                  r: "USA · tech-tung" },
+      { t: "RUT",    n: "Russell 2000",                r: "USA · small cap" },
+      { t: "VIX",    n: "CBOE Volatility Index",       r: "USA · volatilitet" }
+    ],
+    "Europa": [
+      { t: "DAX",    n: "DAX",                         r: "Tyskland" },
+      { t: "FTSE",   n: "FTSE 100",                    r: "Storbritannia" },
+      { t: "STOXX600", n: "STOXX Europe 600",          r: "Europa bredt" }
+    ],
+    "Asia": [
+      { t: "N225",   n: "Nikkei 225",                  r: "Japan" },
+      { t: "HSI",    n: "Hang Seng",                   r: "Hong Kong" }
+    ],
+    "Globalt": [
+      { t: "MSCI",   n: "MSCI World Index",            r: "Utviklede markeder" }
+    ]
+  },
+  krypto: {
+    "EU-regulerte ETPs på Nordnet": [
+      { t: "BITCOIN XBT",  n: "CoinShares XBT Provider Bitcoin Tracker One",  m: "Nasdaq Stockholm" },
+      { t: "ETHEREUM XBT", n: "CoinShares XBT Provider Ethereum Tracker One", m: "Nasdaq Stockholm" }
+    ]
+  }
+};
+
+// ─── UNIVERS-RENDERING ─────────────────────────────────
+function countUniverse() {
+  let counts = { aksjer: 0, etf: 0, indekser: 0, krypto: 0 };
+  for (const cat of Object.keys(counts)) {
+    for (const group of Object.values(UNIVERSE[cat])) counts[cat] += group.length;
+  }
+  return counts;
+}
+
+function renderUniverse(filter) {
+  const container = document.getElementById('universe-container');
+  if (!container) return;
+  const counts = countUniverse();
+  let html = '';
+
+  const showCat = (filter === 'all' || filter === 'aksjer');
+  if (showCat) {
+    html += '<div class="universe-cat-header">Aksjer (' + counts.aksjer + ')</div>';
+    for (const [market, list] of Object.entries(UNIVERSE.aksjer)) {
+      html += '<div class="universe-subtitle">' + market + ' · ' + list.length + '</div>';
+      for (const it of list) {
+        html += '<div class="instrument-row">' +
+          '<span class="instrument-tick">' + it.t + '</span>' +
+          '<span class="instrument-name">' + it.n + '</span>' +
+          '<span class="instrument-cat">' + (it.s || 'Aksje') + '</span></div>';
+      }
+    }
+  }
+
+  if (filter === 'all' || filter === 'etf') {
+    html += '<div class="universe-cat-header">ETF – UCITS (' + counts.etf + ') · Tilgjengelig via Nordnet</div>';
+    for (const [grp, list] of Object.entries(UNIVERSE.etf)) {
+      html += '<div class="universe-subtitle">' + grp + ' · ' + list.length + '</div>';
+      for (const it of list) {
+        const note = it.note ? ' · ' + it.note : '';
+        const isin = it.i ? ' (' + it.i + ')' : '';
+        html += '<div class="instrument-row">' +
+          '<span class="instrument-tick">' + it.t + '</span>' +
+          '<span class="instrument-name">' + it.n + isin + note + '</span>' +
+          '<span class="instrument-cat">ETF</span></div>';
+      }
+    }
+  }
+
+  if (filter === 'all' || filter === 'indekser') {
+    html += '<div class="universe-cat-header">Indekser (' + counts.indekser + ')</div>';
+    for (const [region, list] of Object.entries(UNIVERSE.indekser)) {
+      html += '<div class="universe-subtitle">' + region + ' · ' + list.length + '</div>';
+      for (const it of list) {
+        html += '<div class="instrument-row">' +
+          '<span class="instrument-tick">' + it.t + '</span>' +
+          '<span class="instrument-name">' + it.n + (it.r ? ' · ' + it.r : '') + '</span>' +
+          '<span class="instrument-cat">Indeks</span></div>';
+      }
+    }
+  }
+
+  if (filter === 'all' || filter === 'krypto') {
+    html += '<div class="universe-cat-header">Krypto – via EU-regulerte ETPs (' + counts.krypto + ')</div>';
+    for (const [grp, list] of Object.entries(UNIVERSE.krypto)) {
+      html += '<div class="universe-subtitle">' + grp + ' · ' + list.length + '</div>';
+      for (const it of list) {
+        html += '<div class="instrument-row">' +
+          '<span class="instrument-tick">' + it.t + '</span>' +
+          '<span class="instrument-name">' + it.n + ' · ' + it.m + '</span>' +
+          '<span class="instrument-cat">ETP</span></div>';
+      }
+    }
+  }
+
+  container.innerHTML = html;
+}
+
+function filterUniverse(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderUniverse(cat);
+}
+
 // ─── HELPERS ───────────────────────────────────────────
 function getWeekNumber(dateStr) {
   const d = new Date(dateStr);
@@ -1202,14 +1529,29 @@ function todayISO() {
   return y + '-' + m + '-' + day;
 }
 
+function flattenUniverseForPrompt() {
+  const lines = [];
+  lines.push('AKSJER (' + Object.values(UNIVERSE.aksjer).reduce((a, b) => a + b.length, 0) + '):');
+  for (const [market, list] of Object.entries(UNIVERSE.aksjer)) {
+    lines.push('  ' + market + ': ' + list.map(x => x.t).join(', '));
+  }
+  lines.push('ETF UCITS (' + Object.values(UNIVERSE.etf).reduce((a, b) => a + b.length, 0) + '):');
+  for (const [grp, list] of Object.entries(UNIVERSE.etf)) {
+    lines.push('  ' + grp + ': ' + list.map(x => x.t).join(', '));
+  }
+  lines.push('INDEKSER (' + Object.values(UNIVERSE.indekser).reduce((a, b) => a + b.length, 0) + '):');
+  for (const [region, list] of Object.entries(UNIVERSE.indekser)) {
+    lines.push('  ' + region + ': ' + list.map(x => x.t).join(', '));
+  }
+  lines.push('KRYPTO ETP: ' + Object.values(UNIVERSE.krypto).flat().map(x => x.t).join(', '));
+  return lines.join('\n');
+}
+
 function buildPrompt(week, date, edition) {
   const year = date.slice(0, 4);
   return 'Lag ukentlig markedsnotat for uke ' + week + ', ' + year + ' for Espen & Co Private Wealth Management.\n\n' +
-'Søk opp faktiske markedsdata for uken. Anvend reglene fra det faste universet:\n' +
-'- Aksjer: MSFT, AAPL, NVDA, AMZN, GOOGL, META, BRK.B, JNJ\n' +
-'- ETF (UCITS): VWCE, VUAA, EUNL, IEMA, AGGG, IGLN\n' +
-'- Indekser: S&P 500, NASDAQ 100, MSCI World, STOXX Europe 600\n' +
-'- Krypto (ETP): BITCOIN XBT, ETHEREUM XBT (CoinShares via Nordnet)\n\n' +
+'Søk opp faktiske markedsdata for uken. Velg ETT instrument per kategori fra det faste universet:\n\n' +
+flattenUniverseForPrompt() + '\n\n' +
 'Beslutningsregler:\n' +
 '- Handling tillatt kun når trend og momentum peker samme vei OG volatilitet ikke er høy\n' +
 '- Ved risiko-av: prioriter AVSTÅ/HOLD\n' +
@@ -1491,6 +1833,7 @@ async function publishNote() {
 
 // ─── INIT ──────────────────────────────────────────────
 loadNote();
+renderUniverse('all');
 
 // ─── SERVICE WORKER ────────────────────────────────────
 if ('serviceWorker' in navigator) {
