@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Markedsnotat – Ukentlig Simulering</title>
-<meta name="description" content="Ukentlig markedsnotat – regelbasert simulering. Ingen reell kapital, ingen investeringsråd.">
+<title>Espen &amp; Co – Private Wealth Management</title>
+<meta name="description" content="Espen & Co Private Wealth Management – ukentlig markedsnotat. Regelbasert simulering. Ingen investeringsråd.">
 
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
@@ -12,97 +12,160 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Markedsnotat">
+<meta name="apple-mobile-web-app-title" content="Espen & Co">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
   :root {
-    --paper:   #EFF2F6;
-    --ink:     #1B2A3B;
-    --accent:  #0A6140;
-    --caution: #8B6914;
-    --danger:  #8B1C1C;
-    --muted:   #6B7A8D;
-    --border:  rgba(27,42,59,0.18);
-    --surface: #E3E8EF;
+    --paper:    #F4F1EA;
+    --ink:      #0F1B2D;
+    --ink-soft: #243245;
+    --accent:   #0A6140;
+    --caution:  #8B6914;
+    --danger:   #8B1C1C;
+    --muted:    #6B7A8D;
+    --border:   rgba(15,27,45,0.16);
+    --surface:  #EAE6DD;
+    --gold:     #B89A4E;
+    --gold-soft:rgba(184,154,78,0.35);
+    --serif: 'IBM Plex Serif', 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans:  'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    --mono:  'IBM Plex Mono', 'SF Mono', 'Courier New', monospace;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   html, body {
-    background: #C8CDD8;
+    background: #C8C4B8;
     color: var(--ink);
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    font-size: 13px;
-    line-height: 1.5;
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.6;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
-  body { padding: 20px 12px 40px; }
+  body { padding: 24px 12px 48px; }
 
   .app {
-    max-width: 780px;
+    max-width: 820px;
     margin: 0 auto;
     background: var(--paper);
     border: 1px solid var(--ink);
-    box-shadow: 5px 5px 0 rgba(27,42,59,0.35);
+    box-shadow: 6px 6px 0 rgba(15,27,45,0.32);
   }
 
-  /* ── MASTHEAD ── */
+  /* ── MASTHEAD ─────────────────────────────────────── */
   .masthead {
     background: var(--ink);
     color: var(--paper);
-    padding: 20px 24px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 12px;
+    border-bottom: 2px solid var(--gold);
+    position: relative;
+  }
+  .masthead-rule-top {
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold) 50%, transparent 50%, transparent 100%);
+    background-size: 12px 4px;
+    opacity: 0.65;
+  }
+  .masthead-inner {
+    padding: 38px 28px 26px;
+    text-align: center;
+    border-bottom: 1px solid rgba(244,241,234,0.14);
+  }
+  .brand-eyebrow {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.32em;
+    font-weight: 500;
+    color: rgba(244,241,234,0.55);
+    margin-bottom: 16px;
+    text-transform: uppercase;
   }
   .brand-name {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 26px;
-    font-weight: normal;
-    letter-spacing: -0.01em;
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
     line-height: 1;
-  }
-  .brand-tag {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(239,242,246,0.55);
-    margin-top: 6px;
-  }
-  .regime-chip {
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 5px 14px;
-    border: 1px solid rgba(239,242,246,0.4);
     color: var(--paper);
+    margin-bottom: 4px;
+  }
+  .brand-name .amp {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 400;
+    margin: 0 4px;
+    font-size: 0.95em;
+  }
+  .brand-divider {
+    width: 42px;
+    height: 1px;
+    background: var(--gold);
+    margin: 16px auto 14px;
+  }
+  .brand-subtitle {
+    font-family: var(--sans);
+    font-size: 11.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: rgba(244,241,234,0.78);
+  }
+
+  .masthead-meta {
+    background: rgba(0,0,0,0.22);
+    padding: 11px 24px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .meta-item   { color: rgba(244,241,234,0.85); }
+  .meta-sep    { color: rgba(244,241,234,0.32); font-weight: 300; }
+  .meta-spacer { flex: 1; }
+  .regime-chip {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    padding: 5px 12px;
+    border: 1px solid rgba(244,241,234,0.4);
+    color: var(--paper);
+    background: transparent;
   }
   .regime-chip.blandet  { background: var(--caution); border-color: var(--caution); }
   .regime-chip.risikoav { background: var(--danger);  border-color: var(--danger);  }
   .regime-chip.risikopaa{ background: var(--accent);  border-color: var(--accent);  }
 
-  /* ── NAV ── */
+  /* ── NAV ─────────────────────────────────────────── */
   .nav {
     display: flex;
-    background: #DDE2EA;
-    border-bottom: 1px solid rgba(27,42,59,0.25);
+    background: #DDD8CC;
+    border-bottom: 1px solid var(--border);
   }
   .nav-item {
     flex: 1;
     background: transparent;
     border: none;
     border-right: 1px solid var(--border);
-    padding: 9px 6px;
-    font-family: inherit;
-    font-size: 11px;
-    letter-spacing: 0.07em;
+    padding: 12px 6px;
+    font-family: var(--sans);
+    font-size: 11.5px;
+    letter-spacing: 0.12em;
+    font-weight: 500;
     text-transform: uppercase;
     color: var(--muted);
     cursor: pointer;
@@ -111,63 +174,82 @@
     white-space: nowrap;
   }
   .nav-item:last-child { border-right: none; }
-  .nav-item:hover { background: rgba(27,42,59,0.06); color: var(--ink); }
+  .nav-item:hover { background: rgba(15,27,45,0.06); color: var(--ink); }
   .nav-item.active {
     background: var(--paper);
     color: var(--ink);
-    font-weight: bold;
-    border-bottom: 2px solid var(--accent);
+    font-weight: 600;
+    border-bottom: 2px solid var(--gold);
     margin-bottom: -1px;
   }
 
-  /* ── SECTIONS ── */
-  section.view { display: none; padding: 24px; }
+  /* ── SECTIONS ────────────────────────────────────── */
+  section.view { display: none; padding: 28px; }
   section.view.active { display: block; }
 
   .view-header {
-    margin-bottom: 20px;
-    padding-bottom: 12px;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
     border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .view-header::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -1px;
+    width: 56px; height: 2px;
+    background: var(--gold);
+  }
+  .view-eyebrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    font-weight: 500;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
   }
   .view-title {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 20px;
-    font-weight: normal;
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 500;
     color: var(--ink);
     margin-bottom: 4px;
+    letter-spacing: -0.005em;
   }
-  .view-lede { font-size: 12px; color: var(--muted); }
+  .view-lede { font-size: 13px; color: var(--muted); font-style: italic; }
 
-  /* ── REGIME LINE ── */
+  /* ── REGIME LINE ─────────────────────────────────── */
   .regime-line {
     background: var(--surface);
     border: 1px solid var(--border);
     border-left: 4px solid var(--caution);
-    padding: 11px 16px;
-    margin-bottom: 20px;
+    padding: 13px 18px;
+    margin-bottom: 22px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
   }
   .regime-line.risikoav  { border-left-color: var(--danger); }
   .regime-line.risikopaa { border-left-color: var(--accent); }
   .regime-label {
-    font-size: 9px;
-    letter-spacing: 0.1em;
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 3px;
+    font-weight: 500;
+    margin-bottom: 4px;
   }
-  .regime-val  { font-size: 14px; font-weight: bold; color: var(--ink); }
-  .regime-desc { font-size: 12px; color: var(--muted); }
+  .regime-val  { font-size: 16px; font-weight: 600; color: var(--ink); font-family: var(--serif); }
+  .regime-desc { font-size: 13px; color: var(--ink-soft); flex: 1; min-width: 60%; }
 
-  /* ── CATEGORY CARDS ── */
+  /* ── CATEGORY CARDS ──────────────────────────────── */
   .cat-card {
     border: 1px solid var(--border);
     border-left: 4px solid var(--muted);
-    margin-bottom: 14px;
+    margin-bottom: 16px;
     background: var(--paper);
   }
   .cat-card.action-kjop  { border-left-color: var(--accent); }
@@ -179,298 +261,308 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 11px 14px;
+    padding: 12px 16px;
     border-bottom: 1px solid var(--border);
     background: var(--surface);
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
   }
-  .cat-num  { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-  .cat-name { font-size: 14px; font-weight: bold; color: var(--ink); margin-top: 1px; font-family: "Courier New", monospace; }
-
-  .cat-badges { display: flex; gap: 6px; flex-wrap: wrap; }
-  .badge {
+  .cat-num  {
     font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    padding: 3px 9px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .cat-name {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 2px;
+    font-family: var(--mono);
+    letter-spacing: -0.01em;
+  }
+
+  .cat-badges { display: flex; gap: 7px; flex-wrap: wrap; }
+  .badge {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
     border: 1px solid currentColor;
+    font-family: var(--sans);
   }
   .badge-action.kjop  { color: #fff; background: var(--accent);  border-color: var(--accent);  }
   .badge-action.hold  { color: #fff; background: var(--caution); border-color: var(--caution); }
   .badge-action.selg  { color: #fff; background: var(--danger);  border-color: var(--danger);  }
   .badge-action.avsta { color: var(--muted); background: transparent; border-color: #9AA5B4; }
   .badge-data.ok   { color: var(--accent); border-color: var(--accent); background: transparent; }
-  .badge-data.util { color: var(--danger);  border-color: var(--danger);  background: transparent; }
+  .badge-data.util { color: var(--danger); border-color: var(--danger); background: transparent; }
 
-  .cat-body { padding: 14px; }
+  .cat-body { padding: 16px; }
 
   .cat-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0;
     border: 1px solid var(--border);
-    margin-bottom: 13px;
+    margin-bottom: 14px;
   }
   @media (max-width: 520px) { .cat-grid { grid-template-columns: 1fr 1fr; } }
 
   .cat-field {
-    padding: 9px 11px;
+    padding: 11px 13px;
     border-right: 1px solid var(--border);
   }
   .cat-field:last-child { border-right: none; }
 
   .field-label {
-    font-size: 9px;
-    letter-spacing: 0.1em;
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 4px;
+    font-weight: 500;
+    margin-bottom: 5px;
   }
   .field-val {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 15px;
-    font-weight: normal;
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 500;
     color: var(--ink);
   }
-  .field-val.mono { font-family: "Courier New", monospace; font-size: 14px; font-weight: bold; }
+  .field-val.mono { font-family: var(--mono); font-size: 14.5px; font-weight: 600; }
 
-  .bullets { margin-bottom: 11px; padding-left: 15px; }
-  .bullets li { font-size: 12px; color: var(--ink); margin-bottom: 5px; line-height: 1.45; }
+  .bullets { margin-bottom: 12px; padding-left: 18px; }
+  .bullets li { font-size: 13.5px; color: var(--ink); margin-bottom: 6px; line-height: 1.55; }
 
   .worst-case {
-    font-size: 11px;
+    font-size: 12.5px;
     color: var(--danger);
-    padding: 7px 11px;
+    padding: 9px 13px;
     border: 1px solid rgba(139,28,28,0.22);
     background: rgba(139,28,28,0.04);
     border-left: 3px solid var(--danger);
+    line-height: 1.5;
   }
   .worst-case::before { content: "⚠  "; }
 
-  /* ── SUMMARY ── */
+  /* ── SUMMARY ─────────────────────────────────────── */
   .summary-box {
     border: 1px solid var(--border);
     background: var(--surface);
-    padding: 14px;
-    margin-top: 6px;
+    padding: 18px 18px 14px;
+    margin-top: 8px;
+    position: relative;
+  }
+  .summary-box::before {
+    content: "";
+    position: absolute;
+    top: -1px; left: -1px;
+    width: 32px; height: 2px;
+    background: var(--gold);
   }
   .summary-title {
     font-size: 10px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 12px;
+    font-weight: 600;
+    margin-bottom: 14px;
   }
   .summary-grid {
     display: grid;
-    grid-template-columns: 80px 80px 1fr;
-    gap: 14px;
+    grid-template-columns: 90px 90px 1fr;
+    gap: 16px;
     align-items: start;
   }
   @media (max-width: 480px) { .summary-grid { grid-template-columns: 1fr 1fr; } }
 
   .s-val {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 36px;
-    font-weight: normal;
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 500;
     color: var(--ink);
     line-height: 1;
   }
   .s-label {
     font-size: 10px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-top: 4px;
+    font-weight: 500;
+    margin-top: 6px;
   }
-  .s-text { font-size: 12px; color: var(--ink); line-height: 1.5; padding-top: 4px; }
+  .s-text { font-size: 13px; color: var(--ink); line-height: 1.55; padding-top: 4px; }
 
-  /* ── UNIVERSE ── */
-  .universe-group { margin-bottom: 22px; }
+  /* ── UNIVERSE ────────────────────────────────────── */
+  .universe-group { margin-bottom: 24px; }
   .universe-title {
     font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 0.1em;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--accent);
-    padding-bottom: 7px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 0;
+    color: var(--ink);
+    padding: 8px 12px;
+    background: var(--ink);
+    color: var(--paper);
   }
   .instrument-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 7px 10px;
+    padding: 9px 12px;
     border: 1px solid var(--border);
     border-top: none;
-    font-size: 12px;
+    font-size: 13px;
     transition: background 0.1s;
   }
-  .instrument-row:first-of-type { border-top: none; }
   .instrument-row:hover { background: var(--surface); }
-  .instrument-tick { font-family: "Courier New", monospace; font-weight: bold; color: var(--ink); min-width: 80px; }
-  .instrument-name { color: var(--muted); font-size: 11px; flex: 1; padding: 0 10px; }
-  .instrument-cat  { font-size: 10px; letter-spacing: 0.06em; color: var(--accent); text-transform: uppercase; }
+  .instrument-tick {
+    font-family: var(--mono);
+    font-weight: 600;
+    color: var(--ink);
+    min-width: 90px;
+    font-size: 13px;
+  }
+  .instrument-name {
+    color: var(--ink-soft);
+    font-size: 12.5px;
+    flex: 1;
+    padding: 0 12px;
+  }
+  .instrument-cat  {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
 
-  /* ── RULES ── */
+  /* ── RULES ───────────────────────────────────────── */
   .method-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     border: 1px solid var(--border);
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
   @media (max-width: 520px) { .method-row { grid-template-columns: 1fr 1fr; } }
   .method-cell {
-    padding: 11px 13px;
+    padding: 12px 14px;
     border-right: 1px solid var(--border);
   }
   .method-cell:last-child { border-right: none; }
-  .method-label { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
-  .method-opt { font-size: 12px; color: var(--ink); padding: 2px 0; }
+  .method-label {
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .method-opt { font-size: 13px; color: var(--ink); padding: 2px 0; }
   .method-opt.pos { color: var(--accent); }
   .method-opt.neg { color: var(--danger); }
   .method-opt.neu { color: var(--caution); }
 
-  .rule-block { margin-bottom: 14px; }
+  .rule-block { margin-bottom: 16px; }
   .rule-heading {
     font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 0.07em;
+    font-weight: 600;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--paper);
     background: var(--ink);
-    padding: 8px 12px;
+    padding: 9px 13px;
   }
   .rule-content {
     border: 1px solid var(--border);
     border-top: none;
-    padding: 12px 14px;
+    padding: 14px 16px;
+    background: var(--paper);
   }
-  .rule-content p  { font-size: 12px; line-height: 1.65; color: var(--ink); }
-  .rule-content ul { padding-left: 18px; }
-  .rule-content li { font-size: 12px; line-height: 1.6; color: var(--ink); margin-bottom: 4px; }
+  .rule-content p  { font-size: 13.5px; line-height: 1.65; color: var(--ink); }
+  .rule-content ul { padding-left: 20px; }
+  .rule-content li { font-size: 13.5px; line-height: 1.6; color: var(--ink); margin-bottom: 5px; }
   .rule-content code {
-    font-family: "Courier New", monospace;
-    font-size: 11px;
+    font-family: var(--mono);
+    font-size: 12.5px;
     background: var(--surface);
-    padding: 1px 5px;
+    padding: 2px 6px;
     border: 1px solid var(--border);
   }
 
-  /* ── DISCLAIMER ── */
+  /* ── DISCLAIMER ──────────────────────────────────── */
   .disclaimer {
     background: rgba(139,28,28,0.04);
     border: 1px solid rgba(139,28,28,0.22);
     border-left: 4px solid var(--danger);
-    padding: 13px 15px;
-    margin-bottom: 16px;
-    font-size: 12px;
+    padding: 14px 17px;
+    margin-bottom: 18px;
+    font-size: 13px;
     line-height: 1.65;
     color: var(--ink);
   }
 
-  /* ── FOOTER ── */
-  .app-footer {
-    padding: 11px 24px;
-    border-top: 1px solid var(--border);
-    background: var(--surface);
-    font-size: 10px;
+  /* ── LOADING / ERROR STATES ──────────────────────── */
+  .state-msg {
+    padding: 32px;
+    text-align: center;
     color: var(--muted);
-    letter-spacing: 0.06em;
+    font-size: 13px;
+    font-style: italic;
+  }
+  .state-msg.error { color: var(--danger); font-style: normal; }
+
+  /* ── FOOTER ──────────────────────────────────────── */
+  .app-footer {
+    padding: 14px 28px;
+    border-top: 2px solid var(--gold);
+    background: var(--ink);
+    color: rgba(244,241,234,0.7);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    font-weight: 400;
+    text-transform: uppercase;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
+  }
+  .app-footer .footer-brand {
+    font-family: var(--serif);
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 11px;
+    color: rgba(244,241,234,0.85);
   }
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════
-     DATA — Oppdater dette objektet ukentlig
-     ══════════════════════════════════════════════ -->
-<script>
-const NOTE = {
-  date: "2026-04-26",
-  regime: {
-    status: "Risiko-på",
-    cssClass: "risikopaa",
-    desc: "S&P 500 og NASDAQ på rekordnivå; VIX 18,7; geopolitisk lettelse (US-Iran våpenhvile)"
-  },
-  categories: [
-    {
-      num: "1", name: "Aksjer",
-      instrument: "NVDA",
-      action: "KJØP", actionCss: "kjop",
-      size: "0,8 %", risk: "Moderat", data: "OK",
-      trend: "Positiv", momentum: "Positiv", vol: "Moderat",
-      bullets: [
-        "11 sammenhengende oppsessjoner (~$202); trend og momentum begge positivt – alle tre betingelser oppfylt",
-        "VIX 18,7 (ned fra 30+ i mars) – volatilitet moderat, ikke til hinder for kjøp",
-        "Sterk AI-katalysator: Intel +23 % utløste sektormomentum; NVDA følger med"
-      ],
-      worstCase: "Skuffelse fra Mag-7-rapporter i kommende uke kan gi 12–18 % sektorkorreksjon."
-    },
-    {
-      num: "2", name: "ETF",
-      instrument: "VUAA (UCITS)",
-      action: "KJØP", actionCss: "kjop",
-      size: "0,5 %", risk: "Lav", data: "OK",
-      trend: "Positiv", momentum: "Positiv", vol: "Lav",
-      bullets: [
-        "Vanguard S&P 500 UCITS ETF (Acc) – stengte ~$132,78; YTD totalavkastning ~16,0 %",
-        "Trend og momentum samkjørt positivt – følger S&P 500 som er i rekordnivå",
-        "Volatilitet lav; bredt diversifisert (500 store amerikanske selskaper)",
-        "UCITS-godkjent og tilgjengelig på Nordnet – passer europeisk investor (erstatter VTI)"
-      ],
-      worstCase: "Inflasjonssurprise (mars allerede 3,3 %) kan presse Fed og gi 8–12 % nedgang."
-    },
-    {
-      num: "3", name: "Indeks",
-      instrument: "S&P 500",
-      action: "HOLD", actionCss: "hold",
-      size: null, risk: null, data: "OK",
-      trend: "Positiv", momentum: "Positiv", vol: "Moderat",
-      bullets: [
-        "Rekordnivå 7 165 etter +0,6 % ukesoppgang; trend positiv men potensiell overekstensjon",
-        "Inflasjon 3,3 % og Fed-usikkerhet demper videre kjøpsappetitt – HOLD er rett nivå"
-      ],
-      worstCase: null
-    },
-    {
-      num: "4", name: "Krypto",
-      instrument: "BTC",
-      action: "AVSTÅ", actionCss: "avsta",
-      size: "0", risk: "Høy", data: "OK",
-      trend: "Positiv", momentum: "Positiv", vol: "Høy",
-      bullets: [
-        "BTC +5,81 % denne uken (~$78 278) – trend og momentum positivt, men volatilitet klassifiseres høy",
-        "Regelbryter: betingelse b) ikke oppfylt – volatilitet høy gir automatisk AVSTÅ",
-        "ETH +2,73 % samme periode; begge stiger men risikoprofil overstiger rammens grense"
-      ],
-      worstCase: "Korreksjon etter sterk oppsving kan gi 25–40 % fall dersom risikosentimentet snur."
-    }
-  ],
-  summary: {
-    actions: 3,
-    abstentions: 1,
-    riskFactor: "Inflasjon 3,3 % og kommende Mag-7-rapporter er hovedrisiko trass rekordmarkeder"
-  }
-};
-</script>
-
 <div class="app">
 
   <!-- MASTHEAD -->
   <header class="masthead">
-    <div>
-      <div class="brand-name">Markedsnotat</div>
-      <div class="brand-tag" id="brand-tag">Simulering · —</div>
+    <div class="masthead-rule-top"></div>
+    <div class="masthead-inner">
+      <div class="brand-eyebrow">Est. 2026 · Oslo</div>
+      <h1 class="brand-name">Espen <span class="amp">&amp;</span> Co</h1>
+      <div class="brand-divider"></div>
+      <div class="brand-subtitle">Private Wealth Management</div>
     </div>
-    <div class="regime-chip" id="regime-chip">—</div>
+    <div class="masthead-meta">
+      <span class="meta-item">Research Note</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-item" id="meta-week">Uke —</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-item" id="meta-date">—</span>
+      <span class="meta-sep">·</span>
+      <span class="meta-item" id="meta-edition">Utgave —</span>
+      <span class="meta-spacer"></span>
+      <span class="regime-chip" id="regime-chip">—</span>
+    </div>
   </header>
 
   <!-- NAV -->
@@ -484,42 +576,20 @@ const NOTE = {
   <!-- ── VIEW 1: UKENTLIG NOTAT ── -->
   <section class="view active" id="view-notat">
     <div class="view-header">
+      <div class="view-eyebrow">Markedsrapport</div>
       <div class="view-title">Ukentlig Markedsnotat</div>
       <div class="view-lede" id="notat-lede">Simulering – ikke reelle råd eller kapital</div>
     </div>
 
-    <div class="regime-line" id="regime-line">
-      <div>
-        <div class="regime-label">Markedsregime</div>
-        <div class="regime-val" id="regime-val">—</div>
-      </div>
-      <div class="regime-desc" id="regime-desc">—</div>
-    </div>
-
-    <div id="categories-container"></div>
-
-    <div class="summary-box">
-      <div class="summary-title">Oppsummering</div>
-      <div class="summary-grid">
-        <div>
-          <div class="s-val" id="sum-actions">—</div>
-          <div class="s-label">Handlinger</div>
-        </div>
-        <div>
-          <div class="s-val" id="sum-abstentions">—</div>
-          <div class="s-label">Avståelser</div>
-        </div>
-        <div>
-          <div class="s-text" id="sum-risk">—</div>
-          <div class="s-label">Viktigste risikofaktor</div>
-        </div>
-      </div>
+    <div id="notat-content">
+      <div class="state-msg">Henter ukens notat …</div>
     </div>
   </section>
 
   <!-- ── VIEW 2: UNIVERS ── -->
   <section class="view" id="view-univers">
     <div class="view-header">
+      <div class="view-eyebrow">Investeringsunivers</div>
       <div class="view-title">Fast Univers</div>
       <div class="view-lede">Disse instrumentene inngår fast – ingen endringer eller tillegg tillatt</div>
     </div>
@@ -564,6 +634,7 @@ const NOTE = {
   <!-- ── VIEW 3: REGLER ── -->
   <section class="view" id="view-regler">
     <div class="view-header">
+      <div class="view-eyebrow">Metodologi</div>
       <div class="view-title">Beslutningsregler</div>
       <div class="view-lede">Fast rammeverk for analyse og beslutning – ufravikelig</div>
     </div>
@@ -666,15 +737,16 @@ const NOTE = {
   <!-- ── VIEW 4: OM ── -->
   <section class="view" id="view-om">
     <div class="view-header">
-      <div class="view-title">Om Markedsnotat</div>
+      <div class="view-eyebrow">Bakgrunn</div>
+      <div class="view-title">Om Espen &amp; Co</div>
       <div class="view-lede">Regelbasert simulering – ikke tilknyttet reelle markeder eller systemer</div>
     </div>
 
     <div class="disclaimer">
-      <strong>VIKTIG:</strong> Dette er en ren simulering for lærings- og treningsformål.
-      Ingen reell kapital handles. Ingen personopplysninger benyttes.
-      Ingen tilknytning til NAV, interne systemer eller ansatte.
-      Innholdet er ikke investeringsråd.
+      <strong>VIKTIG:</strong> Espen &amp; Co Private Wealth Management er et fiktivt firmanavn brukt
+      i en ren simulering for lærings- og treningsformål. Ingen reell kapital handles.
+      Ingen personopplysninger benyttes. Ingen tilknytning til NAV, interne systemer
+      eller ansatte. Innholdet er ikke investeringsråd.
     </div>
 
     <div class="rule-block">
@@ -687,11 +759,14 @@ const NOTE = {
     </div>
 
     <div class="rule-block">
-      <div class="rule-heading">Slik oppdateres appen ukentlig</div>
+      <div class="rule-heading">Slik oppdateres notatet ukentlig</div>
       <div class="rule-content">
-        <p>Åpne <code>index.html</code> i en teksteditor. Finn <code>const NOTE = { ... }</code>
-        øverst i skriptet og oppdater feltene med ukens analyse. Lagre og last siden på nytt.
-        Ingen server eller internett-tilkobling er nødvendig.</p>
+        <p>Selve appen ligger i <code>index.html</code>, mens ukens data ligger i en
+        separat liten fil: <code>current-note.json</code>. For å oppdatere notatet endrer
+        du kun den lille JSON-filen – ikke appen.</p>
+        <p style="margin-top:8px;">På mobil: åpne GitHub-repoet i Chrome eller GitHub-appen,
+        gå til <code>current-note.json</code>, trykk «edit», lim inn ny JSON, commit. Appen
+        oppdaterer seg automatisk neste gang du åpner den.</p>
       </div>
     </div>
 
@@ -716,8 +791,8 @@ const NOTE = {
   </section>
 
   <footer class="app-footer">
-    <span>Markedsnotat · Simulering · Ikke investeringsråd</span>
-    <span id="footer-date">—</span>
+    <span class="footer-brand">Espen &amp; Co Private Wealth Management</span>
+    <span id="footer-date">Simulering · Ikke investeringsråd</span>
   </footer>
 </div>
 
@@ -735,37 +810,46 @@ function formatDate(s) {
   return new Date(s).toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
+function formatDateShort(s) {
+  return new Date(s).toLocaleDateString('nb-NO', { day: '2-digit', month: 'short', year: 'numeric' })
+    .replace('.', '').toUpperCase();
+}
+
 // ─── RENDER NOTE ───────────────────────────────────────
-function renderNote() {
-  const n = NOTE;
+function renderNote(n) {
   const week = getWeekNumber(n.date);
 
-  document.getElementById('brand-tag').textContent =
-    `Simulering · Uke ${week} · ${n.date.slice(0,4)}`;
+  // Masthead meta
+  document.getElementById('meta-week').textContent    = `Uke ${week}`;
+  document.getElementById('meta-date').textContent    = formatDateShort(n.date);
+  document.getElementById('meta-edition').textContent = `Utgave ${n.edition || '—'}`;
+
   document.getElementById('notat-lede').textContent =
     `Dato: ${formatDate(n.date)} · Simulering – ikke reelle råd eller kapital`;
   document.getElementById('footer-date').textContent =
-    `Uke ${week}, ${n.date}`;
+    `Uke ${week} · ${n.date} · Simulering`;
 
   // Regime
   const chip = document.getElementById('regime-chip');
   chip.textContent = n.regime.status.toUpperCase();
   chip.className = 'regime-chip ' + n.regime.cssClass;
 
-  const rl = document.getElementById('regime-line');
-  rl.className = 'regime-line ' + n.regime.cssClass;
-  document.getElementById('regime-val').textContent = n.regime.status;
-  document.getElementById('regime-desc').textContent = n.regime.desc;
+  // Build notat content
+  const container = document.getElementById('notat-content');
+  let html = `
+    <div class="regime-line ${n.regime.cssClass}">
+      <div>
+        <div class="regime-label">Markedsregime</div>
+        <div class="regime-val">${n.regime.status}</div>
+      </div>
+      <div class="regime-desc">${n.regime.desc}</div>
+    </div>`;
 
   // Categories
-  const container = document.getElementById('categories-container');
-  container.innerHTML = '';
-
   n.categories.forEach(cat => {
     const dataOK = cat.data === 'OK';
     const dataLabel = dataOK ? 'Data OK' : 'Datagrunnlag utilstrekkelig';
 
-    // Build data grid cells
     let gridCells = `
       <div class="cat-field">
         <div class="field-label">Instrument</div>
@@ -773,28 +857,28 @@ function renderNote() {
       </div>
       <div class="cat-field">
         <div class="field-label">Trend</div>
-        <div class="field-val" style="font-size:13px">${cat.trend}</div>
+        <div class="field-val" style="font-size:14px">${cat.trend}</div>
       </div>
       <div class="cat-field">
         <div class="field-label">Volatilitet</div>
-        <div class="field-val" style="font-size:13px">${cat.vol}</div>
+        <div class="field-val" style="font-size:14px">${cat.vol}</div>
       </div>`;
-    if (cat.size !== null) gridCells += `
+    if (cat.size !== null && cat.size !== undefined) gridCells += `
       <div class="cat-field">
         <div class="field-label">Størrelse</div>
         <div class="field-val">${cat.size}</div>
       </div>`;
-    if (cat.risk !== null) gridCells += `
+    if (cat.risk !== null && cat.risk !== undefined) gridCells += `
       <div class="cat-field">
         <div class="field-label">Risiko</div>
-        <div class="field-val" style="font-size:13px">${cat.risk}</div>
+        <div class="field-val" style="font-size:14px">${cat.risk}</div>
       </div>`;
 
     const bulletsHTML = cat.bullets.map(b => `<li>${b}</li>`).join('');
-    const worstHTML   = cat.worstCase
+    const worstHTML = cat.worstCase
       ? `<div class="worst-case">${cat.worstCase}</div>` : '';
 
-    container.innerHTML += `
+    html += `
       <div class="cat-card action-${cat.actionCss}">
         <div class="cat-header">
           <div>
@@ -815,9 +899,46 @@ function renderNote() {
   });
 
   // Summary
-  document.getElementById('sum-actions').textContent     = n.summary.actions;
-  document.getElementById('sum-abstentions').textContent = n.summary.abstentions;
-  document.getElementById('sum-risk').textContent        = n.summary.riskFactor;
+  html += `
+    <div class="summary-box">
+      <div class="summary-title">Oppsummering</div>
+      <div class="summary-grid">
+        <div>
+          <div class="s-val">${n.summary.actions}</div>
+          <div class="s-label">Handlinger</div>
+        </div>
+        <div>
+          <div class="s-val">${n.summary.abstentions}</div>
+          <div class="s-label">Avståelser</div>
+        </div>
+        <div>
+          <div class="s-text">${n.summary.riskFactor}</div>
+          <div class="s-label">Viktigste risikofaktor</div>
+        </div>
+      </div>
+    </div>`;
+
+  container.innerHTML = html;
+}
+
+function renderError(msg) {
+  document.getElementById('notat-content').innerHTML =
+    `<div class="state-msg error">Kunne ikke laste ukens notat: ${msg}<br><br>
+     Sjekk at <code>current-note.json</code> finnes og er gyldig JSON.</div>`;
+}
+
+// ─── LOAD NOTE FROM JSON ───────────────────────────────
+async function loadNote() {
+  try {
+    const url = './current-note.json?v=' + Date.now();
+    const res = await fetch(url, { cache: 'no-cache' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    renderNote(data);
+  } catch (err) {
+    console.error('Klarte ikke laste current-note.json:', err);
+    renderError(err.message);
+  }
 }
 
 // ─── NAV ───────────────────────────────────────────────
@@ -829,7 +950,7 @@ function showView(id, btn) {
 }
 
 // ─── INIT ──────────────────────────────────────────────
-renderNote();
+loadNote();
 
 // ─── SERVICE WORKER ────────────────────────────────────
 if ('serviceWorker' in navigator) {

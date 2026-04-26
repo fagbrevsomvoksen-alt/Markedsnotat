@@ -1,7 +1,8 @@
-const CACHE_VERSION = 'markedsnotat-v2';
+const CACHE_VERSION = 'espen-co-v3';
 const APP_SHELL = [
   './index.html',
-  './manifest.json'
+  './manifest.json',
+  './current-note.json'
 ];
 
 self.addEventListener('install', event => {
@@ -20,8 +21,25 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
+// Network-first for current-note.json so updates show up immediately;
+// cache-first for everything else (faster, offline-capable).
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(cached => cached || fetch(event.request))
-  );
+  const url = new URL(event.request.url);
+  const isNote = url.pathname.endsWith('/current-note.json');
+
+  if (isNote) {
+    event.respondWith(
+      fetch(event.request)
+        .then(res => {
+          const copy = res.clone();
+          caches.open(CACHE_VERSION).then(c => c.put(event.request, copy));
+          return res;
+        })
+        .catch(() => caches.match(event.request))
+    );
+  } else {
+    event.respondWith(
+      caches.match(event.request).then(cached => cached || fetch(event.request))
+    );
+  }
 });

@@ -1,12 +1,12 @@
 {
-  "name": "Markedsnotat",
-  "short_name": "Markedsnotat",
-  "description": "Ukentlig regelbasert markedsnotat – simulering",
+  "name": "Espen & Co Private Wealth Management",
+  "short_name": "Espen & Co",
+  "description": "Espen & Co Private Wealth Management – ukentlig markedsnotat (simulering)",
   "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "#1B2A3B",
-  "background_color": "#EFF2F6",
+  "theme_color": "#0F1B2D",
+  "background_color": "#F4F1EA",
   "icons": [
     {
       "src": "icons/icon-192.png",
