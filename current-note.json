@@ -1,147 +1,92 @@
 {
-  "markedsnotat": {
-    "uke": 15,
-    "år": 2026,
-    "periode": "6. april - 12. april",
-    "publisert": "2026-04-12",
-    "oppdatert_tidspunkt": "søndag 12. april 2026",
-    "sammendrag": "Volatilt markedsklima preget av rentespenninger og inflasjonsbekymringer. Blandede signaler fra USA.",
-    "nøkkeltall": {
-      "aksjer": {
-        "hovedindekser": {
-          "OSEBX": {
-            "nivå": "1232,40",
-            "endring_prosent": "-1,25",
-            "endring_poeng": "-15,60",
-            "trend": "ned"
-          },
-          "S&P_500": {
-            "nivå": "5438,20",
-            "endring_prosent": "0,85",
-            "endring_poeng": "46,10",
-            "trend": "opp"
-          },
-          "DAX": {
-            "nivå": "18687,30",
-            "endring_prosent": "-1,15",
-            "endring_poeng": "-216,80",
-            "trend": "ned"
-          },
-          "FTSE_100": {
-            "nivå": "8089,10",
-            "endring_prosent": "-0,42",
-            "endring_poeng": "-34,20",
-            "trend": "ned"
-          }
-        },
-        "sektor_ytelse": {
-          "teknologi": "2,3",
-          "energi": "-1,8",
-          "helsevern": "0,2",
-          "finans": "-0,9",
-          "forbruksgodt": "-1,5"
-        }
-      },
-      "rentemarked": {
-        "norske_renter": {
-          "NIBOR_3M": "3,45",
-          "NIBOR_6M": "3,50",
-          "statsobligasjon_5Y": "2,35",
-          "statsobligasjon_10Y": "2,62"
-        },
-        "internasjonale_renter": {
-          "US_10Y": "4,28",
-          "EU_10Y": "2,92",
-          "UK_10Y": "3,85"
-        }
-      },
-      "valuta": {
-        "EUR_NOK": "11,28",
-        "USD_NOK": "10,52",
-        "GBP_NOK": "13,38",
-        "EUR_USD": "1,074"
-      },
-      "råvarer": {
-        "oljepris_Brent_USD": "78,20",
-        "gass_EUR_MWh": "32,75",
-        "gull_USD_oz": "2365",
-        "kobber_USD_tonn": "9680"
-      }
-    },
-    "markedsanalyse": {
-      "hovedtendenser": [
-        "Økt usikkerhet rundt kraftige inflasjonstall fra USA",
-        "Norges Bank signaliserer fortsatt forsiktighet på rentekutt",
-        "Europeisk svakhet på bakgrunn av geopolitiske spenninger",
-        "Teknologisektoren sterk på kunstig intelligens-momentum"
+  "edition": 1,
+  "date": "2026-04-26",
+  "regime": {
+    "status": "Risiko-på",
+    "cssClass": "risikopaa",
+    "desc": "S&P 500 og NASDAQ på rekordnivå; VIX 18,7; geopolitisk lettelse (US-Iran våpenhvile)"
+  },
+  "categories": [
+    {
+      "num": "1",
+      "name": "Aksjer",
+      "instrument": "NVDA",
+      "action": "KJØP",
+      "actionCss": "kjop",
+      "size": "0,8 %",
+      "risk": "Moderat",
+      "data": "OK",
+      "trend": "Positiv",
+      "momentum": "Positiv",
+      "vol": "Moderat",
+      "bullets": [
+        "11 sammenhengende oppsessjoner (~$202); trend og momentum begge positivt – alle tre betingelser oppfylt",
+        "VIX 18,7 (ned fra 30+ i mars) – volatilitet moderat, ikke til hinder for kjøp",
+        "Sterk AI-katalysator: Intel +23 % utløste sektormomentum; NVDA følger med"
       ],
-      "økonomiske_høydepunkter": [
-        {
-          "dato": "08.04",
-          "hendelse": "Tysk industriproduksjon",
-          "viktighet": "medium",
-          "status": "publisert"
-        },
-        {
-          "dato": "09.04",
-          "hendelse": "USA konsumprisindeks (CPI)",
-          "viktighet": "høy",
-          "status": "publisert"
-        },
-        {
-          "dato": "10.04",
-          "hendelse": "Norges Banks møte - presskonferanse",
-          "viktighet": "høy",
-          "status": "publisert"
-        },
-        {
-          "dato": "12.04",
-          "hendelse": "Detaljomsetning USA",
-          "viktighet": "medium",
-          "status": "publisert"
-        }
+      "worstCase": "Skuffelse fra Mag-7-rapporter i kommende uke kan gi 12–18 % sektorkorreksjon."
+    },
+    {
+      "num": "2",
+      "name": "ETF",
+      "instrument": "VUAA (UCITS)",
+      "action": "KJØP",
+      "actionCss": "kjop",
+      "size": "0,5 %",
+      "risk": "Lav",
+      "data": "OK",
+      "trend": "Positiv",
+      "momentum": "Positiv",
+      "vol": "Lav",
+      "bullets": [
+        "Vanguard S&P 500 UCITS ETF (Acc) – stengte ~$132,78; YTD totalavkastning ~16,0 %",
+        "Trend og momentum samkjørt positivt – følger S&P 500 som er i rekordnivå",
+        "Volatilitet lav; bredt diversifisert (500 store amerikanske selskaper)",
+        "UCITS-godkjent og tilgjengelig på Nordnet – passer europeisk investor (erstatter VTI)"
       ],
-      "sentrale_observasjoner": "Uke 15 karakteriseres av høyere volatilitet etter inflasjonsdata som kom høyere enn forventet. Norges Bank holdt renten stabil på møtet, noe som sendte blandede signaler til markedet. Oljeprisen falt på svakere etterspørselssignaler. OSEBX ga tilbake 1,25% på bakgrunn av svakhet i finans- og energisektoren. Kronen styrket seg mot euro men svekket seg mot dollar.",
-      "risikofaktorer": [
-        "Inflasjonspersistatens truer rentekuttsprosessen",
-        "Geopolitisk eskalering kan påvirke energiforsyning",
-        "Kredittkompresjon i høyrentesegmentet",
-        "Svakere global vekstprognoser"
-      ]
+      "worstCase": "Inflasjonssurprise (mars allerede 3,3 %) kan presse Fed og gi 8–12 % nedgang."
     },
-    "prognoser_og_scenarier": {
-      "kort_sikt_1_uke": {
-        "aksjer": "Fortsatt volatilitet forventet. Investorer avventer klarhet om rentebanen.",
-        "renter": "Norske renter ventet uendret, men oppmerksomhet på styrende signaler fra andre sentralbanker.",
-        "valuta": "USD/NOK kan styrke seg videre på høyere amerikanske renter.",
-        "råvarer": "Oljeprisen presset av svakere etterspørselssignaler fra Kina og OECD."
-      },
-      "medium_sikt_4_uker": {
-        "aksjer": "Seleksjonsfokus. Teknologi fortsetter oppgang, defensiv rotation forventet.",
-        "renter": "Amerikanske renter kan holde seg høyere lenger enn ventet.",
-        "valuta": "EUR/NOK kan teste 11,10-nivået ved fortsatt kraftige amerikanske renter.",
-        "råvarer": "Oljeprisen ventet i 75-82 USD/fat intervallet avhengig av OPEC+ signaler."
-      }
-    },
-    "handlinger_og_tiltak": {
-      "for_investorer": [
-        "Vurdeer økt defensiv posisjonering i porteføljen",
-        "Teknologi-selskaper viser styrke - selektiv øking kan være aktuelt",
-        "Unngå overeksponering mot energisektoren på kort sikt",
-        "Oppretthold lav rentesensitiv eksponering"
+    {
+      "num": "3",
+      "name": "Indeks",
+      "instrument": "S&P 500",
+      "action": "HOLD",
+      "actionCss": "hold",
+      "size": null,
+      "risk": null,
+      "data": "OK",
+      "trend": "Positiv",
+      "momentum": "Positiv",
+      "vol": "Moderat",
+      "bullets": [
+        "Rekordnivå 7 165 etter +0,6 % ukesoppgang; trend positiv men potensiell overekstensjon",
+        "Inflasjon 3,3 % og Fed-usikkerhet demper videre kjøpsappetitt – HOLD er rett nivå"
       ],
-      "for_næringsliv": [
-        "Forbered budsjetter basert på lengre periode med høye renter",
-        "Evaluer refinansieringsbehov under usikkerhet",
-        "Monitor valutatapering og sikring av eksportintekter i USD",
-        "Reduser energiintensitet gjennom effektiviseringer"
-      ]
+      "worstCase": null
     },
-    "konklusjon": "Uke 15 var preget av marked-usikkerhet og volatilitet. Inflasjonsdata som oversteg forventninger kombinert med Norges Banks signaler om fortsatt høye renter, sendte investorer til forsiktighet. Norske aksjer falt 1,25% i negativ global kontekst. Anbefalingen er å holde forsiktelig posisjonering, øke diversifiseringen og vente på klarere signaler fra globale sentralbanker før aggressiv ekspansjon.",
-    "kilder_og_merknad": "Dataene er basert på markedsinformasjon fra uke 15 2026. Alle tall er illustrative basert på typiske markedsforhold fra perioden. For oppdaterte tall, se direktekilde fra Reuters, Bloomberg eller norske børs.",
-    "kontakt": {
-      "redaksjon": "markedsanalyse@eksempel.no",
-      "versjon": "1.0"
+    {
+      "num": "4",
+      "name": "Krypto",
+      "instrument": "BTC",
+      "action": "AVSTÅ",
+      "actionCss": "avsta",
+      "size": "0",
+      "risk": "Høy",
+      "data": "OK",
+      "trend": "Positiv",
+      "momentum": "Positiv",
+      "vol": "Høy",
+      "bullets": [
+        "BTC +5,81 % denne uken (~$78 278) – trend og momentum positivt, men volatilitet klassifiseres høy",
+        "Regelbryter: betingelse b) ikke oppfylt – volatilitet høy gir automatisk AVSTÅ",
+        "ETH +2,73 % samme periode; begge stiger men risikoprofil overstiger rammens grense"
+      ],
+      "worstCase": "Korreksjon etter sterk oppsving kan gi 25–40 % fall dersom risikosentimentet snur."
     }
+  ],
+  "summary": {
+    "actions": 3,
+    "abstentions": 1,
+    "riskFactor": "Inflasjon 3,3 % og kommende Mag-7-rapporter er hovedrisiko trass rekordmarkeder"
   }
 }
