@@ -4,51 +4,51 @@
   "regime": {
     "status": "Risiko-på",
     "cssClass": "risikopaa",
-    "desc": "Geopolitisk oppløsning, sterk earnings-rapport og positiv teknologi-momentum driver markedet høyere."
+    "desc": "Alle signaler justert: trend oppover, momentum sterkt, volatilitet lav. Teknologi og geopolitisk lettelse driver markedene."
   },
   "categories": [
     {
       "num": "1",
       "name": "Aksjer",
-      "instrument": "NVDA",
+      "instrument": "EQNR",
       "action": "KJØP",
       "actionCss": "kjop",
-      "size": "0,7 %",
+      "size": "0,5 %",
       "risk": "Moderat",
       "data": "OK",
       "trend": "Positiv",
       "momentum": "Positiv",
       "vol": "Lav",
       "bullets": [
-        "AI-infrastruktur-syklus sterkt, 11-dagers vinderstrek før utgangen av uke 17",
-        "Intel-earnings økte tiltro til halvledersektoren med 5% oppgang på fredag",
-        "Handlinger på ~202 USD, teknisk sterke nivåer, $5 trillioner markedsverd gjenoppretta"
+        "Oljeprisen holder seg høy på geopolitisk risikopremie (88-94 USD/fat).",
+        "Equinor drar nytte av sterk oljeavkastning og energiinvesteringer globalt.",
+        "Norsk energisektor møter internasjonal risiko-på-strøm."
       ],
-      "worstCase": "Konjunkturkorreksjon eller svekket tech-valuering kan kutte 15-20% på kort sikt."
+      "worstCase": "Geopolitisk spenning normaliseres, oljeprisen faller markant."
     },
     {
       "num": "2",
       "name": "ETF",
       "instrument": "VWCE",
-      "action": "HOLD",
-      "actionCss": "hold",
-      "size": null,
-      "risk": null,
+      "action": "KJØP",
+      "actionCss": "kjop",
+      "size": "0,5 %",
+      "risk": "Lav",
       "data": "OK",
       "trend": "Positiv",
-      "momentum": "Moderat",
+      "momentum": "Positiv",
       "vol": "Lav",
       "bullets": [
-        "UCITS-godkjent, tilgjengelig på Nordnet, global diversifisering (3600 aksjer)",
-        "S&P 500 +12,5% siden 30. mars, gir sterk valuta-drag; VWCE følger med",
-        "Emerging Markets +13,8% i samme periode; nordisk portefølje nyter godt av både rebalansering"
+        "Sterk uke med +1,29 % på April 17, fire påfølgende oppgangsdager.",
+        "MACD-signal positiv, 50-MA over 200-MA; +6 % over to uker.",
+        "3700 aksjer i 49 land gir diversifisering i global risiko-på."
       ],
-      "worstCase": "Diversifisering gir mindre oppside; EUR-svakhet reduserer nominal avkastning på kort sikt."
+      "worstCase": "Teknologisektor rotasjon, verdsettelser under press."
     },
     {
       "num": "3",
       "name": "Indeks",
-      "instrument": "S&P 500",
+      "instrument": "SPX",
       "action": "HOLD",
       "actionCss": "hold",
       "size": null,
@@ -58,35 +58,35 @@
       "momentum": "Positiv",
       "vol": "Lav",
       "bullets": [
-        "Ny rekordhøy på 7,137.90 (20. april), fortsatt +0,80% for helgen 26. april",
-        "83% av rapportørene slår earnings-estimater (5-årigs gjennomsnitt: 78%)",
-        "Nasdaq 13-dagers vinderstrek – historisk uvanlig, men teknisk solid oppstilling"
+        "S&P 500 på all-time high, +0,6 % for uken; teknologi og halvledere driver.",
+        "Valuasjoner ekstreme; semikonductor-indeks +10 % for uken, RSI overbought.",
+        "Hold sikrer eksponering uten nye kjøp i allerede oppkjørte priser."
       ],
-      "worstCase": "Raskt bounc-back uten korpsionalt støtte; P/E på ~23x kunne være vulnerable ved renteoppgang."
+      "worstCase": "Negativ earnings surprise, verdsettelseskorreksjon."
     },
     {
       "num": "4",
       "name": "Krypto",
       "instrument": "BITCOIN XBT",
-      "action": "KJOP",
+      "action": "KJØP",
       "actionCss": "kjop",
       "size": "0,5 %",
-      "risk": "Høy",
+      "risk": "Moderat",
       "data": "OK",
       "trend": "Positiv",
       "momentum": "Positiv",
       "vol": "Moderat",
       "bullets": [
-        "Bitcoin fra $73.820 (20. april) til $78.106 (24. april): +5,8% oppgang gjennom uke",
-        "Ceasefire-avtale og sterkt risk-on-sentiment driver crypto-kjøp; dollar svekket relativt",
-        "CoinShares XBT på Nordnet gir eksponering; teknisk støtte ved $76.000-nivå"
+        "Bitcoin +13,71 % siden April-start; institusjonell etterspørsel sterk (spot-ETF-inflow, MicroStrategy 2,54 Mrd. USD kjøp).",
+        "Prishold over 76–78k USD-støtte; RSI 62 viser momentum uten ekstrem overbought.",
+        "Volatilitet moderat; geopolitisk risikopremie støtter alternativ verdilagring."
       ],
-      "worstCase": "Bitcoin kan falle 20-30% ved risiko-av eller geopolitisk rykk tilbake til usikkerhet."
+      "worstCase": "Makrousikkerhet eller Fed-signaler om renteholding trigger crypto-salg."
     }
   ],
   "summary": {
-    "actions": 2,
-    "abstentions": 2,
-    "riskFactor": "Geopolitisk optimisme er priset raskt inn; ethvert Iran-rykk kan utløse rapid reposisjonering og volatilitetstopp."
+    "actions": 3,
+    "abstentions": 0,
+    "riskFactor": "Teknologisektor ekstrem overbought; markedene priset for perfekt scenario og lite rom for dårlig nyheter."
   }
 }
