@@ -1,16 +1,16 @@
 {
-  "edition": 17,
-  "date": "2026-04-26",
+  "edition": 18,
+  "date": "2026-04-27",
   "regime": {
     "status": "Risiko-på",
     "cssClass": "risikopaa",
-    "desc": "Alle signaler justert: trend oppover, momentum sterkt, volatilitet lav. Teknologi og geopolitisk lettelse driver markedene."
+    "desc": "Opptrend i mega-cap tech drevet av AI-optimisme, VIX lav (18.71), men mange namn er overbought foran kritisk earnings uke."
   },
   "categories": [
     {
       "num": "1",
       "name": "Aksjer",
-      "instrument": "EQNR",
+      "instrument": "MSFT",
       "action": "KJØP",
       "actionCss": "kjop",
       "size": "0,5 %",
@@ -20,35 +20,35 @@
       "momentum": "Positiv",
       "vol": "Lav",
       "bullets": [
-        "Oljeprisen holder seg høy på geopolitisk risikopremie (88-94 USD/fat).",
-        "Equinor drar nytte av sterk oljeavkastning og energiinvesteringer globalt.",
-        "Norsk energisektor møter internasjonal risiko-på-strøm."
+        "Trend- og momentum-alignment: MSFT i opptrend, RSI 61.5 (neutral bullish), over 50/200-dagers MA",
+        "Teknisk: Konsoliderer etter oppsving, earnings 29.04 gir volatilitetsrisiko, men langsiktig case er solid",
+        "Cloud/AI: Azure og AI-integrering fortsetter å drive vekst, men valuation (26.0 P/E) krever eksekusjon"
       ],
-      "worstCase": "Geopolitisk spenning normaliseres, oljeprisen faller markant."
+      "worstCase": "Earnings miss eller guidance reduksjon rundt 29.04 kan trigge pullback til $415."
     },
     {
       "num": "2",
       "name": "ETF",
-      "instrument": "VWCE",
+      "instrument": "VHYL",
       "action": "KJØP",
       "actionCss": "kjop",
-      "size": "0,5 %",
+      "size": "0,7 %",
       "risk": "Lav",
       "data": "OK",
       "trend": "Positiv",
       "momentum": "Positiv",
       "vol": "Lav",
       "bullets": [
-        "Sterk uke med +1,29 % på April 17, fire påfølgende oppgangsdager.",
-        "MACD-signal positiv, 50-MA over 200-MA; +6 % over to uker.",
-        "3700 aksjer i 49 land gir diversifisering i global risiko-på."
+        "Dividend-stabilitet: Yield 2.57-2.66 %, siste utbytte 01. april 2026 (GBP 0.321), UCITS-godkjent",
+        "Valuation: Teknisk undervalued, diversifisert globalt høyt utbytteeksponering, defensiv karakteristikk",
+        "Trends: Momentum over null, MACD positiv, lav volatilitet med 36.75 % totalavkastning siste 12 mnd"
       ],
-      "worstCase": "Teknologisektor rotasjon, verdsettelser under press."
+      "worstCase": "Renteoppgang/dividendekutt kan redusere atraktivitet; worst case -8-10 % på kort sikt."
     },
     {
       "num": "3",
       "name": "Indeks",
-      "instrument": "SPX",
+      "instrument": "OSEBX",
       "action": "HOLD",
       "actionCss": "hold",
       "size": null,
@@ -58,35 +58,35 @@
       "momentum": "Positiv",
       "vol": "Lav",
       "bullets": [
-        "S&P 500 på all-time high, +0,6 % for uken; teknologi og halvledere driver.",
-        "Valuasjoner ekstreme; semikonductor-indeks +10 % for uken, RSI overbought.",
-        "Hold sikrer eksponering uten nye kjøp i allerede oppkjørte priser."
+        "Opptrend intakt: Hovedindeksen følger globale mega-cap teknologi-rally, energisektor fortsatt sterkt",
+        "Regel: Indekser tillater kun HOLD/AVSTÅ; trend og momentum poeker samme vei og volatilitet er lav",
+        "Kontekst: Risk-on regime støtter nordiske markeder, men geopolitisk usikkerhet (Midtøsten-de-eskalering) kan være flyktende"
       ],
-      "worstCase": "Negativ earnings surprise, verdsettelseskorreksjon."
+      "worstCase": "Akutt geopolitisk forverring eller rentesprang kunne kutt OSEBX 3-5 % på timer."
     },
     {
       "num": "4",
       "name": "Krypto",
       "instrument": "BITCOIN XBT",
-      "action": "KJØP",
-      "actionCss": "kjop",
-      "size": "0,5 %",
-      "risk": "Moderat",
+      "action": "HOLD",
+      "actionCss": "hold",
+      "size": "0 %",
+      "risk": "Høy",
       "data": "OK",
       "trend": "Positiv",
       "momentum": "Positiv",
-      "vol": "Moderat",
+      "vol": "Høy",
       "bullets": [
-        "Bitcoin +13,71 % siden April-start; institusjonell etterspørsel sterk (spot-ETF-inflow, MicroStrategy 2,54 Mrd. USD kjøp).",
-        "Prishold over 76–78k USD-støtte; RSI 62 viser momentum uten ekstrem overbought.",
-        "Volatilitet moderat; geopolitisk risikopremie støtter alternativ verdilagring."
+        "Bullish struktur: Bitcoin $78K-88K range, bullish optionskonstruksjon (put-to-call 0.48), 5-år institusjonell syklus intakt",
+        "Volatilitetsbetenkelighet: HØY volatilitet (crypto vol index), selv om spot-momentum er bullish; options expiry mønstre viser risikokonsentrasjon",
+        "Regel-konflikt: Trend OG momentum er positiv, men volatilitet er HØYERE enn terskelen — dermed HOLD i stedet for KJØP"
       ],
-      "worstCase": "Makrousikkerhet eller Fed-signaler om renteholding trigger crypto-salg."
+      "worstCase": "Options-driven flush-out eller geopolitisk shock kan trigge -15-20 % rapi koreksjon, lik desember 2025-mønsteret."
     }
   ],
   "summary": {
-    "actions": 3,
-    "abstentions": 0,
-    "riskFactor": "Teknologisektor ekstrem overbought; markedene priset for perfekt scenario og lite rom for dårlig nyheter."
+    "actions": 2,
+    "abstentions": 2,
+    "riskFactor": "Kritisk earnings uke (Meta, Google, Amazon, MSFT, Apple all rapporterer 29.04) kombinert med ekstreme valueringar i mega-cap tech (Shiller P/E >40) og volatilitetskompresjon (VIX 18.71) gir høy flashpoint-risiko."
   }
 }
