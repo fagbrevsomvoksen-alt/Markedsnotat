@@ -781,7 +781,7 @@
     <div class="view-header">
       <div class="view-eyebrow">Investeringsunivers</div>
       <div class="view-title">Fast Univers</div>
-      <div class="view-lede">Kuratert utvalg fra Nordnet · Norden, Europa, USA · UCITS-godkjente ETFer · indekser globalt</div>
+      <div class="view-lede">Skandinavisk univers · Oslo Børs · Stockholm · København · UCITS-ETFer og indeksfond på Nordnet</div>
     </div>
 
     <!-- Filterknapper -->
@@ -887,12 +887,13 @@
     </div>
 
     <div class="rule-block">
-      <div class="rule-heading">UCITS-krav · Nordnet Europa</div>
+      <div class="rule-heading">Skandinavisk univers · UCITS · Nordnet · ASK</div>
       <div class="rule-content">
         <ul>
-          <li>Alle ETF-instrumenter skal være UCITS-godkjente og tilgjengelige via Nordnet for europeiske investorer</li>
-          <li>US-domisilerte ETFer (VTI, VT, VEA, VWO, BND, GLD) er <strong>ikke</strong> tillatt – bruk UCITS-ekvivalentene i universet</li>
-          <li>Krypto handles utelukkende via EU-regulerte ETPs (CoinShares XBT Provider) på regulerte børser (Nasdaq Stockholm) – ikke direkte krypto</li>
+          <li>Aksjer kun fra <strong>Norge, Sverige og Danmark</strong> – Oslo Børs, Nasdaq Stockholm, Nasdaq København</li>
+          <li>ETFer er UCITS-godkjente og tilgjengelige via Nordnet; aksjefond i universet er nordiske indeks- eller forvaltede fond på Nordnet</li>
+          <li>Brukeren handler primært via <strong>Aksjesparekonto (ASK)</strong> – realisert gevinst er skattefri så lenge midlene blir på kontoen</li>
+          <li>Krypto handles utelukkende via EU-regulerte ETPs (CoinShares XBT Provider) på Nasdaq Stockholm – ikke direkte krypto</li>
           <li>Dersom et instrument ikke er tilgjengelig via Nordnet: skriv «IKKE TILGJENGELIG VIA NORDNET» og velg AVSTÅ</li>
         </ul>
       </div>
@@ -1026,12 +1027,14 @@
     </div>
 
     <div class="rule-block">
-      <div class="rule-heading">UCITS og Nordnet</div>
+      <div class="rule-heading">Skandinavisk univers · UCITS · Nordnet · ASK</div>
       <div class="rule-content">
-        <p>Bruker er europeisk investor og handler via <strong>Nordnet</strong>. Alle ETF-instrumenter
-        er UCITS-godkjente og tilgjengelige på Nordnet. US-listede ETFer (VTI, VT osv.) er erstattet
-        med UCITS-ekvivalenter. Krypto-eksponering skjer via CoinShares XBT Provider ETPs på Nasdaq
-        Stockholm – ikke direkte kjøp av kryptovaluta.</p>
+        <p>Universet er begrenset til <strong>Norge, Sverige og Danmark</strong> – aksjer notert på
+        Oslo Børs, Nasdaq Stockholm og Nasdaq København. ETFer er UCITS-godkjente og tilgjengelige
+        på Nordnet. Aksjefond i universet er nordiske indeks- og forvaltede fond på Nordnet.
+        Krypto-eksponering skjer via CoinShares XBT Provider ETPs på Nasdaq Stockholm.
+        Alle handler skjer via <strong>Aksjesparekonto (ASK)</strong> – realisert gevinst er
+        skattefri så lenge midlene blir på kontoen.</p>
       </div>
     </div>
   </section>
@@ -1150,129 +1153,96 @@ const UNIVERSE = {
       { t: "EQNR",  n: "Equinor ASA",            s: "Energi" },
       { t: "DNB",   n: "DNB Bank ASA",           s: "Finans" },
       { t: "TEL",   n: "Telenor ASA",            s: "Telekom" },
-      { t: "YAR",   n: "Yara International",     s: "Materialer" },
+      { t: "YAR",   n: "Yara International",     s: "Kjemi/Gjødsel" },
       { t: "STB",   n: "Storebrand ASA",         s: "Forsikring" },
-      { t: "AKRBP", n: "Aker BP ASA",            s: "Energi" },
+      { t: "AKRBP", n: "Aker BP ASA",            s: "Energi (E&P)" },
       { t: "MOWI",  n: "Mowi ASA",               s: "Sjømat" },
-      { t: "NHY",   n: "Norsk Hydro",            s: "Materialer" },
-      { t: "ORK",   n: "Orkla ASA",              s: "Forbruk" },
+      { t: "NHY",   n: "Norsk Hydro",            s: "Aluminium" },
+      { t: "ORK",   n: "Orkla ASA",              s: "Konsumvarer" },
       { t: "GJF",   n: "Gjensidige Forsikring",  s: "Forsikring" },
       { t: "SALM",  n: "SalMar ASA",             s: "Sjømat" },
-      { t: "KOG",   n: "Kongsberg Gruppen",      s: "Forsvar/Industri" }
+      { t: "KOG",   n: "Kongsberg Gruppen",      s: "Forsvar/Industri" },
+      { t: "AKER",  n: "Aker ASA",               s: "Konglomerat" },
+      { t: "SUBC",  n: "Subsea 7",               s: "Offshore-tjenester" },
+      { t: "TOM",   n: "Tomra Systems",          s: "Industri/teknologi" },
+      { t: "SCHA",  n: "Schibsted A",            s: "Media/Tech" },
+      { t: "NEL",   n: "Nel ASA",                s: "Hydrogen (vekst/risiko)" },
+      { t: "FRO",   n: "Frontline plc",          s: "Tank-shipping" },
+      { t: "VAR",   n: "Vår Energi",             s: "Energi (E&P)" },
+      { t: "BAKKA", n: "Bakkafrost",             s: "Sjømat" }
     ],
-    "Sverige · Stockholm": [
-      { t: "VOLV-B", n: "Volvo Group B",          s: "Industri" },
-      { t: "ATCO-A", n: "Atlas Copco A",          s: "Industri" },
-      { t: "INVE-B", n: "Investor B",             s: "Investeringsselskap" },
-      { t: "AZN",    n: "AstraZeneca",            s: "Helse" },
-      { t: "HEXA-B", n: "Hexagon B",              s: "Teknologi" }
+    "Sverige · Nasdaq Stockholm": [
+      { t: "VOLV-B",  n: "Volvo Group B",        s: "Industri" },
+      { t: "ATCO-A",  n: "Atlas Copco A",        s: "Industri" },
+      { t: "INVE-B",  n: "Investor B",           s: "Investeringsselskap" },
+      { t: "AZN",     n: "AstraZeneca",          s: "Helse" },
+      { t: "HEXA-B",  n: "Hexagon B",            s: "Teknologi" },
+      { t: "ERIC-B",  n: "Ericsson B",           s: "Telekom-utstyr" },
+      { t: "SAND",    n: "Sandvik",              s: "Industri" },
+      { t: "SEB-A",   n: "SEB A",                s: "Bank" },
+      { t: "SHB-A",   n: "Handelsbanken A",      s: "Bank" },
+      { t: "SWED-A",  n: "Swedbank A",           s: "Bank" },
+      { t: "ASSA-B",  n: "Assa Abloy B",         s: "Industri/sikkerhet" },
+      { t: "EVO",     n: "Evolution AB",         s: "iGaming (vekst)" },
+      { t: "HM-B",    n: "Hennes & Mauritz B",   s: "Detaljhandel" },
+      { t: "TELIA",   n: "Telia Company",        s: "Telekom" },
+      { t: "BOL",     n: "Boliden",              s: "Metaller/gruvedrift" }
     ],
-    "Danmark · København": [
+    "Danmark · Nasdaq København": [
       { t: "NOVO-B",   n: "Novo Nordisk B",       s: "Helse" },
       { t: "MAERSK-B", n: "A.P. Møller-Maersk B", s: "Shipping" },
       { t: "ORSTED",   n: "Ørsted",               s: "Vindkraft" },
-      { t: "DSV",      n: "DSV A/S",              s: "Logistikk" }
-    ],
-    "Finland · Helsinki": [
-      { t: "NOKIA",  n: "Nokia Oyj",              s: "Telekom-utstyr" },
-      { t: "KNEBV",  n: "Kone Oyj",               s: "Industri" }
-    ],
-    "USA · NYSE/NASDAQ": [
-      { t: "MSFT",  n: "Microsoft Corporation",   s: "Teknologi" },
-      { t: "AAPL",  n: "Apple Inc.",              s: "Teknologi" },
-      { t: "NVDA",  n: "NVIDIA Corporation",      s: "Halvledere" },
-      { t: "AMZN",  n: "Amazon.com",              s: "E-handel" },
-      { t: "GOOGL", n: "Alphabet Inc. (Google)",  s: "Teknologi" },
-      { t: "META",  n: "Meta Platforms",          s: "Teknologi" },
-      { t: "BRK.B", n: "Berkshire Hathaway B",    s: "Konglomerat" },
-      { t: "JNJ",   n: "Johnson & Johnson",       s: "Helse" },
-      { t: "TSLA",  n: "Tesla Inc.",              s: "Bil/Energi" },
-      { t: "COST",  n: "Costco Wholesale",        s: "Forbruk" },
-      { t: "JPM",   n: "JPMorgan Chase",          s: "Finans" },
-      { t: "V",     n: "Visa Inc.",               s: "Betalingstjenester" },
-      { t: "UNH",   n: "UnitedHealth Group",      s: "Helse" },
-      { t: "HD",    n: "Home Depot",              s: "Detaljhandel" },
-      { t: "ORCL",  n: "Oracle Corporation",      s: "Teknologi" }
-    ],
-    "Europa (utenfor Norden)": [
-      { t: "MC",   n: "LVMH Moët Hennessy (Paris)",      s: "Luksus" },
-      { t: "ASML", n: "ASML Holding (Amsterdam)",        s: "Halvleder-utstyr" },
-      { t: "SAP",  n: "SAP SE (Frankfurt)",              s: "Programvare" },
-      { t: "NESN", n: "Nestlé SA (Sveits)",              s: "Forbruk" },
-      { t: "ROG",  n: "Roche Holding (Sveits)",          s: "Helse" },
-      { t: "NOVN", n: "Novartis (Sveits)",               s: "Helse" },
-      { t: "SIE",  n: "Siemens AG (Frankfurt)",          s: "Industri" },
-      { t: "SHEL", n: "Shell plc (London)",              s: "Energi" }
+      { t: "DSV",      n: "DSV A/S",              s: "Logistikk" },
+      { t: "CARL-B",   n: "Carlsberg B",          s: "Drikkevarer" },
+      { t: "PNDORA",   n: "Pandora",              s: "Smykker/forbruk" },
+      { t: "VWS",      n: "Vestas Wind Systems",  s: "Vindkraft-utstyr" },
+      { t: "COLO-B",   n: "Coloplast B",          s: "Helse" },
+      { t: "DANSKE",   n: "Danske Bank",          s: "Bank" },
+      { t: "TRYG",     n: "Tryg Forsikring",      s: "Forsikring" }
     ]
   },
   etf: {
-    "Brede markeder (UCITS)": [
-      { t: "VWCE", n: "Vanguard FTSE All-World UCITS ETF (Acc)",      i: "IE00BK5BQT80", note: "erstatter VT" },
-      { t: "VUAA", n: "Vanguard S&P 500 UCITS ETF (Acc)",             i: "IE00BFMXXD54", note: "erstatter VTI" },
-      { t: "EUNL", n: "iShares Core MSCI World UCITS ETF (Acc)",      i: "IE00B4L5Y983", note: "erstatter VEA" },
-      { t: "IEMA", n: "iShares MSCI Emerging Markets UCITS ETF",      i: "IE00B0M63177", note: "erstatter VWO" },
-      { t: "VEUR", n: "Vanguard FTSE Developed Europe UCITS ETF",     i: "IE00B945VV12" },
-      { t: "EUNN", n: "iShares MSCI Japan UCITS ETF (Acc)",           i: "IE00B53QDK08" }
+    "ETF · Skandinaviske aksjer (UCITS)": [
+      { t: "XACT-OBX",     n: "XACT OBX (Norge – 25 mest likvide)",  i: "NO0010198255" },
+      { t: "XACT-OMXS30",  n: "XACT OMXS30 (Sverige – 30 største)",  i: "SE0000693570" },
+      { t: "XACT-OMXS30-ESG", n: "XACT OMXS30 ESG (Sverige – ESG)",  i: "SE0000693293" },
+      { t: "XACT-NORDEN",  n: "XACT Norden 30 (Nordisk VINX30)",     i: "SE0001710914" }
     ],
-    "Sektor-ETFer": [
-      { t: "EXV3", n: "iShares STOXX Europe 600 Technology UCITS",    i: "DE000A0H08Q4" },
-      { t: "IS3N", n: "iShares MSCI World Health Care UCITS (Acc)",   i: "IE00BM67HK77" },
-      { t: "EXH1", n: "iShares STOXX Europe 600 Oil & Gas UCITS",     i: "DE000A0H08M3" },
-      { t: "WCBR", n: "WisdomTree Cybersecurity UCITS ETF",           i: "IE00BLPK3577" },
-      { t: "ROBO", n: "iShares Automation & Robotics UCITS ETF",      i: "IE00BYZK4552" },
-      { t: "INRG", n: "iShares Global Clean Energy UCITS ETF",        i: "IE00B1XNHC34" }
+    "ETF · Gearing (kortsiktig spekulasjon · høy risiko)": [
+      { t: "XACT-BULL-2",  n: "XACT Bull 2 (2x daglig OMXS30)",      i: "SE0003051010", note: "kun taktiske trekk – ikke buy & hold" },
+      { t: "XACT-BEAR-2",  n: "XACT Bear 2 (-2x daglig OMXS30)",     i: "SE0005466505", note: "shorting med 2x – kun korte holds" }
     ],
-    "Faktor-ETFer": [
-      { t: "IWQU", n: "iShares Edge MSCI World Quality UCITS",        i: "IE00BP3QZ601" },
-      { t: "IWMO", n: "iShares Edge MSCI World Momentum UCITS",       i: "IE00BP3QZ825" },
-      { t: "IWVL", n: "iShares Edge MSCI World Value UCITS",          i: "IE00BP3QZB59" },
-      { t: "MVOL", n: "iShares Edge MSCI World Min Vol UCITS",        i: "IE00B8FHGS14" }
+    "Indeksfond · Norden (Nordnet)": [
+      { t: "KLP-AKSJENORGE-N",  n: "KLP AksjeNorge Indeks N",        i: "NO0012445214" },
+      { t: "KLP-AKSJENORDEN-N", n: "KLP AksjeNorden Indeks N",       i: "NO0012445230" },
+      { t: "DNB-NORGE-IDX-A",   n: "DNB Norge Indeks A",             i: "NO0010582976" },
+      { t: "DNB-NORDEN-IDX-A",  n: "DNB Norden Indeks A",            i: "NO0010815871" },
+      { t: "STB-NORGE-A",       n: "Storebrand Indeks Norge A",      i: "NO0010704265" },
+      { t: "NORDNET-NO",        n: "Nordnet Indeksfond Norge",       i: "SE0005993110", note: "0 % forvaltning" },
+      { t: "NORDNET-SE",        n: "Nordnet Sverige Index",          i: "SE0002756973", note: "0 % forvaltning" },
+      { t: "NORDNET-DK",        n: "Nordnet Indeksfond Danmark",     i: "SE0005993078", note: "0 % forvaltning" }
     ],
-    "Norden-spesifikke": [
-      { t: "XACT-OBX",    n: "XACT OBX (norsk OBX-tracker)",          i: "NO0010198255" },
-      { t: "XACT-OMXS30", n: "XACT OMXS30 (svensk)",                  i: "SE0000693570" }
-    ],
-    "Renter (UCITS)": [
-      { t: "AGGG", n: "iShares Core Global Aggregate Bond UCITS",     i: "IE00B3F81409", note: "erstatter BND" },
-      { t: "IBGL", n: "iShares Core EUR Govt Bond UCITS",             i: "IE00B4WXJJ64" },
-      { t: "IB1G", n: "iShares EUR Short Term Govt Bond UCITS",       i: "IE00B14X4Q57" },
-      { t: "SXRP", n: "iShares 1-3 Year Treasury Bond UCITS (USD)",   i: "IE00B14X4S71" }
-    ],
-    "Råvarer / Edelmetaller": [
-      { t: "IGLN", n: "iShares Physical Gold ETC",                    i: "IE00B4ND3602", note: "erstatter GLD" }
-    ],
-    "Dividend / ESG": [
-      { t: "VHYL", n: "Vanguard FTSE All-World High Dividend Yield",  i: "IE00B8GKDB10" },
-      { t: "SUSW", n: "iShares MSCI World ESG Screened UCITS",        i: "IE00BFNM3J75" }
+    "Aktive nordiske aksjefond": [
+      { t: "DNB-DISRUPT-N",     n: "DNB Fund Disruptive Opportunities N NOK (Acc)", i: "LU2075955943", note: "aktiv vekstforvaltning" },
+      { t: "ODIN-NORDEN-D",     n: "ODIN Norden D NOK",              i: "NO0010763881", note: "aktiv forvaltning" },
+      { t: "ODIN-NORGE-D",      n: "ODIN Norge D NOK",               i: "NO0010748213", note: "aktiv forvaltning" }
     ]
   },
   indekser: {
-    "Norden": [
-      { t: "OSEBX",  n: "Oslo Børs Benchmark Index",   r: "Norge"   },
-      { t: "OMXS30", n: "OMX Stockholm 30",            r: "Sverige" },
-      { t: "OMXC25", n: "OMX København 25",            r: "Danmark" }
+    "Norge": [
+      { t: "OSEBX", n: "Oslo Børs Benchmark Index",       r: "Bredt mål · 70 selskaper" },
+      { t: "OBX",   n: "OBX Total Return",                r: "25 mest omsatte · likvid" }
     ],
-    "USA": [
-      { t: "SPX",    n: "S&P 500",                     r: "USA · large cap" },
-      { t: "NDX",    n: "NASDAQ 100",                  r: "USA · tech-tung" },
-      { t: "RUT",    n: "Russell 2000",                r: "USA · small cap" },
-      { t: "VIX",    n: "CBOE Volatility Index",       r: "USA · volatilitet" }
+    "Sverige": [
+      { t: "OMXS30",  n: "OMX Stockholm 30",              r: "30 største svenske" },
+      { t: "OMXSPI",  n: "OMX Stockholm All-Share",       r: "Bredt mål · alle på Stockholm" }
     ],
-    "Europa": [
-      { t: "DAX",    n: "DAX",                         r: "Tyskland" },
-      { t: "FTSE",   n: "FTSE 100",                    r: "Storbritannia" },
-      { t: "STOXX600", n: "STOXX Europe 600",          r: "Europa bredt" }
-    ],
-    "Asia": [
-      { t: "N225",   n: "Nikkei 225",                  r: "Japan" },
-      { t: "HSI",    n: "Hang Seng",                   r: "Hong Kong" }
-    ],
-    "Globalt": [
-      { t: "MSCI",   n: "MSCI World Index",            r: "Utviklede markeder" }
+    "Danmark": [
+      { t: "OMXC25",  n: "OMX København 25",              r: "25 største danske" }
     ]
   },
   krypto: {
-    "EU-regulerte ETPs på Nordnet": [
+    "EU-regulerte ETPs · Nasdaq Stockholm": [
       { t: "BITCOIN XBT",  n: "CoinShares XBT Provider Bitcoin Tracker One",  m: "Nasdaq Stockholm" },
       { t: "ETHEREUM XBT", n: "CoinShares XBT Provider Ethereum Tracker One", m: "Nasdaq Stockholm" }
     ]
@@ -1296,7 +1266,7 @@ function renderUniverse(filter) {
 
   const showCat = (filter === 'all' || filter === 'aksjer');
   if (showCat) {
-    html += '<div class="universe-cat-header">Aksjer (' + counts.aksjer + ')</div>';
+    html += '<div class="universe-cat-header">Aksjer (' + counts.aksjer + ') · Norge · Sverige · Danmark</div>';
     for (const [market, list] of Object.entries(UNIVERSE.aksjer)) {
       html += '<div class="universe-subtitle">' + market + ' · ' + list.length + '</div>';
       for (const it of list) {
@@ -1309,7 +1279,7 @@ function renderUniverse(filter) {
   }
 
   if (filter === 'all' || filter === 'etf') {
-    html += '<div class="universe-cat-header">ETF – UCITS (' + counts.etf + ') · Tilgjengelig via Nordnet</div>';
+    html += '<div class="universe-cat-header">ETF &amp; Indeksfond (' + counts.etf + ') · Skandinavisk · Nordnet</div>';
     for (const [grp, list] of Object.entries(UNIVERSE.etf)) {
       html += '<div class="universe-subtitle">' + grp + ' · ' + list.length + '</div>';
       for (const it of list) {
@@ -1324,7 +1294,7 @@ function renderUniverse(filter) {
   }
 
   if (filter === 'all' || filter === 'indekser') {
-    html += '<div class="universe-cat-header">Indekser (' + counts.indekser + ')</div>';
+    html += '<div class="universe-cat-header">Indekser (' + counts.indekser + ') · Skandinavia</div>';
     for (const [region, list] of Object.entries(UNIVERSE.indekser)) {
       html += '<div class="universe-subtitle">' + region + ' · ' + list.length + '</div>';
       for (const it of list) {
