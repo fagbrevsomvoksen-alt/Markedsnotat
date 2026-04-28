@@ -1,54 +1,54 @@
 {
-  "edition": 19,
+  "edition": 18,
   "date": "2026-04-28",
   "regime": {
     "status": "Blandet",
     "cssClass": "blandet",
-    "desc": "Aksjer på rekordnivå, men forhøyet VIX rundt 19, Brent nær USD 100 og pågående USA-Iran-konflikt skaper et blandet risikobilde inn mot Mag7-rapporter og Fed-møtet 28.–29. april."
+    "desc": "Fed-møte denne uken og stengt Hormuz-stred presser olje og inflasjonsforventninger; teknisk oppgang i indekser møter høy makro-usikkerhet."
   },
   "categories": [
     {
       "num": "1",
       "name": "Aksjer",
-      "instrument": "ORK",
-      "action": "HOLD",
-      "actionCss": "hold",
+      "instrument": "EQNR",
+      "action": "AVSTÅ",
+      "actionCss": "avsta",
       "size": "0",
-      "risk": "Lav",
+      "risk": "Høy",
       "data": "OK",
-      "trend": "Positiv",
-      "momentum": "Nøytral",
-      "vol": "Lav",
+      "trend": "Negativ",
+      "momentum": "Negativ",
+      "vol": "Høy",
       "bullets": [
-        "Defensiv konsumprofil med stabil kontantstrøm gir relativ trygghet i en uke preget av geopolitikk og resultatrisiko",
-        "Lav historisk volatilitet sammenlignet med energi- og sykliske navn på Oslo Børs - velegnet i blandet regime",
-        "Trend positiv, men momentum nøytralt - kriteriene for ny handling ikke fullt oppfylt, posisjon beholdes"
+        "Falt fra ATH 422,30 NOK (31.03) til 356 NOK (27.04) — ned ~15,7 % på fire uker",
+        "Brent over 104 USD og olje 96 USD bør støtte fundamentalt, men trend/momentum begge negative",
+        "Q1-rapport ventet 5.–6. mai; usikkerhet rundt Fed og Iran tilsier å vente"
       ],
-      "worstCase": "Vedvarende råvarekostnadspress og svakere NOK kan presse marginene 1–2 kvartaler frem."
+      "worstCase": "Fed signaliserer høyere-for-lengre og oljen korrigerer ned — EQNR mot 320 NOK."
     },
     {
       "num": "2",
       "name": "ETF",
-      "instrument": "IGLN",
-      "action": "KJØP",
-      "actionCss": "kjop",
-      "size": "0,5 %",
-      "risk": "Middels",
+      "instrument": "XACT-OBX",
+      "action": "HOLD",
+      "actionCss": "hold",
+      "size": null,
+      "risk": "Moderat",
       "data": "OK",
       "trend": "Positiv",
       "momentum": "Positiv",
-      "vol": "Middels",
+      "vol": "Moderat",
       "bullets": [
-        "Gull rundt rekordnivå (~USD 4 740/oz) drevet av geopolitisk premie, sentralbankkjøp og dollar-svakhet",
-        "Stengt Hormuz-stred og oljesjokk hever inflasjonsforventninger - klassisk støtte for fysisk gull",
-        "Trend og momentum peker samme vei og volatilitet ikke høy - handlingskriteriene oppfylt; UCITS, fysisk replikering, Nordnet-tilgjengelig"
+        "UCITS-godkjent, Nordnet-tilgjengelig, kurs ~103,80 NOK; tracker OBX-indeksen presist",
+        "Underliggende indeks brutt opp gjennom stigende trendkanal med RSI > 70",
+        "Vol forhøyet pga Fed-møte og geopolitikk — beslutningsregel utelukker ny KJØP"
       ],
-      "worstCase": "Brå deeskalering i Midtøsten kan utløse 5–8 % korrigering fra rekordnivå på kort sikt."
+      "worstCase": "Risk-off etter Fed; ETF korrigerer 5–8 % mot støtte rundt 96 NOK."
     },
     {
       "num": "3",
       "name": "Indeks",
-      "instrument": "SPX",
+      "instrument": "OSEBX",
       "action": "HOLD",
       "actionCss": "hold",
       "size": null,
@@ -56,13 +56,13 @@
       "data": "OK",
       "trend": "Positiv",
       "momentum": "Positiv",
-      "vol": "Middels",
+      "vol": "Moderat",
       "bullets": [
-        "Ny lukkerekord 7 173,91 mandag 27.4, men VIX rundt 19 reflekterer forhøyet underliggende usikkerhet",
-        "Mag7-rapporter (MSFT, GOOGL, META, AMZN onsdag; AAPL torsdag) er ukens hovedkatalysator",
-        "Fed-møte 28.–29. april ventes uendret rente med 100 % sannsynlighet - markedet følger inflasjonskommentaren tett"
+        "Står ~2 339 pkt (24.04); +34,7 % siste 12 mnd, men -0,31 % siste måned",
+        "Teknisk oppbrudd av stigende trendkanal; RSI > 70 indikerer sterkt momentum men også overkjøpt",
+        "RSI-divergens varsler korreksjonsrisiko; støtte ved ~1 660 pkt langsiktig"
       ],
-      "worstCase": "Skuffende Mag7-tall kombinert med Brent over USD 110/fat kan utløse 3–5 % retrace fra rekordnivå."
+      "worstCase": "Falkesignal fra Fed + Iran-eskalering utløser korreksjon mot 2 050–2 100 pkt."
     },
     {
       "num": "4",
@@ -73,20 +73,20 @@
       "size": "0",
       "risk": "Høy",
       "data": "OK",
-      "trend": "Nøytral",
+      "trend": "Negativ",
       "momentum": "Negativ",
       "vol": "Høy",
       "bullets": [
-        "BTC rundt USD 77–79k, av tidligere topper - momentum har snudd nedover de siste ukene",
-        "Forhøyet kryptovolatilitet sammenfaller med oljesjokk og geopolitisk uro - dårlig timing for ny eksponering",
-        "Økt korrelasjon mot risikoaktiva svekker diversifiseringsargumentet i nåværende regime"
+        "BTC ~76 472 USD (28.04, kl. 07:10 ET) — ned 1,6 % fra mandagsåpning 78 661 USD",
+        "Pull-back fra 79 000-nivå; lav handelsvolum og korttidsholdere tar gevinst under 80 000",
+        "Olje-drevet inflasjon og Fed-usikkerhet svekker risikoappetitt foran rentebeslutning"
       ],
-      "worstCase": "Eskalering av Iran-konflikten og bredere likviditetsstramming kan presse BTC under USD 70k."
+      "worstCase": "Falk Fed + Hormuz-eskalering: BTC mot 70 000 USD og bredt risk-off."
     }
   ],
   "summary": {
-    "actions": 3,
-    "abstentions": 1,
-    "riskFactor": "Eskalering av USA-Iran-konflikten og forlenget stenging av Hormuz-stredet kan løfte Brent over USD 110/fat og presse alle risikoaktiva samtidig - vår viktigste enkelteksponering denne uken."
+    "actions": 0,
+    "abstentions": 4,
+    "riskFactor": "Fed-møtet 28.–29. april kombinert med stengt Hormuz-stred gir samtidig rente- og oljerisiko — utfallet kan flytte alle aktivaklasser kraftig."
   }
 }
