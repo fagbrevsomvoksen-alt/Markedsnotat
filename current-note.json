@@ -1,54 +1,54 @@
 {
-  "edition": 18,
-  "date": "2026-04-27",
+  "edition": 19,
+  "date": "2026-04-28",
   "regime": {
-    "status": "Risiko-på",
-    "cssClass": "risikopaa",
-    "desc": "Opptrend i mega-cap tech drevet av AI-optimisme, VIX lav (18.71), men mange namn er overbought foran kritisk earnings uke."
+    "status": "Blandet",
+    "cssClass": "blandet",
+    "desc": "Aksjer på rekordnivå, men forhøyet VIX rundt 19, Brent nær USD 100 og pågående USA-Iran-konflikt skaper et blandet risikobilde inn mot Mag7-rapporter og Fed-møtet 28.–29. april."
   },
   "categories": [
     {
       "num": "1",
       "name": "Aksjer",
-      "instrument": "MSFT",
-      "action": "KJØP",
-      "actionCss": "kjop",
-      "size": "0,5 %",
-      "risk": "Moderat",
+      "instrument": "ORK",
+      "action": "HOLD",
+      "actionCss": "hold",
+      "size": "0",
+      "risk": "Lav",
       "data": "OK",
       "trend": "Positiv",
-      "momentum": "Positiv",
+      "momentum": "Nøytral",
       "vol": "Lav",
       "bullets": [
-        "Trend- og momentum-alignment: MSFT i opptrend, RSI 61.5 (neutral bullish), over 50/200-dagers MA",
-        "Teknisk: Konsoliderer etter oppsving, earnings 29.04 gir volatilitetsrisiko, men langsiktig case er solid",
-        "Cloud/AI: Azure og AI-integrering fortsetter å drive vekst, men valuation (26.0 P/E) krever eksekusjon"
+        "Defensiv konsumprofil med stabil kontantstrøm gir relativ trygghet i en uke preget av geopolitikk og resultatrisiko",
+        "Lav historisk volatilitet sammenlignet med energi- og sykliske navn på Oslo Børs - velegnet i blandet regime",
+        "Trend positiv, men momentum nøytralt - kriteriene for ny handling ikke fullt oppfylt, posisjon beholdes"
       ],
-      "worstCase": "Earnings miss eller guidance reduksjon rundt 29.04 kan trigge pullback til $415."
+      "worstCase": "Vedvarende råvarekostnadspress og svakere NOK kan presse marginene 1–2 kvartaler frem."
     },
     {
       "num": "2",
       "name": "ETF",
-      "instrument": "VHYL",
+      "instrument": "IGLN",
       "action": "KJØP",
       "actionCss": "kjop",
-      "size": "0,7 %",
-      "risk": "Lav",
+      "size": "0,5 %",
+      "risk": "Middels",
       "data": "OK",
       "trend": "Positiv",
       "momentum": "Positiv",
-      "vol": "Lav",
+      "vol": "Middels",
       "bullets": [
-        "Dividend-stabilitet: Yield 2.57-2.66 %, siste utbytte 01. april 2026 (GBP 0.321), UCITS-godkjent",
-        "Valuation: Teknisk undervalued, diversifisert globalt høyt utbytteeksponering, defensiv karakteristikk",
-        "Trends: Momentum over null, MACD positiv, lav volatilitet med 36.75 % totalavkastning siste 12 mnd"
+        "Gull rundt rekordnivå (~USD 4 740/oz) drevet av geopolitisk premie, sentralbankkjøp og dollar-svakhet",
+        "Stengt Hormuz-stred og oljesjokk hever inflasjonsforventninger - klassisk støtte for fysisk gull",
+        "Trend og momentum peker samme vei og volatilitet ikke høy - handlingskriteriene oppfylt; UCITS, fysisk replikering, Nordnet-tilgjengelig"
       ],
-      "worstCase": "Renteoppgang/dividendekutt kan redusere atraktivitet; worst case -8-10 % på kort sikt."
+      "worstCase": "Brå deeskalering i Midtøsten kan utløse 5–8 % korrigering fra rekordnivå på kort sikt."
     },
     {
       "num": "3",
       "name": "Indeks",
-      "instrument": "OSEBX",
+      "instrument": "SPX",
       "action": "HOLD",
       "actionCss": "hold",
       "size": null,
@@ -56,37 +56,37 @@
       "data": "OK",
       "trend": "Positiv",
       "momentum": "Positiv",
-      "vol": "Lav",
+      "vol": "Middels",
       "bullets": [
-        "Opptrend intakt: Hovedindeksen følger globale mega-cap teknologi-rally, energisektor fortsatt sterkt",
-        "Regel: Indekser tillater kun HOLD/AVSTÅ; trend og momentum poeker samme vei og volatilitet er lav",
-        "Kontekst: Risk-on regime støtter nordiske markeder, men geopolitisk usikkerhet (Midtøsten-de-eskalering) kan være flyktende"
+        "Ny lukkerekord 7 173,91 mandag 27.4, men VIX rundt 19 reflekterer forhøyet underliggende usikkerhet",
+        "Mag7-rapporter (MSFT, GOOGL, META, AMZN onsdag; AAPL torsdag) er ukens hovedkatalysator",
+        "Fed-møte 28.–29. april ventes uendret rente med 100 % sannsynlighet - markedet følger inflasjonskommentaren tett"
       ],
-      "worstCase": "Akutt geopolitisk forverring eller rentesprang kunne kutt OSEBX 3-5 % på timer."
+      "worstCase": "Skuffende Mag7-tall kombinert med Brent over USD 110/fat kan utløse 3–5 % retrace fra rekordnivå."
     },
     {
       "num": "4",
       "name": "Krypto",
       "instrument": "BITCOIN XBT",
-      "action": "HOLD",
-      "actionCss": "hold",
-      "size": "0 %",
+      "action": "AVSTÅ",
+      "actionCss": "avsta",
+      "size": "0",
       "risk": "Høy",
       "data": "OK",
-      "trend": "Positiv",
-      "momentum": "Positiv",
+      "trend": "Nøytral",
+      "momentum": "Negativ",
       "vol": "Høy",
       "bullets": [
-        "Bullish struktur: Bitcoin $78K-88K range, bullish optionskonstruksjon (put-to-call 0.48), 5-år institusjonell syklus intakt",
-        "Volatilitetsbetenkelighet: HØY volatilitet (crypto vol index), selv om spot-momentum er bullish; options expiry mønstre viser risikokonsentrasjon",
-        "Regel-konflikt: Trend OG momentum er positiv, men volatilitet er HØYERE enn terskelen — dermed HOLD i stedet for KJØP"
+        "BTC rundt USD 77–79k, av tidligere topper - momentum har snudd nedover de siste ukene",
+        "Forhøyet kryptovolatilitet sammenfaller med oljesjokk og geopolitisk uro - dårlig timing for ny eksponering",
+        "Økt korrelasjon mot risikoaktiva svekker diversifiseringsargumentet i nåværende regime"
       ],
-      "worstCase": "Options-driven flush-out eller geopolitisk shock kan trigge -15-20 % rapi koreksjon, lik desember 2025-mønsteret."
+      "worstCase": "Eskalering av Iran-konflikten og bredere likviditetsstramming kan presse BTC under USD 70k."
     }
   ],
   "summary": {
-    "actions": 2,
-    "abstentions": 2,
-    "riskFactor": "Kritisk earnings uke (Meta, Google, Amazon, MSFT, Apple all rapporterer 29.04) kombinert med ekstreme valueringar i mega-cap tech (Shiller P/E >40) og volatilitetskompresjon (VIX 18.71) gir høy flashpoint-risiko."
+    "actions": 3,
+    "abstentions": 1,
+    "riskFactor": "Eskalering av USA-Iran-konflikten og forlenget stenging av Hormuz-stredet kan løfte Brent over USD 110/fat og presse alle risikoaktiva samtidig - vår viktigste enkelteksponering denne uken."
   }
 }
