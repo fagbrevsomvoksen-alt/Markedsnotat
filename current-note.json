@@ -1,10 +1,10 @@
 {
-  "edition": 19,
+  "edition": 20,
   "date": "2026-04-29",
   "regime": {
     "status": "Blandet",
     "cssClass": "blandet",
-    "desc": "Geopolitisk premie (stengt Hormuz, Brent over USD 104) og avventende Fed-møte gir risiko-av i krypto, mens nordiske aksjer holder seg nær toppen."
+    "desc": "Konsolidering nær ATH med Q1-rapporter og fallende oljepris (-15 % siden 7. april) som driver sektorrotasjon i Norden."
   },
   "categories": [
     {
@@ -14,36 +14,36 @@
       "action": "HOLD",
       "actionCss": "hold",
       "size": "0,5 %",
-      "risk": "Moderat",
+      "risk": "Lav",
       "data": "OK",
       "trend": "Positiv",
-      "momentum": "Negativ",
-      "vol": "Moderat",
+      "momentum": "Nøytral",
+      "vol": "Lav",
       "bullets": [
-        "Q1-tall lagt frem 23. april (EPS-overraskelse på +10 % forrige kvartal), men markedet straffet med ca −4 % på fee/marginbildet.",
-        "Aksjen handles rundt 277 NOK, ned fra ATH 311,5 NOK 10. april, og 2,4 % under 20-dagers glidende snitt.",
-        "Stigende mellomlangsiktig trendkanal intakt, konsensus-kursmål 312 NOK (≈+13 %) og direkteavkastning ca. 6 %."
+        "Solid Q1 2026 levert 23.04: resultat 9,9 mrd NOK, ROE 14,0 % og rekordinngang i forvaltning på 20,4 mrd NOK",
+        "Aksjen ned ca 4 % siste døgn drevet av ex-utbytte-justering og marginpress (utlånsmargin 1,73 → 1,52 %), ikke svekkede fundamentaler",
+        "Beta 0,85 og volatilitet ≈2 % gir defensiv finanseksponering i en uke der energi tynger Oslo Børs"
       ],
-      "worstCase": "Fortsatt rentepress og marginsvikt drar kursen mot støtte ved 260 NOK (≈−6 %)."
+      "worstCase": "Norges Bank skuffer på hawkisk bane og fortsatt fall i utlånsmarginer presser inntjeningsestimater nedover."
     },
     {
       "num": "2",
       "name": "ETF",
-      "instrument": "XACT-OBX",
+      "instrument": "XACT-NORDEN",
       "action": "HOLD",
       "actionCss": "hold",
       "size": "0,5 %",
-      "risk": "Moderat",
+      "risk": "Middels",
       "data": "OK",
       "trend": "Positiv",
       "momentum": "Nøytral",
-      "vol": "Moderat",
+      "vol": "Middels",
       "bullets": [
-        "OBX-eksponering støttes av energi (+1,78 %) og shipping (+2,70 %) på Oslo Børs 28. april, drevet av høy oljepris.",
-        "UCITS-godkjent og tilgjengelig på Nordnet; NOK 103,8 per andel, TER 0,30 %.",
-        "Bred eksponering reduserer enkeltselskapsrisiko gjennom Q1-rapporteringen, men prisingen er nær topp."
+        "Bred nordisk eksponering demper Norges-spesifikk olje- og sjømatrisiko når OSEBX er ned 2,68 % siste måned",
+        "OMXS30 ned ca 2,6 % i uke 17 (3 100 poeng) – samlet konsolidering nær ATH gir grunnlag for å ri ut volatiliteten",
+        "UCITS-godkjent, tilgjengelig på Nordnet, lav TER og høy likviditet – egnet kjernebeholdning gjennom rapportsesong"
       ],
-      "worstCase": "Oljeprisreversering eller eskalert risiko-av drar OBX 5–7 % på kort sikt."
+      "worstCase": "Eskalering i Midtøsten kombinert med svake amerikanske rapporter trekker hele Norden ned i takt."
     },
     {
       "num": "3",
@@ -56,13 +56,13 @@
       "data": "OK",
       "trend": "Positiv",
       "momentum": "Nøytral",
-      "vol": "Moderat",
+      "vol": "Middels",
       "bullets": [
-        "OSEBX GR sto i 1 997,12 (+0,53 %) 28. april, fortsatt over 1 660-støtten og innenfor stigende mellomlangsiktig trend.",
-        "Tung eksponering mot energi og sjømat gir medvind fra Brent over USD 100, men gjør indeksen sårbar for oljerevers.",
-        "RSI har vært strukket; kortsiktig konsolidering nær toppen er sannsynlig før Fed-beslutning og Q1-tunge rapporteringsuken."
+        "OSEBX 2 356 poeng 29.04 (+0,66 %), ned 2,68 % siste måned fra ATH 2 380 – fortsatt +38,8 % på 12 måneder",
+        "RSI nær overkjøpt sone og brudd ned i kortsiktig stigende trendkanal varsler videre konsolidering",
+        "Q1-rapporter (Storebrand i dag, KOG 30.04) og oljeprisbevegelser styrer retningen ut uken"
       ],
-      "worstCase": "Skuffelse fra Fed eller Iran-deeskalering trekker indeksen 4–5 % ned mot 1 900."
+      "worstCase": "Brudd ned gjennom 2 300 åpner for fall mot teknisk støtte ved 2 200 hvis bank- og energisektor svekker seg samtidig."
     },
     {
       "num": "4",
@@ -77,16 +77,16 @@
       "momentum": "Negativ",
       "vol": "Høy",
       "bullets": [
-        "BTC ned til ca. USD 76 300 28. april etter at USD 79 500-toppen 27. april ikke holdt; ca. 40 % under ATH fra oktober 2025.",
-        "Fear & Greed-indeksen falt fra 47 til 33 (frykt) og spot-BTC-ETF-er fikk USD 263 mill. i utflyt etter ti dagers innstrømming.",
-        "Trend- og momentumkriteriene peker begge ned, og volatiliteten er høy – beslutningsregelen tilsier avstå."
+        "Bitcoin handles rundt 77 000 USD, ned ca 38 % fra ATH 125 559 USD – ekstrem realisert volatilitet",
+        "Brutt sentrale tekniske støtter, ETF-innstrømning avtagende og strammere global likviditet svekker bull-casen",
+        "Beslutningsregelen krever lav volatilitet for handling; risiko/avkastning-profilen er ikke akseptabel denne uken"
       ],
-      "worstCase": "Brudd under USD 74 000 åpner for fall mot USD 65–67 000 (≈−12 til −15 %)."
+      "worstCase": "Videre fall mot 60 000 USD ved tap av psykologisk støtte; økt korrelasjon til risiko-aktiva forsterker drawdown."
     }
   ],
   "summary": {
     "actions": 3,
     "abstentions": 1,
-    "riskFactor": "Stengt Strait of Hormuz og pending Fed-beslutning kan gi raske skift i oljepris, kreditt-spreader og risikoappetitt midt i Q1-rapporteringen."
+    "riskFactor": "Eskalerende Midtøsten-konflikt og fortsatt oljeprisfall kan utløse bred risiko-av-bevegelse på tvers av nordiske markeder."
   }
 }
