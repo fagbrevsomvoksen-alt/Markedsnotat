@@ -1,30 +1,30 @@
 {
-  "edition": 18,
-  "date": "2026-04-28",
+  "edition": 19,
+  "date": "2026-04-29",
   "regime": {
     "status": "Blandet",
     "cssClass": "blandet",
-    "desc": "Fed-møte denne uken og stengt Hormuz-stred presser olje og inflasjonsforventninger; teknisk oppgang i indekser møter høy makro-usikkerhet."
+    "desc": "Geopolitisk premie (stengt Hormuz, Brent over USD 104) og avventende Fed-møte gir risiko-av i krypto, mens nordiske aksjer holder seg nær toppen."
   },
   "categories": [
     {
       "num": "1",
       "name": "Aksjer",
-      "instrument": "EQNR",
-      "action": "AVSTÅ",
-      "actionCss": "avsta",
-      "size": "0",
-      "risk": "Høy",
+      "instrument": "DNB",
+      "action": "HOLD",
+      "actionCss": "hold",
+      "size": "0,5 %",
+      "risk": "Moderat",
       "data": "OK",
-      "trend": "Negativ",
+      "trend": "Positiv",
       "momentum": "Negativ",
-      "vol": "Høy",
+      "vol": "Moderat",
       "bullets": [
-        "Falt fra ATH 422,30 NOK (31.03) til 356 NOK (27.04) — ned ~15,7 % på fire uker",
-        "Brent over 104 USD og olje 96 USD bør støtte fundamentalt, men trend/momentum begge negative",
-        "Q1-rapport ventet 5.–6. mai; usikkerhet rundt Fed og Iran tilsier å vente"
+        "Q1-tall lagt frem 23. april (EPS-overraskelse på +10 % forrige kvartal), men markedet straffet med ca −4 % på fee/marginbildet.",
+        "Aksjen handles rundt 277 NOK, ned fra ATH 311,5 NOK 10. april, og 2,4 % under 20-dagers glidende snitt.",
+        "Stigende mellomlangsiktig trendkanal intakt, konsensus-kursmål 312 NOK (≈+13 %) og direkteavkastning ca. 6 %."
       ],
-      "worstCase": "Fed signaliserer høyere-for-lengre og oljen korrigerer ned — EQNR mot 320 NOK."
+      "worstCase": "Fortsatt rentepress og marginsvikt drar kursen mot støtte ved 260 NOK (≈−6 %)."
     },
     {
       "num": "2",
@@ -32,18 +32,18 @@
       "instrument": "XACT-OBX",
       "action": "HOLD",
       "actionCss": "hold",
-      "size": null,
+      "size": "0,5 %",
       "risk": "Moderat",
       "data": "OK",
       "trend": "Positiv",
-      "momentum": "Positiv",
+      "momentum": "Nøytral",
       "vol": "Moderat",
       "bullets": [
-        "UCITS-godkjent, Nordnet-tilgjengelig, kurs ~103,80 NOK; tracker OBX-indeksen presist",
-        "Underliggende indeks brutt opp gjennom stigende trendkanal med RSI > 70",
-        "Vol forhøyet pga Fed-møte og geopolitikk — beslutningsregel utelukker ny KJØP"
+        "OBX-eksponering støttes av energi (+1,78 %) og shipping (+2,70 %) på Oslo Børs 28. april, drevet av høy oljepris.",
+        "UCITS-godkjent og tilgjengelig på Nordnet; NOK 103,8 per andel, TER 0,30 %.",
+        "Bred eksponering reduserer enkeltselskapsrisiko gjennom Q1-rapporteringen, men prisingen er nær topp."
       ],
-      "worstCase": "Risk-off etter Fed; ETF korrigerer 5–8 % mot støtte rundt 96 NOK."
+      "worstCase": "Oljeprisreversering eller eskalert risiko-av drar OBX 5–7 % på kort sikt."
     },
     {
       "num": "3",
@@ -55,14 +55,14 @@
       "risk": null,
       "data": "OK",
       "trend": "Positiv",
-      "momentum": "Positiv",
+      "momentum": "Nøytral",
       "vol": "Moderat",
       "bullets": [
-        "Står ~2 339 pkt (24.04); +34,7 % siste 12 mnd, men -0,31 % siste måned",
-        "Teknisk oppbrudd av stigende trendkanal; RSI > 70 indikerer sterkt momentum men også overkjøpt",
-        "RSI-divergens varsler korreksjonsrisiko; støtte ved ~1 660 pkt langsiktig"
+        "OSEBX GR sto i 1 997,12 (+0,53 %) 28. april, fortsatt over 1 660-støtten og innenfor stigende mellomlangsiktig trend.",
+        "Tung eksponering mot energi og sjømat gir medvind fra Brent over USD 100, men gjør indeksen sårbar for oljerevers.",
+        "RSI har vært strukket; kortsiktig konsolidering nær toppen er sannsynlig før Fed-beslutning og Q1-tunge rapporteringsuken."
       ],
-      "worstCase": "Falkesignal fra Fed + Iran-eskalering utløser korreksjon mot 2 050–2 100 pkt."
+      "worstCase": "Skuffelse fra Fed eller Iran-deeskalering trekker indeksen 4–5 % ned mot 1 900."
     },
     {
       "num": "4",
@@ -77,16 +77,16 @@
       "momentum": "Negativ",
       "vol": "Høy",
       "bullets": [
-        "BTC ~76 472 USD (28.04, kl. 07:10 ET) — ned 1,6 % fra mandagsåpning 78 661 USD",
-        "Pull-back fra 79 000-nivå; lav handelsvolum og korttidsholdere tar gevinst under 80 000",
-        "Olje-drevet inflasjon og Fed-usikkerhet svekker risikoappetitt foran rentebeslutning"
+        "BTC ned til ca. USD 76 300 28. april etter at USD 79 500-toppen 27. april ikke holdt; ca. 40 % under ATH fra oktober 2025.",
+        "Fear & Greed-indeksen falt fra 47 til 33 (frykt) og spot-BTC-ETF-er fikk USD 263 mill. i utflyt etter ti dagers innstrømming.",
+        "Trend- og momentumkriteriene peker begge ned, og volatiliteten er høy – beslutningsregelen tilsier avstå."
       ],
-      "worstCase": "Falk Fed + Hormuz-eskalering: BTC mot 70 000 USD og bredt risk-off."
+      "worstCase": "Brudd under USD 74 000 åpner for fall mot USD 65–67 000 (≈−12 til −15 %)."
     }
   ],
   "summary": {
-    "actions": 0,
-    "abstentions": 4,
-    "riskFactor": "Fed-møtet 28.–29. april kombinert med stengt Hormuz-stred gir samtidig rente- og oljerisiko — utfallet kan flytte alle aktivaklasser kraftig."
+    "actions": 3,
+    "abstentions": 1,
+    "riskFactor": "Stengt Strait of Hormuz og pending Fed-beslutning kan gi raske skift i oljepris, kreditt-spreader og risikoappetitt midt i Q1-rapporteringen."
   }
 }
