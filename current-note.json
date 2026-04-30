@@ -1,92 +1,118 @@
 {
-  "edition": 21,
+  "edition": 2,
   "date": "2026-04-30",
+  "week": 18,
+  "goal": {
+    "label": "Egenkapital til bolig",
+    "target": 200000,
+    "saved": 60000,
+    "monthly": 12000,
+    "targetDate": "2030-04-01",
+    "currency": "NOK"
+  },
   "regime": {
     "status": "Blandet",
     "cssClass": "blandet",
-    "desc": "Energiaksjer løftes av oljeprissjokk knyttet til Hormuz-situasjonen, men Fed-usikkerhet og fallende krypto demper bredere risikoappetitt."
+    "desc": "Aksjer nær toppen, men inflasjon 3,3 % og rentenivå stabilt høyt – kapitalbevaring prioritert"
+  },
+  "glidebane": {
+    "phase": "4 år",
+    "aksjerCap": "25 %",
+    "renteCap": "35 %",
+    "likviditetCap": "35 %",
+    "tematiskCap": "5 %"
+  },
+  "drawdown": {
+    "current": "0,0 %",
+    "cap": "8 %",
+    "status": "Innenfor"
   },
   "categories": [
     {
       "num": "1",
-      "name": "Aksjer",
-      "instrument": "EQNR",
-      "action": "AVSTÅ",
-      "actionCss": "avsta",
-      "size": "0",
-      "risk": "Høy",
+      "name": "Likviditet",
+      "instrument": "Bank Norwegian Sparekonto",
+      "action": "AVSETT",
+      "actionCss": "kjop",
+      "size": "12 000 kr (månedssparing)",
+      "risk": "Lav",
       "data": "OK",
-      "trend": "Positiv",
-      "momentum": "Nøytral",
-      "vol": "Høy",
+      "trend": "Stabil",
+      "momentum": "Stabil",
+      "vol": "Lav",
       "bullets": [
-        "Korrigert ~6 % fra ATH 422,3 NOK satt 31. mars; siste uke +1,5 %, men retning er ikke avklart",
-        "Q1-rapport ventet 6. mai gir betydelig hendelsesrisiko – prudent å vente på tallene",
-        "Volatilitet ~3,5 % og beta 1,38 bryter regelen om at vol ikke skal være høy ved handling"
+        "Bank Norwegian tilbyr 4,75 % årlig rente på sparekonto – konkurransedyktig vs. korte rentefond",
+        "Full likviditet og innskuddsgaranti opp til 2 mill. NOK – passer kapitalbevaring-fokuset",
+        "Månedlig sparing på 12 000 kr legges her i påvente av rebalansering mot rente/aksjer"
       ],
-      "worstCase": "Skuffende Q1 kombinert med oljefall hvis Hormuz-situasjonen normaliseres kan gi 8–10 % nedside på kort sikt."
+      "worstCase": "Realavkastning 1,4 % etter inflasjon 3,3 % – ingen nominell drawdown.",
+      "goalEffect": "Renten ligger over forventet; bidrar med ~570 kr/mnd til mål."
     },
     {
       "num": "2",
-      "name": "ETF",
-      "instrument": "XACT-OBX",
-      "action": "HOLD",
-      "actionCss": "hold",
-      "size": "0,5 %",
-      "risk": "Middels",
+      "name": "Rente",
+      "instrument": "KLP Obligasjon 1 år",
+      "action": "KJØP",
+      "actionCss": "kjop",
+      "size": "1,0 %",
+      "risk": "Lav",
       "data": "OK",
-      "trend": "Positiv",
-      "momentum": "Nøytral",
-      "vol": "Middels",
+      "trend": "Stabil",
+      "momentum": "Positiv",
+      "vol": "Lav",
       "bullets": [
-        "OBX-indeksen opp ~34 % YoY, men har korrigert fra topp etter sterk RSI-overopphetning",
-        "UCITS-godkjent, NOK-notert og fritt tilgjengelig på Nordnet uten valutarisiko",
-        "Bred eksponering demper enkeltselskapsrisiko som EQNR-rapporten 6. mai"
+        "Kort durasjon (~1 år) – minimal renterisiko hvis Norges Bank fortsatt holder styringsrenten høyt",
+        "Effektiv rente ~4,3 % p.a., kostnader 0,15 % – netto fortsatt over inflasjon",
+        "Fyller renteandelen i glidebanen (mål 35 % – aktuell allokering under takandelen)"
       ],
-      "worstCase": "Eskalering rundt Hormuz og oljefall samtidig gir korreksjon på 5–7 % i indeksen."
+      "worstCase": "Plutselig renteoppgang +0,5 % gir kortvarig fall på ~0,5 %.",
+      "goalEffect": "Et 0,5 %-fall på 1 % allokering ≈ 100 kr i tap – uvesentlig for målet."
     },
     {
       "num": "3",
-      "name": "Indeks",
-      "instrument": "OSEBX",
+      "name": "Aksjer",
+      "instrument": "Nordnet Indeksfond Global",
       "action": "HOLD",
       "actionCss": "hold",
-      "size": null,
-      "risk": null,
+      "size": "0",
+      "risk": "Moderat",
       "data": "OK",
       "trend": "Positiv",
-      "momentum": "Nøytral",
-      "vol": "Middels",
+      "momentum": "Positiv",
+      "vol": "Moderat",
       "bullets": [
-        "ATH 2380 i mars, deretter konsolidering – fortsatt over støtte rundt 1660",
-        "Brudd over stigende trend signaliserer styrke, men kortsiktig RSI-avkjøling pågår",
-        "Tunge energi- og finansvekter gjør indeksen sensitiv for olje- og rentebevegelser"
+        "Globalt indeksfond uten forvaltningskostnad på Nordnet – best i klassen for ASK-egnet aksje-eksponering",
+        "Trend og momentum positivt, men aksjeandel er allerede ved takandelen (25 %) på glidebanen",
+        "Regel: ikke øk eksponering når takandelen er nådd – HOLD er rett valg"
       ],
-      "worstCase": "Svekket globalt risikosentiment etter Fed-møtet kan trekke indeksen 3–5 % ned mot støtten."
+      "worstCase": "Mag-7-skuffelse kan gi 12–18 % korreksjon globalt.",
+      "goalEffect": "12 % fall på 25 %-aksjeandel = ~3 % på samlet kapital ≈ 4 mnd ekstra sparing."
     },
     {
       "num": "4",
-      "name": "Krypto",
-      "instrument": "BITCOIN XBT",
+      "name": "Tematisk",
+      "instrument": "iShares Physical Gold ETC (IGLN)",
       "action": "AVSTÅ",
       "actionCss": "avsta",
       "size": "0",
-      "risk": "Høy",
+      "risk": "Moderat",
       "data": "OK",
-      "trend": "Negativ",
-      "momentum": "Negativ",
-      "vol": "Høy",
+      "trend": "Positiv",
+      "momentum": "Positiv",
+      "vol": "Moderat",
       "bullets": [
-        "BTC handlet rundt 77 000 USD, ned ~17 % YoY og fallende uke-over-uke",
-        "Daglig MACD utvider seg negativt og 50W MA fungerer som strukturell motstand",
-        "Trend og momentum peker begge ned – beslutningsregelen tilsier avstå"
+        "Gull har steget 22 % YTD – attraktiv på papiret, men volatiliteten er over snittet",
+        "Tematisk-kategorien har et tak på 5 % i nåværende glidebane-fase – minimal plass å fylle",
+        "Begrunnelse for AVSTÅ: bedre risk/reward i Rente-kategorien gitt rentenivået"
       ],
-      "worstCase": "Brudd under 76 500 USD åpner for fall mot 72 000 USD (~6 % nedside) ved hauk-tone fra Fed."
+      "worstCase": "Sterk USD eller risiko-av kan gi 10–15 % korreksjon på gull.",
+      "goalEffect": "Med 0 % allokering: ingen effekt denne uken."
     }
   ],
   "summary": {
     "actions": 2,
-    "abstentions": 2,
-    "riskFactor": "Samtidig hauk-tone fra Fed og eskalering i Hormuz-situasjonen kan utløse bred risiko-av på tvers av aktivaklasser."
+    "abstentions": 1,
+    "drawdownStatus": "Innenfor 8 %-taket",
+    "riskFactor": "Aksjeandel ved glidebane-tak; videre vekst krever rebalansering, ikke nye kjøp."
   }
 }

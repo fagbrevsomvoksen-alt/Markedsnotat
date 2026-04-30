@@ -1,5 +1,5 @@
 # STATUS – Espen & Co Private Wealth Management
-*Sist oppdatert: 2026-04-28 (skandinavisk univers + omposisjoneringsplan)*
+*Sist oppdatert: 2026-04-30 (omlegging mot egenkapital-sparing, 3–4 års horisont)*
 
 **App-adresse:** https://fagbrevsomvoksen-alt.github.io/Markedsnotat/
 **Repo:** https://github.com/fagbrevsomvoksen-alt/Markedsnotat
@@ -8,87 +8,95 @@
 
 ## Hva er dette prosjektet?
 
-Et ukentlig, regelbasert markedsnotat i simuleringsformat under det fiktive firmanavnet **Espen & Co Private Wealth Management**. Ingen reell kapital, ingen NAV-tilknytning. Formålet er å øve på systematisk markedsanalyse med et fast univers av instrumenter og strenge beslutningsregler.
+Et ukentlig, regelbasert markedsnotat i simuleringsformat under det fiktive firmanavnet **Espen & Co Private Wealth Management**. Ingen reell kapital, ingen NAV-tilknytning. Formålet er å øve på systematisk markedsanalyse og sparedisiplin for et konkret kortsiktig mål: **egenkapital til bolig**.
 
 ---
 
 ## Status nå
 
-**Versjon:** v7 – skandinavisk-bare univers
+**Versjon:** v8 – egenkapital-sparing (kortsiktig horisont)
 **PWA:** Installert på Android-telefon
 **Mobilredigering:** Aktiv – hele ukentlig oppdatering skjer i appens Publiser-fane (ingen GitHub-navigering)
 
-### Hva som endret seg 2026-04-28
-- Universet smalnet inn til **Norge, Sverige og Danmark** (Finland og Island er ute).
-- Aksjer: 46 → ~45 (Norge utvidet til 20, Sverige 15, Danmark 10).
-- ETF/indeksfond: 26 → 16 (rene skandinaviske ETFer + nordiske indeksfond på Nordnet).
-- Indekser: 13 → 5 (kun OSEBX, OBX, OMXS30, OMXSPI, OMXC25).
-- Krypto: behold 2 (XBT-trackerne notert på Stockholm).
-- Service Worker: `espen-co-v7-skandinavisk` (bumpet fra v6).
-- ASK-kontekst lagt til i Regler-fanen og prompt.md – brukeren handler primært via Aksjesparekonto.
-- v6 er frosset i `backup-v6/` med tilbakeruller-instrukser.
-
-### Brukerens portefølje (kjent 2026-04-28)
-Total markedsverdi ~62 300 NOK fordelt over to Nordnet-kontoer:
-- **Konto 29457330** (antatt ASK): 10 posisjoner, ~57 800 NOK. Tunge: AuAg Silver Bullet (33 %), Nordnet Norge Indeks (28 %), JPM Korea (+17,65 %).
-- **Konto 37951043** (antatt VPS): 4 posisjoner, ~2 800 NOK. Alle i tap, mest Norwegian Block Exchange (-54,5 %).
-
-Egen omposisjoneringsplan: `omposisjonering-2026-04-28.md`.
+### Hva som endret seg 2026-04-30
+- **Vinkling lagt om fra "hva jeg eier" til "sparemål-progresjon".** Egenkapital-mål, spart-så-langt og månedlig sparetempo vises øverst på Notat-fanen.
+- **Risikoprofil senket fra "høy" til "lav-til-moderat"** – matcher 3–4 års horisont og kapitalbevaring som førsteprioritet.
+- **Tidshorisont oppdatert fra 1,5–2 år til 3–4 år** (mål-dato: april 2030).
+- **Kategoristruktur omorganisert** fra instrumenttype (Aksjer/ETF/Indeks/Krypto) til rolle (Likviditet/Rente/Aksjer/Tematisk).
+- **Univers byttet ut** men holdt på ~69 instrumenter: krypto fjernet, enkelt-aksjer kraftig redusert (kun 5 defensive utbytteaksjer beholdt under Tematisk), rentefond og pengemarkedsfond lagt til som hovedvekt.
+- **Glidebane** lagt til som regel: aksjeandel trappes ned mot mål-datoen.
+- **Drawdown-tak** på 8 % av samlet kapital lagt inn som hard regel.
+- **Service Worker:** `espen-co-v8-egenkapital` (bumpet fra v7).
+- **`omposisjonering-2026-04-28.md` arkivert** til `arkiv/`.
+- v6 og v7-tenking ligger i `backup-v6/` for historikk.
 
 ### Mål og rammer
-- **Mål:** Egenkapital til bolig, tidshorisont 1,5–2 år.
-- **Risikotoleranse:** Brukeren har eksplisitt valgt høy risiko – simuleringen skal speile det.
-- **Konto-strategi:** Selg/kjøp innenfor ASK = skattefri rebalansering så lenge midlene blir på kontoen.
+- **Mål:** Egenkapital til bolig – **200 000 kr**.
+- **Tidshorisont:** 3–4 år. **Mål-dato: april 2030.**
+- **Spart hittil:** 60 000 kr.
+- **Månedlig sparing:** 12 000 kr.
+- **Risikoprofil:** Lav-til-moderat. Kapitalbevaring veier tyngre enn avkastningsmaksimering.
+- **Drawdown-tak:** Maks 8 % på samlet portefølje før reglene tvinger nedtrapping av risiko.
+- **Plattform:** Nordnet brukes for handel og sparing. ASK brukes for aksje- og ETF-delen (skatteeffektiv reallokering så lenge midlene blir på kontoen). Rentefond, pengemarkedsfond og høyrentekonto plasseres der vilkårene er best.
 
-### Appen i v7
+### Glidebane (anbefalt allokering over tid)
+
+| Tid til mål | Aksjer | Rente | Likviditet | Tematisk |
+|---|---:|---:|---:|---:|
+| 4 år (nå) | 25 % | 35 % | 35 % | 5 % |
+| 3 år | 20 % | 35 % | 40 % | 5 % |
+| 2 år | 12 % | 35 % | 50 % | 3 % |
+| 1 år | 5 % | 25 % | 70 % | 0 % |
+| 6 mnd | 0 % | 10 % | 90 % | 0 % |
+
+### Appen i v8
 - Branding: **Espen & Co Private Wealth Management** (uendret)
 - Typografi: IBM Plex Serif/Sans/Mono (uendret)
 - Fargepalett: mørk blå + papirhvit + antikkgull (uendret)
 - Data isolert i `current-note.json` – appen henter via `fetch()`
 - Service Worker: network-first for JSON, cache-first for resten
+- **Mål-progresjonsblokk** øverst på Notat-fanen (mål, spart, prosent, måneder igjen)
 
 ### Seks faner
-- **Notat** – fargekodede kort per kategori (KJØP/HOLD/SELG/AVSTÅ)
-- **Univers** – skandinavisk fokus, ~68 instrumenter, med filterknapper
-- **Regler** – beslutningsrammeverket inkl. UCITS- og ASK-blokk
+- **Notat** – mål-progresjon + fargekodede kort per kategori (KJØP/HOLD/SELG/AVSTÅ + AVSETT)
+- **Univers** – ny rolle-basert inndeling, ~69 instrumenter, med filterknapper (Likviditet/Rente/Aksjer/Tematisk)
+- **Regler** – beslutningsrammeverk inkl. UCITS, ASK på Nordnet, glidebane og drawdown-tak
 - **Kilder** – alle datakilder Claude bruker
 - **Om** – disclaimers og oppdateringsinstruksjoner
 - **Publiser** – ett-trykk prompt-generator + JSON-publisering via GitHub API
 
 ---
 
-## Fast univers (skandinavisk – 2026-04-28)
+## Fast univers (rolle-basert · 2026-04-30)
 
 | Kategori | Antall | Detaljer |
 |---|---|---|
-| Aksjer | 45 | Norge 20, Sverige 15, Danmark 10 |
-| ETF + indeksfond | 17 | XACT-ETFer, Nordnet indeksfond, KLP/DNB/Storebrand fond, ODIN, gearing – alle med verifiserte ISIN-er |
-| Indekser | 5 | OSEBX, OBX, OMXS30, OMXSPI, OMXC25 |
-| Krypto (ETP) | 2 | BITCOIN XBT, ETHEREUM XBT (Nasdaq Stockholm) |
+| Likviditet | 15 | 7 høyrentekontoer + 8 pengemarkedsfond – kapitalbevaring og full likviditet |
+| Rente | 20 | Norske/nordiske obligasjonsfond (kort & mellomlang) + UCITS-rente-ETFer + realrente + HY |
+| Aksjer | 20 | Globale UCITS-ETFer + skandinaviske ETFer + lavkost indeksfond på Nordnet |
+| Tematisk / Defensiv | 14 | Lavbeta- og utbyttefond, defensive nordiske utbytteaksjer, edelmetall-ETCer |
 
-**Totalt: 69 instrumenter.** Definert som JS-konstant `UNIVERSE` i `index.html` – brukes både til å rendre Univers-fanen og til å bygge prompten i Publiser-fanen.
+**Totalt: 69 instrumenter.** Definert som JS-konstant `UNIVERSE` i `index.html` – brukes både til å rendre Univers-fanen og til å bygge prompten i Publiser-fanen. Alle valgt slik at de er tilgjengelige via Nordnet.
 
 ---
 
 ## Nyeste notat
 
-**Uke 17 · 2026-04-26 · Utgave 1** (basert på *gammelt* univers før omleggingen)
+**Uke 18 · 2026-04-30 · Utgave 2** (første notat etter omleggingen)
 
-| Kategori | Instrument | Handling | Størrelse |
-|---|---|---|---|
-| Aksjer | NVDA | KJØP | 0,8 % |
-| ETF | VUAA (UCITS) | KJØP | 0,5 % |
-| Indeks | S&P 500 | HOLD | – |
-| Krypto | BTC | AVSTÅ | 0 |
-
-⚠️ **NB:** Disse instrumentene (NVDA, VUAA, SPX) er ikke lenger i universet. Neste ukentlige notat (uke 18) skal lages med **skandinavisk univers**.
+| Kategori | Instrument | Handling |
+|---|---|---|
+| Likviditet | Bank Norwegian Sparekonto | AVSETT |
+| Rente | KLP Obligasjon 1 år | KJØP |
+| Aksjer | Nordnet Indeksfond Global | HOLD |
+| Tematisk | iShares Physical Gold ETC | AVSTÅ |
 
 ---
 
 ## Ukentlig rutine (mobil-vennlig)
 
 1. På mobilen: be Claude *«Lag ukentlig markedsnotat for uke X – levér som JSON for current-note.json»*
-2. Claude søker opp markedsdata, anvender reglene mot **skandinavisk univers**, leverer ferdig JSON
+2. Claude søker opp markedsdata, anvender reglene mot universet og glidebanen, leverer ferdig JSON med oppdatert `goal`-blokk
 3. Åpne GitHub-appen → `Markedsnotat`-repo → `current-note.json` → blyant/edit
 4. Lim inn ny JSON → Commit
 5. Telefon-appen oppdaterer seg automatisk neste gang du åpner den
@@ -107,23 +115,26 @@ Detaljerte steg i `deploy-github-pages.md`.
 
 ## Åpne spørsmål / neste steg
 
-- [ ] Lag ukentlig markedsnotat for **uke 18** med skandinavisk univers
-- [ ] Vurder å erstatte `current-note.json` med et "uke 18 omstart"-notat når omposisjoneringen er gjennomført
-- [ ] Vurder å legge til en **historikk-fane** som arkiverer tidligere ukers JSON-filer i `notater/`-mappen
-- [ ] Eventuelt legge til Finland (Nokia, Kone) hvis "skandinavisk" skal utvides til "nordisk"
+- [ ] Følge opp glidebanen kvartalsvis – juster aksjeandel når neste milepæl nærmer seg.
+- [ ] Vurder å legge til en **historikk-fane** som arkiverer tidligere ukers JSON-filer.
+- [ ] Vurder å vise sparetempo-justering ("for å nå mål må månedlig sparing være ≥ X kr").
+- [ ] På sikt: integrer Finansportalen-data for sparekonto-renter (oppdateres ukentlig).
+
+### Avsluttede oppgaver (2026-04-30)
+- ✅ STATUS.md ryddet for "hva-jeg-eier"-fokus, oppdatert med nytt mål og horisont
+- ✅ omposisjonering-2026-04-28.md flyttet til `arkiv/`
+- ✅ prompt.md skrevet om: ny risikoprofil, sparemål, glidebane, drawdown-tak, nytt univers, "Effekt på sparemål"-felt
+- ✅ index.html: nye kategorinavn, ny universliste (69 instr.), mål-progresjonsblokk øverst på Notat-fanen, oppdaterte regler/om-tekster
+- ✅ current-note.json: skrevet om for uke 18 med ny kategoristruktur og `goal`-blokk
+- ✅ Service Worker bumpet til `espen-co-v8-egenkapital`
 
 ### Avsluttede oppgaver (2026-04-28)
-- ✅ Backup av v6 til `backup-v6/` med README og tilbakeruller-instruksjoner
-- ✅ UNIVERSE skrevet om til skandinavisk i `index.html`
-- ✅ `prompt.md` oppdatert til skandinavisk univers + ASK-kontekst
-- ✅ Service Worker bumpet til `espen-co-v7-skandinavisk`
-- ✅ View-lede og UCITS-blokk i Regler-fanen oppdatert
-- ✅ Omposisjoneringsnotat skrevet (`omposisjonering-2026-04-28.md`)
-- ✅ Alle 17 ETF/fond verifisert mot Nasdaq Stockholm/Morningstar/DNB/Nordnet med korrekte ISIN-er
+- ✅ Backup av v6 til `backup-v6/`
+- ✅ Skandinavisk omlegging av univers (nå erstattet av rolle-basert struktur)
+- ✅ Service Worker bumpet til v7
+- ✅ Regler-fane og UCITS-blokk oppdatert
 
-### Avsluttede oppgaver (siste sesjon, 2026-04-26)
-- ✅ Verifisert IGLN, AGGG og BRK.B på norsk Nordnet (nå utenfor univers)
-- ✅ Byttet VTI → VUAA (UCITS) i notat og app (nå utenfor univers)
+### Avsluttede oppgaver (2026-04-26)
 - ✅ Skilt ut data til `current-note.json` for mobil-redigering
 - ✅ Designløft til institusjonell stil (Espen & Co)
 - ✅ Service Worker oppgradert med network-first for JSON
@@ -138,14 +149,14 @@ Detaljerte steg i `deploy-github-pages.md`.
 
 | Fil | Beskrivelse |
 |---|---|
-| `index.html` | Selve appen – nå skandinavisk univers |
+| `index.html` | Selve appen – v8, rolle-basert univers og mål-progresjon |
 | `current-note.json` | **Ukens notat** – det er denne du redigerer hver uke |
-| `service-worker.js` | PWA-cache (versjon `espen-co-v7-skandinavisk`) |
+| `service-worker.js` | PWA-cache (versjon `espen-co-v8-egenkapital`) |
 | `manifest.json` | PWA-metadata med Espen & Co-branding |
-| `prompt.md` | Markedsnotat-prompt for skandinavisk univers |
-| `omposisjonering-2026-04-28.md` | Engangs-omposisjoneringsplan basert på Nordnet-portefølje |
+| `prompt.md` | Markedsnotat-prompt for v8-universet med glidebane og drawdown-tak |
 | `notat-2026-04-26.md` | Uke 17-notat i markdown (gammelt univers, arkiv) |
 | `deploy-github-pages.md` | Oppskrift for første gangs oppsett og ukentlig oppdatering |
 | `STATUS.md` | Denne filen |
 | `icons/` | App-ikoner for PWA |
 | `backup-v6/` | Frossen kopi av v6-appen (rull tilbake hvis du angrer) |
+| `arkiv/` | Arkiverte notater (omposisjoneringsplaner og lignende historikk) |

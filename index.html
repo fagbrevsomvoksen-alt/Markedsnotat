@@ -402,6 +402,80 @@
   }
   .s-text { font-size: 13px; color: var(--ink); line-height: 1.55; padding-top: 4px; }
 
+  /* ── GOAL PROGRESS ───────────────────────────────── */
+  .goal-box {
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    padding: 20px 22px 18px;
+    margin-bottom: 18px;
+    position: relative;
+  }
+  .goal-box::before {
+    content: "";
+    position: absolute;
+    top: -1px; left: -1px;
+    width: 64px; height: 2px;
+    background: var(--gold);
+  }
+  .goal-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .goal-headline {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 14px;
+    line-height: 1.25;
+  }
+  .goal-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 480px) { .goal-stats { grid-template-columns: 1fr 1fr; } }
+  .goal-stat-val {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--paper);
+    line-height: 1;
+  }
+  .goal-stat-label {
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    font-weight: 500;
+    margin-top: 6px;
+  }
+  .goal-bar {
+    height: 8px;
+    background: rgba(244,241,234,0.12);
+    border: 1px solid var(--gold-soft);
+    position: relative;
+    overflow: hidden;
+  }
+  .goal-bar-fill {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    background: var(--gold);
+  }
+  .goal-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--gold-soft);
+    margin-top: 8px;
+    letter-spacing: 0.04em;
+  }
+
   /* ── UNIVERSE ────────────────────────────────────── */
   .universe-filter {
     display: flex;
@@ -781,16 +855,16 @@
     <div class="view-header">
       <div class="view-eyebrow">Investeringsunivers</div>
       <div class="view-title">Fast Univers</div>
-      <div class="view-lede">Skandinavisk univers · Oslo Børs · Stockholm · København · UCITS-ETFer og indeksfond på Nordnet</div>
+      <div class="view-lede">Univers for kortsiktig sparing til egenkapital · Likviditet · Rente · Aksjer · Tematisk · Alt tilgjengelig via Nordnet</div>
     </div>
 
     <!-- Filterknapper -->
     <div class="universe-filter">
       <button class="filter-btn active" data-cat="all" onclick="filterUniverse('all', this)">Alle</button>
+      <button class="filter-btn" data-cat="likviditet" onclick="filterUniverse('likviditet', this)">Likviditet</button>
+      <button class="filter-btn" data-cat="rente" onclick="filterUniverse('rente', this)">Rente</button>
       <button class="filter-btn" data-cat="aksjer" onclick="filterUniverse('aksjer', this)">Aksjer</button>
-      <button class="filter-btn" data-cat="etf" onclick="filterUniverse('etf', this)">ETF</button>
-      <button class="filter-btn" data-cat="indekser" onclick="filterUniverse('indekser', this)">Indekser</button>
-      <button class="filter-btn" data-cat="krypto" onclick="filterUniverse('krypto', this)">Krypto</button>
+      <button class="filter-btn" data-cat="tematisk" onclick="filterUniverse('tematisk', this)">Tematisk</button>
     </div>
 
     <div id="universe-container"></div>
@@ -832,12 +906,46 @@
     </div>
 
     <div class="rule-block">
-      <div class="rule-heading">Handling tillatt kun når alle tre er oppfylt</div>
+      <div class="rule-heading">Sparemål og horisont (ufravikelig)</div>
       <div class="rule-content">
         <ul>
-          <li>a) Trend og momentum peker <strong>samme vei</strong></li>
-          <li>b) Volatilitet er <strong>ikke høy</strong></li>
-          <li>c) Begrunnelse kan gis i 2–3 korte punkter uten nyhetstolkning</li>
+          <li>Mål: <strong>egenkapital til bolig – 200 000 kr</strong></li>
+          <li>Tidshorisont: 3–4 år · mål-dato <strong>april 2030</strong></li>
+          <li>Risikoprofil: <strong>lav-til-moderat</strong> · kapitalbevaring veier tyngre enn avkastningsmaksimering</li>
+          <li>Månedlig sparing: 12 000 kr</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Glidebane – tak per kategori</div>
+      <div class="rule-content">
+        <p>Anbefalt allokering trappes ned mot mål-datoen. Forslag til KJØP i Aksjer eller Tematisk skal ikke trekke porteføljen over takandelen. Hvis taket er nådd: HOLD eller AVSTÅ.</p>
+        <ul style="margin-top:8px;">
+          <li>4 år (nå): Aksjer 25 % · Rente 35 % · Likviditet 35 % · Tematisk 5 %</li>
+          <li>3 år: Aksjer 20 % · Rente 35 % · Likviditet 40 % · Tematisk 5 %</li>
+          <li>2 år: Aksjer 12 % · Rente 35 % · Likviditet 50 % · Tematisk 3 %</li>
+          <li>1 år: Aksjer 5 % · Rente 25 % · Likviditet 70 % · Tematisk 0 %</li>
+          <li>6 mnd: Aksjer 0 % · Rente 10 % · Likviditet 90 % · Tematisk 0 %</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Drawdown-tak (8 %)</div>
+      <div class="rule-content">
+        <p>Hvis simulert drawdown overstiger <strong>8 % på samlet portefølje</strong>: prioriter SELG/AVSTÅ i Aksjer og Tematisk og flytt mot Likviditet inntil porteføljen er tilbake innenfor taket.</p>
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-heading">Forslag tillatt kun når alle er oppfylt</div>
+      <div class="rule-content">
+        <ul>
+          <li>a) Glidebanen tillater økt eksponering i kategorien</li>
+          <li>b) Trend og momentum peker <strong>samme vei</strong> (eller rentenivå støtter for Rente/Likviditet)</li>
+          <li>c) Volatilitet er <strong>ikke høy</strong> for Aksjer og Tematisk</li>
+          <li>d) Begrunnelse kan gis i 2–3 korte punkter uten nyhetstolkning</li>
         </ul>
       </div>
     </div>
@@ -845,9 +953,9 @@
     <div class="rule-block">
       <div class="rule-heading">Regimeregler</div>
       <div class="rule-content">
-        <p>Ved <strong>risiko-av</strong>: prioriter AVSTÅ eller HOLD – unngå kjøp-forslag.<br>
+        <p>Ved <strong>risiko-av</strong>: prioriter AVSTÅ eller HOLD i Aksjer/Tematisk – unngå kjøp-forslag.<br>
         Standardvalg ved all tvil: <strong>AVSTÅ</strong>.<br>
-        Maks én handling per kategori per uke.</p>
+        Maks ett forslag per kategori per uke.</p>
       </div>
     </div>
 
@@ -855,9 +963,10 @@
       <div class="rule-heading">Risiko og størrelse (simulert kapital)</div>
       <div class="rule-content">
         <ul>
-          <li>Foreslått størrelse: 0–1,0 % av hypotetisk kapital</li>
-          <li>Kun lav til moderat risiko aksepteres</li>
-          <li>Alltid konservativ worst-case-kommentar på én linje</li>
+          <li>Foreslått størrelse: 0–1,5 % av hypotetisk kapital per ukes forslag</li>
+          <li>Kun lav-til-moderat risiko aksepteres for Aksjer/Tematisk</li>
+          <li>For Likviditet: månedssparing (12 000 kr) kan plasseres som AVSETT uten størrelsesbegrensning</li>
+          <li>Alltid konservativ worst-case-kommentar og «Effekt på sparemål»-linje</li>
         </ul>
       </div>
     </div>
@@ -866,10 +975,10 @@
       <div class="rule-heading">Tillatte handlinger per kategori</div>
       <div class="rule-content">
         <ul>
+          <li><strong>Likviditet:</strong> AVSETT / HOLD / AVSTÅ</li>
+          <li><strong>Rente:</strong> KJØP / SELG / HOLD / AVSTÅ</li>
           <li><strong>Aksjer:</strong> KJØP / SELG / HOLD / AVSTÅ</li>
-          <li><strong>ETF:</strong> KJØP / SELG / HOLD / AVSTÅ</li>
-          <li><strong>Indeks:</strong> HOLD / AVSTÅ (ikke kjøp eller salg)</li>
-          <li><strong>Krypto:</strong> KJØP / SELG / HOLD / AVSTÅ</li>
+          <li><strong>Tematisk:</strong> KJØP / SELG / HOLD / AVSTÅ</li>
         </ul>
       </div>
     </div>
@@ -887,13 +996,13 @@
     </div>
 
     <div class="rule-block">
-      <div class="rule-heading">Skandinavisk univers · UCITS · Nordnet · ASK</div>
+      <div class="rule-heading">Plattform · Nordnet · ASK · UCITS</div>
       <div class="rule-content">
         <ul>
-          <li>Aksjer kun fra <strong>Norge, Sverige og Danmark</strong> – Oslo Børs, Nasdaq Stockholm, Nasdaq København</li>
-          <li>ETFer er UCITS-godkjente og tilgjengelige via Nordnet; aksjefond i universet er nordiske indeks- eller forvaltede fond på Nordnet</li>
-          <li>Brukeren handler primært via <strong>Aksjesparekonto (ASK)</strong> – realisert gevinst er skattefri så lenge midlene blir på kontoen</li>
-          <li>Krypto handles utelukkende via EU-regulerte ETPs (CoinShares XBT Provider) på Nasdaq Stockholm – ikke direkte krypto</li>
+          <li>Handler legges på <strong>Nordnet</strong></li>
+          <li>ASK brukes for aksje- og ETF-delen – skatteeffektiv reallokering så lenge midlene blir på kontoen</li>
+          <li>Rentefond, pengemarkedsfond og høyrentekonto plasseres der vilkårene er best (Nordnets plattform eller bank-konto med høyere rente)</li>
+          <li>ETFer skal være UCITS-godkjente og tilgjengelige via Nordnet</li>
           <li>Dersom et instrument ikke er tilgjengelig via Nordnet: skriv «IKKE TILGJENGELIG VIA NORDNET» og velg AVSTÅ</li>
         </ul>
       </div>
@@ -936,12 +1045,12 @@
     </div>
 
     <div class="rule-block">
-      <div class="rule-heading">Krypto · ETP og spotmarked</div>
+      <div class="rule-heading">Rente og spareprodukter</div>
       <div class="rule-content">
         <ul>
-          <li><a href="https://www.coindesk.com" target="_blank" rel="noopener">CoinDesk</a> – kryptonyheter og prisdata</li>
-          <li><a href="https://coinmarketcap.com" target="_blank" rel="noopener">CoinMarketCap</a> – markedsverdi og volum</li>
-          <li><a href="https://coinshares.com" target="_blank" rel="noopener">CoinShares</a> – produktblad for XBT Provider ETPs</li>
+          <li><a href="https://www.finansportalen.no" target="_blank" rel="noopener">Finansportalen</a> – sammenligning av sparekontoer og rentevilkår</li>
+          <li><a href="https://www.norges-bank.no" target="_blank" rel="noopener">Norges Bank</a> – styringsrente og rentebane</li>
+          <li><a href="https://www.nordnet.no/markedet/fond" target="_blank" rel="noopener">Nordnet · Fond</a> – pengemarkeds- og rentefond, kostnader og avkastning</li>
         </ul>
       </div>
     </div>
@@ -999,9 +1108,9 @@
     <div class="rule-block">
       <div class="rule-heading">Hva er dette?</div>
       <div class="rule-content">
-        <p>Et standardisert ukentlig markedsnotat basert på et fast univers av instrumenter.
-        Formålet er å øve på systematisk, regelbasert markedsanalyse. Appen viser notatet for
-        inneværende uke og gir tilgang til universsoversikt og beslutningsregler.</p>
+        <p>Et standardisert ukentlig markedsnotat for et konkret kortsiktig sparemål: <strong>egenkapital til bolig</strong>.
+        Formålet er å støtte sparedisiplin og systematisk, regelbasert vurdering med 3–4 års horisont.
+        Appen viser notatet for inneværende uke og gir tilgang til universsoversikt, glidebane og beslutningsregler.</p>
       </div>
     </div>
 
@@ -1020,21 +1129,20 @@
     <div class="rule-block">
       <div class="rule-heading">Analysemetode</div>
       <div class="rule-content">
-        <p>For hvert instrument vurderes: ukentlig trend (positiv / nøytral / negativ),
-        momentum over 4–8 uker, volatilitetsnivå og gjeldende markedsregime.
-        Beslutning fattes kun ved entydige signaler og lav til moderat volatilitet.</p>
+        <p>For hvert instrument vurderes: ukentlig trend, momentum over 4–8 uker, volatilitetsnivå,
+        gjeldende markedsregime og rentenivå. Forslag fattes kun når glidebanen tillater det,
+        og når trend/momentum (eller rentenivå) støtter forslaget. Drawdown over 8 % på samlet
+        portefølje tvinger nedtrapping av risiko.</p>
       </div>
     </div>
 
     <div class="rule-block">
-      <div class="rule-heading">Skandinavisk univers · UCITS · Nordnet · ASK</div>
+      <div class="rule-heading">Plattform · Nordnet · ASK · UCITS</div>
       <div class="rule-content">
-        <p>Universet er begrenset til <strong>Norge, Sverige og Danmark</strong> – aksjer notert på
-        Oslo Børs, Nasdaq Stockholm og Nasdaq København. ETFer er UCITS-godkjente og tilgjengelige
-        på Nordnet. Aksjefond i universet er nordiske indeks- og forvaltede fond på Nordnet.
-        Krypto-eksponering skjer via CoinShares XBT Provider ETPs på Nasdaq Stockholm.
-        Alle handler skjer via <strong>Aksjesparekonto (ASK)</strong> – realisert gevinst er
-        skattefri så lenge midlene blir på kontoen.</p>
+        <p>Handler legges på <strong>Nordnet</strong>. <strong>ASK</strong> brukes for aksje- og ETF-delen
+        – realisert gevinst er skattefri så lenge midlene blir på kontoen. Rentefond, pengemarkedsfond
+        og høyrentekonto plasseres der vilkårene er best. ETFer skal være UCITS-godkjente og
+        tilgjengelige via Nordnet.</p>
       </div>
     </div>
   </section>
@@ -1146,112 +1254,125 @@
 </div>
 
 <script>
-// ─── UNIVERS – kuratert utvalg fra Nordnet ─────────────
+// ─── UNIVERS – rolle-basert · alt tilgjengelig via Nordnet ─────
 const UNIVERSE = {
+  likviditet: {
+    "Høyrentekontoer (via/på Nordnet)": [
+      { t: "NORDNET-PLUSS",   n: "Nordnet Sparekonto Pluss",                s: "Sparekonto" },
+      { t: "BANKNORW-SPK",    n: "Bank Norwegian Sparekonto",               s: "Sparekonto" },
+      { t: "KOMPLETT-SPK",    n: "Komplett Bank Sparekonto",                s: "Sparekonto" },
+      { t: "PARETO-SPK",      n: "Pareto Bank Sparekonto",                  s: "Sparekonto" },
+      { t: "SBANKEN-SPK",     n: "Sbanken Sparekonto",                      s: "Sparekonto" },
+      { t: "INSTABANK-SPK",   n: "Instabank Sparekonto",                    s: "Sparekonto" },
+      { t: "BLUESTEP-SPK",    n: "BlueStep Bank Sparekonto",                s: "Sparekonto" }
+    ],
+    "Pengemarkedsfond (UCITS · Nordnet)": [
+      { t: "KLP-PM",          n: "KLP Pengemarked",                         s: "Pengemarked" },
+      { t: "NORDEA-LIKV+",    n: "Nordea Likviditet Pluss",                 s: "Pengemarked" },
+      { t: "DNB-LIKV20",      n: "DNB Likviditet 20 (V)",                   s: "Pengemarked" },
+      { t: "ALFREDB-LIKV",    n: "Alfred Berg Likviditet",                  s: "Pengemarked" },
+      { t: "STB-LIKV",        n: "Storebrand Likviditet",                   s: "Pengemarked" },
+      { t: "EIKA-PM",         n: "Eika Pengemarked",                        s: "Pengemarked" },
+      { t: "HOLBERG-LIKV",    n: "Holberg Likviditet",                      s: "Pengemarked" },
+      { t: "ODIN-PM",         n: "ODIN Pengemarked",                        s: "Pengemarked" }
+    ]
+  },
+  rente: {
+    "Kort durasjon (1–3 år)": [
+      { t: "KLP-OBL1",        n: "KLP Obligasjon 1 år",                     s: "Stat/IG" },
+      { t: "KLP-OBL3",        n: "KLP Obligasjon 3 år",                     s: "Stat/IG" },
+      { t: "DNB-OBL20",       n: "DNB Obligasjon 20 (V)",                   s: "IG kreditt" },
+      { t: "STB-RENTE+",      n: "Storebrand Rente+",                       s: "IG kreditt" },
+      { t: "ALFREDB-NIG",     n: "Alfred Berg Nordic Investment Grade",     s: "Nordisk IG" },
+      { t: "EIKA-OBL",        n: "Eika Obligasjon",                         s: "Norsk IG" }
+    ],
+    "Mellomlang durasjon (3–7 år)": [
+      { t: "KLP-OBL5",        n: "KLP Obligasjon 5 år",                     s: "Stat/IG" },
+      { t: "DNB-OBL3",        n: "DNB Obligasjon (III)",                    s: "IG kreditt" },
+      { t: "STB-OBL",         n: "Storebrand Obligasjon",                   s: "IG kreditt" },
+      { t: "STB-NIG",         n: "Storebrand Norsk Kreditt IG",             s: "Norsk IG" },
+      { t: "PARETO-NCC",      n: "Pareto Nordic Cross Credit",              s: "Nordisk IG" },
+      { t: "HOLBERG-KRED",    n: "Holberg Kreditt",                         s: "Nordisk kreditt" }
+    ],
+    "Internasjonale UCITS-rente-ETFer (Nordnet)": [
+      { t: "IEAC",            n: "iShares Core € Corp Bond UCITS ETF",      i: "IE00B3F81R35", s: "EUR IG" },
+      { t: "VETY",            n: "Vanguard EUR Eurozone Government Bond UCITS", i: "IE00BZ163H91", s: "EUR Stat" },
+      { t: "SAEU",            n: "Xtrackers II Global Government Bond UCITS (EUR-hedget)", i: "LU0378818131", s: "Globalt stat" },
+      { t: "AGGH",            n: "iShares Core Global Aggregate Bond UCITS (EUR-hedget)",  i: "IE00BDBRDM35", s: "Globalt aggregert" }
+    ],
+    "Realrente / inflasjonssikret": [
+      { t: "KLP-REAL",        n: "KLP Realrenter",                          s: "Realrente" },
+      { t: "STB-REAL",        n: "Storebrand Indeks Realrente",             s: "Realrente" }
+    ],
+    "High Yield (kun ved entydig risiko-på)": [
+      { t: "DNB-HY",          n: "DNB High Yield",                          s: "Nordisk HY", note: "maks 3 % allokering" },
+      { t: "KLP-HOYRENTE",    n: "KLP Høyrente",                            s: "Nordisk HY", note: "maks 3 % allokering" }
+    ]
+  },
   aksjer: {
-    "Norge · Oslo Børs": [
-      { t: "EQNR",  n: "Equinor ASA",            s: "Energi" },
-      { t: "DNB",   n: "DNB Bank ASA",           s: "Finans" },
-      { t: "TEL",   n: "Telenor ASA",            s: "Telekom" },
-      { t: "YAR",   n: "Yara International",     s: "Kjemi/Gjødsel" },
-      { t: "STB",   n: "Storebrand ASA",         s: "Forsikring" },
-      { t: "AKRBP", n: "Aker BP ASA",            s: "Energi (E&P)" },
-      { t: "MOWI",  n: "Mowi ASA",               s: "Sjømat" },
-      { t: "NHY",   n: "Norsk Hydro",            s: "Aluminium" },
-      { t: "ORK",   n: "Orkla ASA",              s: "Konsumvarer" },
-      { t: "GJF",   n: "Gjensidige Forsikring",  s: "Forsikring" },
-      { t: "SALM",  n: "SalMar ASA",             s: "Sjømat" },
-      { t: "KOG",   n: "Kongsberg Gruppen",      s: "Forsvar/Industri" },
-      { t: "AKER",  n: "Aker ASA",               s: "Konglomerat" },
-      { t: "SUBC",  n: "Subsea 7",               s: "Offshore-tjenester" },
-      { t: "TOM",   n: "Tomra Systems",          s: "Industri/teknologi" },
-      { t: "SCHA",  n: "Schibsted A",            s: "Media/Tech" },
-      { t: "NEL",   n: "Nel ASA",                s: "Hydrogen (vekst/risiko)" },
-      { t: "FRO",   n: "Frontline plc",          s: "Tank-shipping" },
-      { t: "VAR",   n: "Vår Energi",             s: "Energi (E&P)" },
-      { t: "BAKKA", n: "Bakkafrost",             s: "Sjømat" }
+    "Globale UCITS-ETFer (Nordnet)": [
+      { t: "VWCE",            n: "Vanguard FTSE All-World UCITS Acc",       i: "IE00BK5BQT80", s: "Globalt bredt" },
+      { t: "IWDA",            n: "iShares Core MSCI World UCITS Acc",       i: "IE00B4L5Y983", s: "Globalt utviklet" },
+      { t: "VUAA",            n: "Vanguard S&P 500 UCITS Acc",              i: "IE00BFMXXD54", s: "USA bredt" },
+      { t: "EUNL",            n: "iShares Core MSCI World UCITS",           i: "IE00B4L5Y983", s: "Globalt utviklet" },
+      { t: "EIMI",            n: "iShares Core MSCI EM IMI UCITS",          i: "IE00BKM4GZ66", s: "Emerging Markets" },
+      { t: "SWRD",            n: "SPDR MSCI World UCITS",                   i: "IE00BFY0GT14", s: "Globalt utviklet" }
     ],
-    "Sverige · Nasdaq Stockholm": [
-      { t: "VOLV-B",  n: "Volvo Group B",        s: "Industri" },
-      { t: "ATCO-A",  n: "Atlas Copco A",        s: "Industri" },
-      { t: "INVE-B",  n: "Investor B",           s: "Investeringsselskap" },
-      { t: "AZN",     n: "AstraZeneca",          s: "Helse" },
-      { t: "HEXA-B",  n: "Hexagon B",            s: "Teknologi" },
-      { t: "ERIC-B",  n: "Ericsson B",           s: "Telekom-utstyr" },
-      { t: "SAND",    n: "Sandvik",              s: "Industri" },
-      { t: "SEB-A",   n: "SEB A",                s: "Bank" },
-      { t: "SHB-A",   n: "Handelsbanken A",      s: "Bank" },
-      { t: "SWED-A",  n: "Swedbank A",           s: "Bank" },
-      { t: "ASSA-B",  n: "Assa Abloy B",         s: "Industri/sikkerhet" },
-      { t: "EVO",     n: "Evolution AB",         s: "iGaming (vekst)" },
-      { t: "HM-B",    n: "Hennes & Mauritz B",   s: "Detaljhandel" },
-      { t: "TELIA",   n: "Telia Company",        s: "Telekom" },
-      { t: "BOL",     n: "Boliden",              s: "Metaller/gruvedrift" }
+    "Skandinaviske ETFer": [
+      { t: "XACT-OBX",        n: "XACT OBX (Norge – 25 mest likvide)",      i: "NO0010198255", s: "Norge" },
+      { t: "XACT-OMXS30",     n: "XACT OMXS30 (Sverige – 30 største)",      i: "SE0000693570", s: "Sverige" },
+      { t: "XACT-NORDEN",     n: "XACT Norden 30 (Nordisk VINX30)",         i: "SE0001710914", s: "Norden" }
     ],
-    "Danmark · Nasdaq København": [
-      { t: "NOVO-B",   n: "Novo Nordisk B",       s: "Helse" },
-      { t: "MAERSK-B", n: "A.P. Møller-Maersk B", s: "Shipping" },
-      { t: "ORSTED",   n: "Ørsted",               s: "Vindkraft" },
-      { t: "DSV",      n: "DSV A/S",              s: "Logistikk" },
-      { t: "CARL-B",   n: "Carlsberg B",          s: "Drikkevarer" },
-      { t: "PNDORA",   n: "Pandora",              s: "Smykker/forbruk" },
-      { t: "VWS",      n: "Vestas Wind Systems",  s: "Vindkraft-utstyr" },
-      { t: "COLO-B",   n: "Coloplast B",          s: "Helse" },
-      { t: "DANSKE",   n: "Danske Bank",          s: "Bank" },
-      { t: "TRYG",     n: "Tryg Forsikring",      s: "Forsikring" }
+    "Indeksfond på Nordnet (lavkost · ASK-egnet)": [
+      { t: "NORDNET-NO",      n: "Nordnet Indeksfond Norge",                i: "SE0005993110", s: "Norge", note: "0 % forvaltning" },
+      { t: "NORDNET-SE",      n: "Nordnet Sverige Index",                   i: "SE0002756973", s: "Sverige", note: "0 % forvaltning" },
+      { t: "NORDNET-DK",      n: "Nordnet Indeksfond Danmark",              i: "SE0005993078", s: "Danmark", note: "0 % forvaltning" },
+      { t: "NORDNET-GLOBAL",  n: "Nordnet Indeksfond Global",               s: "Globalt", note: "0 % forvaltning" },
+      { t: "KLP-GLOBAL",      n: "KLP AksjeGlobal Indeks",                  s: "Globalt" },
+      { t: "KLP-NORGE",       n: "KLP AksjeNorge Indeks N",                 i: "NO0012445214", s: "Norge" },
+      { t: "KLP-NORDEN",      n: "KLP AksjeNorden Indeks N",                i: "NO0012445230", s: "Norden" },
+      { t: "DNB-GLOBAL",      n: "DNB Global Indeks",                       s: "Globalt" },
+      { t: "STB-AM",          n: "Storebrand Indeks – Alle Markeder",       s: "Globalt" },
+      { t: "STB-NORGE",       n: "Storebrand Indeks Norge A",               i: "NO0010704265", s: "Norge" },
+      { t: "DNB-NORGE-IDX",   n: "DNB Norge Indeks A",                      i: "NO0010582976", s: "Norge" }
     ]
   },
-  etf: {
-    "ETF · Skandinaviske aksjer (UCITS)": [
-      { t: "XACT-OBX",     n: "XACT OBX (Norge – 25 mest likvide)",  i: "NO0010198255" },
-      { t: "XACT-OMXS30",  n: "XACT OMXS30 (Sverige – 30 største)",  i: "SE0000693570" },
-      { t: "XACT-OMXS30-ESG", n: "XACT OMXS30 ESG (Sverige – ESG)",  i: "SE0000693293" },
-      { t: "XACT-NORDEN",  n: "XACT Norden 30 (Nordisk VINX30)",     i: "SE0001710914" }
+  tematisk: {
+    "Defensive / lavbeta aksjefond": [
+      { t: "KLP-LAVBETA",     n: "KLP AksjeGlobal Lavbeta",                 s: "Lavbeta global" },
+      { t: "STB-MULTIF",      n: "Storebrand Global Multifactor",           s: "Multifactor" },
+      { t: "DNB-LAVKARB",     n: "DNB Global Lavkarbon",                    s: "ESG/Lavkarbon" },
+      { t: "MINV",            n: "iShares Edge MSCI World Min Vol UCITS",   i: "IE00B8FHGS14", s: "Min vol" }
     ],
-    "ETF · Gearing (kortsiktig spekulasjon · høy risiko)": [
-      { t: "XACT-BULL-2",  n: "XACT Bull 2 (2x daglig OMXS30)",      i: "SE0003051010", note: "kun taktiske trekk – ikke buy & hold" },
-      { t: "XACT-BEAR-2",  n: "XACT Bear 2 (-2x daglig OMXS30)",     i: "SE0005466505", note: "shorting med 2x – kun korte holds" }
+    "Utbytte-fokuserte UCITS-ETFer": [
+      { t: "VHYL",            n: "Vanguard FTSE All-World High Div Yield UCITS", i: "IE00B8GKDB10", s: "Globalt utbytte" },
+      { t: "IDVY",            n: "iShares STOXX Global Select Dividend 100 UCITS", i: "DE000A0F5UH1", s: "Globalt utbytte" }
     ],
-    "Indeksfond · Norden (Nordnet)": [
-      { t: "KLP-AKSJENORGE-N",  n: "KLP AksjeNorge Indeks N",        i: "NO0012445214" },
-      { t: "KLP-AKSJENORDEN-N", n: "KLP AksjeNorden Indeks N",       i: "NO0012445230" },
-      { t: "DNB-NORGE-IDX-A",   n: "DNB Norge Indeks A",             i: "NO0010582976" },
-      { t: "DNB-NORDEN-IDX-A",  n: "DNB Norden Indeks A",            i: "NO0010815871" },
-      { t: "STB-NORGE-A",       n: "Storebrand Indeks Norge A",      i: "NO0010704265" },
-      { t: "NORDNET-NO",        n: "Nordnet Indeksfond Norge",       i: "SE0005993110", note: "0 % forvaltning" },
-      { t: "NORDNET-SE",        n: "Nordnet Sverige Index",          i: "SE0002756973", note: "0 % forvaltning" },
-      { t: "NORDNET-DK",        n: "Nordnet Indeksfond Danmark",     i: "SE0005993078", note: "0 % forvaltning" }
+    "Defensive nordiske utbytteaksjer": [
+      { t: "DNB",             n: "DNB Bank ASA",                            s: "Bank · utbytte" },
+      { t: "GJF",             n: "Gjensidige Forsikring",                   s: "Forsikring · utbytte" },
+      { t: "TRYG",            n: "Tryg Forsikring",                         s: "Forsikring · utbytte" },
+      { t: "NOVO-B",          n: "Novo Nordisk B",                          s: "Helse · defensiv" },
+      { t: "ORK",             n: "Orkla ASA",                               s: "Konsumvarer" }
     ],
-    "Aktive nordiske aksjefond": [
-      { t: "DNB-DISRUPT-N",     n: "DNB Fund Disruptive Opportunities N NOK (Acc)", i: "LU2075955943", note: "aktiv vekstforvaltning" },
-      { t: "ODIN-NORDEN-D",     n: "ODIN Norden D NOK",              i: "NO0010763881", note: "aktiv forvaltning" },
-      { t: "ODIN-NORGE-D",      n: "ODIN Norge D NOK",               i: "NO0010748213", note: "aktiv forvaltning" }
-    ]
-  },
-  indekser: {
-    "Norge": [
-      { t: "OSEBX", n: "Oslo Børs Benchmark Index",       r: "Bredt mål · 70 selskaper" },
-      { t: "OBX",   n: "OBX Total Return",                r: "25 mest omsatte · likvid" }
-    ],
-    "Sverige": [
-      { t: "OMXS30",  n: "OMX Stockholm 30",              r: "30 største svenske" },
-      { t: "OMXSPI",  n: "OMX Stockholm All-Share",       r: "Bredt mål · alle på Stockholm" }
-    ],
-    "Danmark": [
-      { t: "OMXC25",  n: "OMX København 25",              r: "25 største danske" }
-    ]
-  },
-  krypto: {
-    "EU-regulerte ETPs · Nasdaq Stockholm": [
-      { t: "BITCOIN XBT",  n: "CoinShares XBT Provider Bitcoin Tracker One",  m: "Nasdaq Stockholm" },
-      { t: "ETHEREUM XBT", n: "CoinShares XBT Provider Ethereum Tracker One", m: "Nasdaq Stockholm" }
+    "Edelmetall (ETC)": [
+      { t: "IGLN",            n: "iShares Physical Gold ETC",               i: "IE00B4ND3602", s: "Gull" },
+      { t: "PHGP",            n: "WisdomTree Physical Gold",                i: "JE00B1VS3770", s: "Gull" },
+      { t: "SGLD",            n: "Invesco Physical Gold ETC",               i: "IE00B579F325", s: "Gull" }
     ]
   }
 };
 
 // ─── UNIVERS-RENDERING ─────────────────────────────────
+const CATEGORY_META = {
+  likviditet: { label: 'Likviditet',          tag: 'Likv.',     subtitle: 'Kapitalbevaring · høy likviditet · Nordnet' },
+  rente:      { label: 'Rente',               tag: 'Rente',     subtitle: 'Obligasjons- og rentefond · Nordnet' },
+  aksjer:     { label: 'Aksjer',              tag: 'Aksjer',    subtitle: 'Bredt diversifiserte indeksfond og UCITS-ETFer · Nordnet' },
+  tematisk:   { label: 'Tematisk / Defensiv', tag: 'Tematisk',  subtitle: 'Utbytte, lavbeta, edelmetall · små allokeringer · Nordnet' }
+};
+
 function countUniverse() {
-  let counts = { aksjer: 0, etf: 0, indekser: 0, krypto: 0 };
+  let counts = { likviditet: 0, rente: 0, aksjer: 0, tematisk: 0 };
   for (const cat of Object.keys(counts)) {
     for (const group of Object.values(UNIVERSE[cat])) counts[cat] += group.length;
   }
@@ -1264,57 +1385,21 @@ function renderUniverse(filter) {
   const counts = countUniverse();
   let html = '';
 
-  const showCat = (filter === 'all' || filter === 'aksjer');
-  if (showCat) {
-    html += '<div class="universe-cat-header">Aksjer (' + counts.aksjer + ') · Norge · Sverige · Danmark</div>';
-    for (const [market, list] of Object.entries(UNIVERSE.aksjer)) {
-      html += '<div class="universe-subtitle">' + market + ' · ' + list.length + '</div>';
-      for (const it of list) {
-        html += '<div class="instrument-row">' +
-          '<span class="instrument-tick">' + it.t + '</span>' +
-          '<span class="instrument-name">' + it.n + '</span>' +
-          '<span class="instrument-cat">' + (it.s || 'Aksje') + '</span></div>';
-      }
-    }
-  }
-
-  if (filter === 'all' || filter === 'etf') {
-    html += '<div class="universe-cat-header">ETF &amp; Indeksfond (' + counts.etf + ') · Skandinavisk · Nordnet</div>';
-    for (const [grp, list] of Object.entries(UNIVERSE.etf)) {
+  const cats = ['likviditet', 'rente', 'aksjer', 'tematisk'];
+  for (const cat of cats) {
+    if (filter !== 'all' && filter !== cat) continue;
+    const meta = CATEGORY_META[cat];
+    html += '<div class="universe-cat-header">' + meta.label + ' (' + counts[cat] + ') · ' + meta.subtitle + '</div>';
+    for (const [grp, list] of Object.entries(UNIVERSE[cat])) {
       html += '<div class="universe-subtitle">' + grp + ' · ' + list.length + '</div>';
       for (const it of list) {
-        const note = it.note ? ' · ' + it.note : '';
         const isin = it.i ? ' (' + it.i + ')' : '';
+        const note = it.note ? ' · ' + it.note : '';
+        const sub  = it.s ? it.s : meta.tag;
         html += '<div class="instrument-row">' +
           '<span class="instrument-tick">' + it.t + '</span>' +
           '<span class="instrument-name">' + it.n + isin + note + '</span>' +
-          '<span class="instrument-cat">ETF</span></div>';
-      }
-    }
-  }
-
-  if (filter === 'all' || filter === 'indekser') {
-    html += '<div class="universe-cat-header">Indekser (' + counts.indekser + ') · Skandinavia</div>';
-    for (const [region, list] of Object.entries(UNIVERSE.indekser)) {
-      html += '<div class="universe-subtitle">' + region + ' · ' + list.length + '</div>';
-      for (const it of list) {
-        html += '<div class="instrument-row">' +
-          '<span class="instrument-tick">' + it.t + '</span>' +
-          '<span class="instrument-name">' + it.n + (it.r ? ' · ' + it.r : '') + '</span>' +
-          '<span class="instrument-cat">Indeks</span></div>';
-      }
-    }
-  }
-
-  if (filter === 'all' || filter === 'krypto') {
-    html += '<div class="universe-cat-header">Krypto – via EU-regulerte ETPs (' + counts.krypto + ')</div>';
-    for (const [grp, list] of Object.entries(UNIVERSE.krypto)) {
-      html += '<div class="universe-subtitle">' + grp + ' · ' + list.length + '</div>';
-      for (const it of list) {
-        html += '<div class="instrument-row">' +
-          '<span class="instrument-tick">' + it.t + '</span>' +
-          '<span class="instrument-name">' + it.n + ' · ' + it.m + '</span>' +
-          '<span class="instrument-cat">ETP</span></div>';
+          '<span class="instrument-cat">' + sub + '</span></div>';
       }
     }
   }
@@ -1347,9 +1432,72 @@ function formatDateShort(s) {
 }
 
 // ─── RENDER NOTE ───────────────────────────────────────
+function formatNOK(n) {
+  if (n === null || n === undefined) return '—';
+  return Math.round(n).toLocaleString('nb-NO').replace(/ /g, ' ') + ' kr';
+}
+
+function monthsBetween(fromISO, toISO) {
+  const a = new Date(fromISO);
+  const b = new Date(toISO);
+  let m = (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth());
+  if (b.getDate() < a.getDate()) m -= 1;
+  return Math.max(0, m);
+}
+
+function renderGoalBox(g, currentDate) {
+  if (!g || !g.target) return '';
+  const pct = Math.max(0, Math.min(100, (g.saved / g.target) * 100));
+  const monthsLeft = monthsBetween(currentDate, g.targetDate);
+  const remaining = Math.max(0, g.target - g.saved);
+  const monthsAtPace = g.monthly > 0 ? Math.ceil(remaining / g.monthly) : null;
+  const onTrack = monthsAtPace !== null && monthsAtPace <= monthsLeft;
+  const targetLabel = new Date(g.targetDate).toLocaleDateString('nb-NO', { month: 'long', year: 'numeric' });
+  return `
+    <div class="goal-box">
+      <div class="goal-eyebrow">Sparemål</div>
+      <div class="goal-headline">${g.label || 'Sparemål'} – ${formatNOK(g.target)}</div>
+      <div class="goal-stats">
+        <div>
+          <div class="goal-stat-val">${formatNOK(g.saved)}</div>
+          <div class="goal-stat-label">Spart hittil</div>
+        </div>
+        <div>
+          <div class="goal-stat-val">${pct.toFixed(0)} %</div>
+          <div class="goal-stat-label">Av målet</div>
+        </div>
+        <div>
+          <div class="goal-stat-val">${monthsLeft}</div>
+          <div class="goal-stat-label">Mnd til ${targetLabel}</div>
+        </div>
+        <div>
+          <div class="goal-stat-val">${formatNOK(g.monthly)}</div>
+          <div class="goal-stat-label">Pr. mnd</div>
+        </div>
+      </div>
+      <div class="goal-bar"><div class="goal-bar-fill" style="width:${pct.toFixed(1)}%"></div></div>
+      <div class="goal-meta">
+        <span>${formatNOK(remaining)} igjen</span>
+        <span>${monthsAtPace !== null ? (onTrack ? 'I rute · ' + monthsAtPace + ' mnd ved nåværende sparetempo' : 'Trenger økt sparetempo (' + monthsAtPace + ' mnd ved nåværende takt)') : ''}</span>
+      </div>
+    </div>`;
+}
+
+function renderGlidebaneStrip(gb, dd) {
+  if (!gb && !dd) return '';
+  const parts = [];
+  if (gb && gb.phase) {
+    parts.push('<span><strong>Glidebane</strong> · fase ' + gb.phase + ' · Aksjer-tak ' + (gb.aksjerCap || '—') + ' · Rente ' + (gb.renteCap || '—') + ' · Likviditet ' + (gb.likviditetCap || '—') + ' · Tematisk ' + (gb.tematiskCap || '—') + '</span>');
+  }
+  if (dd && dd.cap) {
+    parts.push('<span><strong>Drawdown</strong> · ' + (dd.current || '—') + ' av ' + dd.cap + ' · ' + (dd.status || '—') + '</span>');
+  }
+  return '<div class="regime-line blandet" style="flex-direction:column;align-items:flex-start;gap:6px;font-size:12px;line-height:1.5">' + parts.join('') + '</div>';
+}
+
 function renderNote(n) {
   currentNote = n;
-  const week = getWeekNumber(n.date);
+  const week = n.week || getWeekNumber(n.date);
 
   // Masthead meta
   document.getElementById('meta-week').textContent    = `Uke ${week}`;
@@ -1368,7 +1516,8 @@ function renderNote(n) {
 
   // Build notat content
   const container = document.getElementById('notat-content');
-  let html = `
+  let html = renderGoalBox(n.goal, n.date);
+  html += `
     <div class="regime-line ${n.regime.cssClass}">
       <div>
         <div class="regime-label">Markedsregime</div>
@@ -1376,6 +1525,7 @@ function renderNote(n) {
       </div>
       <div class="regime-desc">${n.regime.desc}</div>
     </div>`;
+  html += renderGlidebaneStrip(n.glidebane, n.drawdown);
 
   // Categories
   n.categories.forEach(cat => {
@@ -1409,6 +1559,8 @@ function renderNote(n) {
     const bulletsHTML = cat.bullets.map(b => `<li>${b}</li>`).join('');
     const worstHTML = cat.worstCase
       ? `<div class="worst-case">${cat.worstCase}</div>` : '';
+    const goalEffectHTML = cat.goalEffect
+      ? `<div class="worst-case" style="border-left-color:var(--gold);background:rgba(184,154,78,0.08)"><strong>Effekt på sparemål:</strong> ${cat.goalEffect}</div>` : '';
 
     html += `
       <div class="cat-card action-${cat.actionCss}">
@@ -1426,11 +1578,15 @@ function renderNote(n) {
           <div class="cat-grid">${gridCells}</div>
           <ul class="bullets">${bulletsHTML}</ul>
           ${worstHTML}
+          ${goalEffectHTML}
         </div>
       </div>`;
   });
 
   // Summary
+  const ddStatusLine = n.summary.drawdownStatus
+    ? `<div style="margin-top:14px;font-size:12px;color:var(--muted);letter-spacing:0.04em"><strong>Drawdown-status:</strong> ${n.summary.drawdownStatus}</div>`
+    : '';
   html += `
     <div class="summary-box">
       <div class="summary-title">Oppsummering</div>
@@ -1448,6 +1604,7 @@ function renderNote(n) {
           <div class="s-label">Viktigste risikofaktor</div>
         </div>
       </div>
+      ${ddStatusLine}
     </div>`;
 
   container.innerHTML = html;
@@ -1501,68 +1658,97 @@ function todayISO() {
 
 function flattenUniverseForPrompt() {
   const lines = [];
-  lines.push('AKSJER (' + Object.values(UNIVERSE.aksjer).reduce((a, b) => a + b.length, 0) + '):');
-  for (const [market, list] of Object.entries(UNIVERSE.aksjer)) {
-    lines.push('  ' + market + ': ' + list.map(x => x.t).join(', '));
+  const labels = {
+    likviditet: 'LIKVIDITET',
+    rente:      'RENTE',
+    aksjer:     'AKSJER',
+    tematisk:   'TEMATISK / DEFENSIV'
+  };
+  for (const cat of ['likviditet', 'rente', 'aksjer', 'tematisk']) {
+    const total = Object.values(UNIVERSE[cat]).reduce((a, b) => a + b.length, 0);
+    lines.push(labels[cat] + ' (' + total + '):');
+    for (const [grp, list] of Object.entries(UNIVERSE[cat])) {
+      lines.push('  ' + grp + ': ' + list.map(x => x.t).join(', '));
+    }
   }
-  lines.push('ETF UCITS (' + Object.values(UNIVERSE.etf).reduce((a, b) => a + b.length, 0) + '):');
-  for (const [grp, list] of Object.entries(UNIVERSE.etf)) {
-    lines.push('  ' + grp + ': ' + list.map(x => x.t).join(', '));
-  }
-  lines.push('INDEKSER (' + Object.values(UNIVERSE.indekser).reduce((a, b) => a + b.length, 0) + '):');
-  for (const [region, list] of Object.entries(UNIVERSE.indekser)) {
-    lines.push('  ' + region + ': ' + list.map(x => x.t).join(', '));
-  }
-  lines.push('KRYPTO ETP: ' + Object.values(UNIVERSE.krypto).flat().map(x => x.t).join(', '));
   return lines.join('\n');
 }
 
 function buildPrompt(week, date, edition) {
   const year = date.slice(0, 4);
   return 'Lag ukentlig markedsnotat for uke ' + week + ', ' + year + ' for Espen & Co Private Wealth Management.\n\n' +
+'KONTEKST: Sparemål er egenkapital til bolig (200 000 kr), tidshorisont 3–4 år, mål-dato april 2030.\n' +
+'Risikoprofil: lav-til-moderat. Kapitalbevaring veier tyngre enn avkastning. Månedlig sparing 12 000 kr.\n' +
+'Plattform: Nordnet. ASK for aksje- og ETF-delen. Drawdown-tak: 8 % på samlet portefølje.\n\n' +
 'Søk opp faktiske markedsdata for uken. Velg ETT instrument per kategori fra det faste universet:\n\n' +
 flattenUniverseForPrompt() + '\n\n' +
+'Glidebane (4 år til mål): Aksjer 25 % · Rente 35 % · Likviditet 35 % · Tematisk 5 %.\n' +
+'Forslag til KJØP/AVSETT må respektere takandelene.\n\n' +
 'Beslutningsregler:\n' +
-'- Handling tillatt kun når trend og momentum peker samme vei OG volatilitet ikke er høy\n' +
+'- Handling tillatt kun når glidebanen tillater det OG (trend/momentum eller rentenivå) støtter forslaget\n' +
+'- Volatilitet ikke "høy" for Aksjer/Tematisk\n' +
 '- Ved risiko-av: prioriter AVSTÅ/HOLD\n' +
-'- Indeks: kun HOLD eller AVSTÅ (ikke kjøp/salg)\n' +
-'- Foreslått størrelse: 0–1,0 % av hypotetisk kapital\n' +
-'- UCITS-godkjent og tilgjengelig på Nordnet er ufravikelig\n\n' +
+'- Likviditet: bruk AVSETT for månedssparing til høyrentekonto/pengemarkedsfond\n' +
+'- Foreslått størrelse: 0–1,5 % av hypotetisk kapital (Likviditet kan ta hele månedssparingen)\n' +
+'- UCITS-godkjent og tilgjengelig via Nordnet er ufravikelig\n\n' +
 'Lever resultatet som ETT enkelt kodevindu med JSON i nøyaktig dette formatet (alle feltnavn på engelsk):\n\n' +
 '{\n' +
 '  "edition": ' + edition + ',\n' +
 '  "date": "' + date + '",\n' +
+'  "week": ' + week + ',\n' +
+'  "goal": {\n' +
+'    "label": "Egenkapital til bolig",\n' +
+'    "target": 200000,\n' +
+'    "saved": 60000,\n' +
+'    "monthly": 12000,\n' +
+'    "targetDate": "2030-04-01",\n' +
+'    "currency": "NOK"\n' +
+'  },\n' +
 '  "regime": {\n' +
-'    "status": "Risiko-på",\n' +
-'    "cssClass": "risikopaa",\n' +
+'    "status": "Blandet",\n' +
+'    "cssClass": "blandet",\n' +
 '    "desc": "kort beskrivelse av regimet (1 setning)"\n' +
+'  },\n' +
+'  "glidebane": {\n' +
+'    "phase": "4 år",\n' +
+'    "aksjerCap": "25 %",\n' +
+'    "renteCap": "35 %",\n' +
+'    "likviditetCap": "35 %",\n' +
+'    "tematiskCap": "5 %"\n' +
+'  },\n' +
+'  "drawdown": {\n' +
+'    "current": "0,0 %",\n' +
+'    "cap": "8 %",\n' +
+'    "status": "Innenfor"\n' +
 '  },\n' +
 '  "categories": [\n' +
 '    {\n' +
-'      "num": "1", "name": "Aksjer",\n' +
-'      "instrument": "TICKER", "action": "KJØP", "actionCss": "kjop",\n' +
-'      "size": "0,5 %", "risk": "Lav", "data": "OK",\n' +
-'      "trend": "Positiv", "momentum": "Positiv", "vol": "Lav",\n' +
+'      "num": "1", "name": "Likviditet",\n' +
+'      "instrument": "TICKER", "action": "AVSETT", "actionCss": "kjop",\n' +
+'      "size": "12 000 kr", "risk": "Lav", "data": "OK",\n' +
+'      "trend": "Stabil", "momentum": "Stabil", "vol": "Lav",\n' +
 '      "bullets": ["punkt 1", "punkt 2", "punkt 3"],\n' +
-'      "worstCase": "kort worst-case (1 linje)"\n' +
+'      "worstCase": "kort worst-case (1 linje)",\n' +
+'      "goalEffect": "kort linje om effekt på sparemål"\n' +
 '    },\n' +
-'    { "num": "2", "name": "ETF", ... },\n' +
-'    { "num": "3", "name": "Indeks", ... },\n' +
-'    { "num": "4", "name": "Krypto", ... }\n' +
+'    { "num": "2", "name": "Rente", ... },\n' +
+'    { "num": "3", "name": "Aksjer", ... },\n' +
+'    { "num": "4", "name": "Tematisk", ... }\n' +
 '  ],\n' +
 '  "summary": {\n' +
-'    "actions": 3,\n' +
+'    "actions": 2,\n' +
 '    "abstentions": 1,\n' +
+'    "drawdownStatus": "Innenfor 8 %-taket",\n' +
 '    "riskFactor": "viktigste risikofaktor (1 setning)"\n' +
 '  }\n' +
 '}\n\n' +
 'Verdi-regler:\n' +
-'- "actionCss": "kjop" | "selg" | "hold" | "avsta" (små bokstaver, uten norske tegn)\n' +
+'- "actionCss": "kjop" | "selg" | "hold" | "avsta" (små bokstaver, uten norske tegn). Bruk "kjop" også for AVSETT.\n' +
 '- "cssClass": "risikopaa" | "risikoav" | "blandet"\n' +
-'- "action": "KJØP" | "SELG" | "HOLD" | "AVSTÅ" (store bokstaver, med norske tegn)\n' +
-'- For Indeks: "size" og "risk" kan være null\n' +
-'- For AVSTÅ: "size" er "0"\n' +
-'- Alltid alle 4 kategorier i rekkefølge: Aksjer, ETF, Indeks, Krypto\n\n' +
+'- "action": "KJØP" | "SELG" | "HOLD" | "AVSTÅ" | "AVSETT" (store bokstaver, med norske tegn)\n' +
+'- For AVSTÅ/HOLD uten size: bruk "0"\n' +
+'- Alltid alle 4 kategorier i rekkefølge: Likviditet, Rente, Aksjer, Tematisk\n' +
+'- "goal.saved" oppdateres med sist kjente sparte beløp\n\n' +
 'Lever som ETT JSON-kodevindu, ingen annen tekst rundt.';
 }
 
