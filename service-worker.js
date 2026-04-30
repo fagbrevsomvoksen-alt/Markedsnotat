@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'espen-co-v8-egenkapital';
+const CACHE_VERSION = 'espen-co-v9-ikoner';
 const APP_SHELL = [
   './index.html',
   './manifest.json',

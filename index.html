@@ -1515,8 +1515,11 @@ function renderNote(n) {
   chip.className = 'regime-chip ' + n.regime.cssClass;
 
   // Build notat content
+  // Sparemål-boksen er bevisst skjult fra UI – data ligger fortsatt i n.goal
+  // og brukes av "Effekt på sparemål"-feltene per kategori. renderGoalBox
+  // er beholdt som funksjon for evt. fremtidig bruk.
   const container = document.getElementById('notat-content');
-  let html = renderGoalBox(n.goal, n.date);
+  let html = '';
   html += `
     <div class="regime-line ${n.regime.cssClass}">
       <div>
