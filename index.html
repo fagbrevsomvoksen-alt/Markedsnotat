@@ -911,7 +911,7 @@
         <ul>
           <li>Mål: <strong>egenkapital til bolig – 200 000 kr</strong></li>
           <li>Tidshorisont: 3–4 år · mål-dato <strong>april 2030</strong></li>
-          <li>Risikoprofil: <strong>lav-til-moderat</strong> · kapitalbevaring veier tyngre enn avkastningsmaksimering</li>
+          <li>Risikoprofil: <strong>moderat-til-litt-høy</strong> · avkastning og kapitalbevaring balanseres, med litt overvekt mot vekst de første årene</li>
           <li>Månedlig sparing: 12 000 kr</li>
         </ul>
       </div>
@@ -922,19 +922,19 @@
       <div class="rule-content">
         <p>Anbefalt allokering trappes ned mot mål-datoen. Forslag til KJØP i Aksjer eller Tematisk skal ikke trekke porteføljen over takandelen. Hvis taket er nådd: HOLD eller AVSTÅ.</p>
         <ul style="margin-top:8px;">
-          <li>4 år (nå): Aksjer 25 % · Rente 35 % · Likviditet 35 % · Tematisk 5 %</li>
-          <li>3 år: Aksjer 20 % · Rente 35 % · Likviditet 40 % · Tematisk 5 %</li>
-          <li>2 år: Aksjer 12 % · Rente 35 % · Likviditet 50 % · Tematisk 3 %</li>
-          <li>1 år: Aksjer 5 % · Rente 25 % · Likviditet 70 % · Tematisk 0 %</li>
-          <li>6 mnd: Aksjer 0 % · Rente 10 % · Likviditet 90 % · Tematisk 0 %</li>
+          <li>4 år (nå): Aksjer 55 % · Rente 25 % · Likviditet 15 % · Tematisk 5 %</li>
+          <li>3 år: Aksjer 45 % · Rente 30 % · Likviditet 20 % · Tematisk 5 %</li>
+          <li>2 år: Aksjer 30 % · Rente 40 % · Likviditet 30 % · Tematisk 0 %</li>
+          <li>1 år: Aksjer 15 % · Rente 35 % · Likviditet 50 % · Tematisk 0 %</li>
+          <li>6 mnd: Aksjer 0 % · Rente 20 % · Likviditet 80 % · Tematisk 0 %</li>
         </ul>
       </div>
     </div>
 
     <div class="rule-block">
-      <div class="rule-heading">Drawdown-tak (8 %)</div>
+      <div class="rule-heading">Drawdown-tak (12 %)</div>
       <div class="rule-content">
-        <p>Hvis simulert drawdown overstiger <strong>8 % på samlet portefølje</strong>: prioriter SELG/AVSTÅ i Aksjer og Tematisk og flytt mot Likviditet inntil porteføljen er tilbake innenfor taket.</p>
+        <p>Hvis simulert drawdown overstiger <strong>12 % på samlet portefølje</strong>: prioriter SELG/AVSTÅ i Aksjer og Tematisk og flytt mot Likviditet inntil porteføljen er tilbake innenfor taket.</p>
       </div>
     </div>
 
@@ -964,7 +964,7 @@
       <div class="rule-content">
         <ul>
           <li>Foreslått størrelse: 0–1,5 % av hypotetisk kapital per ukes forslag</li>
-          <li>Kun lav-til-moderat risiko aksepteres for Aksjer/Tematisk</li>
+          <li>Kun moderat-til-litt-høy risiko aksepteres for Aksjer/Tematisk</li>
           <li>For Likviditet: månedssparing (12 000 kr) kan plasseres som AVSETT uten størrelsesbegrensning</li>
           <li>Alltid konservativ worst-case-kommentar og «Effekt på sparemål»-linje</li>
         </ul>
@@ -1131,7 +1131,7 @@
       <div class="rule-content">
         <p>For hvert instrument vurderes: ukentlig trend, momentum over 4–8 uker, volatilitetsnivå,
         gjeldende markedsregime og rentenivå. Forslag fattes kun når glidebanen tillater det,
-        og når trend/momentum (eller rentenivå) støtter forslaget. Drawdown over 8 % på samlet
+        og når trend/momentum (eller rentenivå) støtter forslaget. Drawdown over 12 % på samlet
         portefølje tvinger nedtrapping av risiko.</p>
       </div>
     </div>
@@ -1681,11 +1681,11 @@ function buildPrompt(week, date, edition) {
   const year = date.slice(0, 4);
   return 'Lag ukentlig markedsnotat for uke ' + week + ', ' + year + ' for Espen & Co Private Wealth Management.\n\n' +
 'KONTEKST: Sparemål er egenkapital til bolig (200 000 kr), tidshorisont 3–4 år, mål-dato april 2030.\n' +
-'Risikoprofil: lav-til-moderat. Kapitalbevaring veier tyngre enn avkastning. Månedlig sparing 12 000 kr.\n' +
-'Plattform: Nordnet. ASK for aksje- og ETF-delen. Drawdown-tak: 8 % på samlet portefølje.\n\n' +
+'Risikoprofil: moderat-til-litt-høy. Avkastning og kapitalbevaring balanseres, med litt overvekt mot vekst de første årene. Månedlig sparing 12 000 kr.\n' +
+'Plattform: Nordnet. ASK for aksje- og ETF-delen. Drawdown-tak: 12 % på samlet portefølje.\n\n' +
 'Søk opp faktiske markedsdata for uken. Velg ETT instrument per kategori fra det faste universet:\n\n' +
 flattenUniverseForPrompt() + '\n\n' +
-'Glidebane (4 år til mål): Aksjer 25 % · Rente 35 % · Likviditet 35 % · Tematisk 5 %.\n' +
+'Glidebane (4 år til mål): Aksjer 55 % · Rente 25 % · Likviditet 15 % · Tematisk 5 %.\n' +
 'Forslag til KJØP/AVSETT må respektere takandelene.\n\n' +
 'Beslutningsregler:\n' +
 '- Handling tillatt kun når glidebanen tillater det OG (trend/momentum eller rentenivå) støtter forslaget\n' +
@@ -1714,9 +1714,9 @@ flattenUniverseForPrompt() + '\n\n' +
 '  },\n' +
 '  "glidebane": {\n' +
 '    "phase": "4 år",\n' +
-'    "aksjerCap": "25 %",\n' +
-'    "renteCap": "35 %",\n' +
-'    "likviditetCap": "35 %",\n' +
+'    "aksjerCap": "55 %",\n' +
+'    "renteCap": "25 %",\n' +
+'    "likviditetCap": "15 %",\n' +
 '    "tematiskCap": "5 %"\n' +
 '  },\n' +
 '  "drawdown": {\n' +
@@ -1741,7 +1741,7 @@ flattenUniverseForPrompt() + '\n\n' +
 '  "summary": {\n' +
 '    "actions": 2,\n' +
 '    "abstentions": 1,\n' +
-'    "drawdownStatus": "Innenfor 8 %-taket",\n' +
+'    "drawdownStatus": "Innenfor 12 %-taket",\n' +
 '    "riskFactor": "viktigste risikofaktor (1 setning)"\n' +
 '  }\n' +
 '}\n\n' +

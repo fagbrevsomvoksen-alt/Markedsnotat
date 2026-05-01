@@ -20,12 +20,12 @@ Et ukentlig, regelbasert markedsnotat i simuleringsformat under det fiktive firm
 
 ### Hva som endret seg 2026-04-30
 - **Vinkling lagt om fra "hva jeg eier" til "sparemål-progresjon".** Egenkapital-mål, spart-så-langt og månedlig sparetempo vises øverst på Notat-fanen.
-- **Risikoprofil senket fra "høy" til "lav-til-moderat"** – matcher 3–4 års horisont og kapitalbevaring som førsteprioritet.
+- **Risikoprofil justert fra "høy" til "moderat-til-litt-høy"** – matcher 3–4 års horisont og kapitalbevaring som førsteprioritet.
 - **Tidshorisont oppdatert fra 1,5–2 år til 3–4 år** (mål-dato: april 2030).
 - **Kategoristruktur omorganisert** fra instrumenttype (Aksjer/ETF/Indeks/Krypto) til rolle (Likviditet/Rente/Aksjer/Tematisk).
 - **Univers byttet ut** men holdt på ~69 instrumenter: krypto fjernet, enkelt-aksjer kraftig redusert (kun 5 defensive utbytteaksjer beholdt under Tematisk), rentefond og pengemarkedsfond lagt til som hovedvekt.
 - **Glidebane** lagt til som regel: aksjeandel trappes ned mot mål-datoen.
-- **Drawdown-tak** på 8 % av samlet kapital lagt inn som hard regel.
+- **Drawdown-tak** på 12 % av samlet kapital lagt inn som hard regel.
 - **Service Worker:** `espen-co-v8-egenkapital` (bumpet fra v7).
 - **`omposisjonering-2026-04-28.md` arkivert** til `arkiv/`.
 - v6 og v7-tenking ligger i `backup-v6/` for historikk.
@@ -35,19 +35,19 @@ Et ukentlig, regelbasert markedsnotat i simuleringsformat under det fiktive firm
 - **Tidshorisont:** 3–4 år. **Mål-dato: april 2030.**
 - **Spart hittil:** 60 000 kr.
 - **Månedlig sparing:** 12 000 kr.
-- **Risikoprofil:** Lav-til-moderat. Kapitalbevaring veier tyngre enn avkastningsmaksimering.
-- **Drawdown-tak:** Maks 8 % på samlet portefølje før reglene tvinger nedtrapping av risiko.
+- **Risikoprofil:** Moderat-til-litt-høy. Avkastning og kapitalbevaring balanseres, med litt overvekt mot vekst de første årene.
+- **Drawdown-tak:** Maks 12 % på samlet portefølje før reglene tvinger nedtrapping av risiko.
 - **Plattform:** Nordnet brukes for handel og sparing. ASK brukes for aksje- og ETF-delen (skatteeffektiv reallokering så lenge midlene blir på kontoen). Rentefond, pengemarkedsfond og høyrentekonto plasseres der vilkårene er best.
 
 ### Glidebane (anbefalt allokering over tid)
 
 | Tid til mål | Aksjer | Rente | Likviditet | Tematisk |
 |---|---:|---:|---:|---:|
-| 4 år (nå) | 25 % | 35 % | 35 % | 5 % |
-| 3 år | 20 % | 35 % | 40 % | 5 % |
-| 2 år | 12 % | 35 % | 50 % | 3 % |
-| 1 år | 5 % | 25 % | 70 % | 0 % |
-| 6 mnd | 0 % | 10 % | 90 % | 0 % |
+| 4 år (nå) | 55 % | 25 % | 15 % | 5 % |
+| 3 år | 45 % | 30 % | 20 % | 5 % |
+| 2 år | 30 % | 40 % | 30 % | 0 % |
+| 1 år | 15 % | 35 % | 50 % | 0 % |
+| 6 mnd | 0 % | 20 % | 80 % | 0 % |
 
 ### Appen i v8
 - Branding: **Espen & Co Private Wealth Management** (uendret)

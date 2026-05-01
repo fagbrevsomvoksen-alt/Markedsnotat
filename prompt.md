@@ -14,8 +14,8 @@
 - **Tidshorisont:** 3–4 år. Mål-dato: april 2030.
 - **Spart hittil:** ~60 000 kr (oppdateres i `goal`-blokken hver uke).
 - **Månedlig sparing:** 12 000 kr.
-- **Risikoprofil:** Lav-til-moderat. Kapitalbevaring veier tyngre enn avkastningsmaksimering.
-- **Drawdown-tak:** Maks 8 % på samlet portefølje. Hvis simulert drawdown overstiger taket, prioriter SELG/AVSTÅ inntil porteføljen er tilbake innenfor.
+- **Risikoprofil:** Moderat-til-litt-høy. Avkastning og kapitalbevaring balanseres, med litt overvekt mot vekst de første årene.
+- **Drawdown-tak:** Maks 12 % på samlet portefølje. Hvis simulert drawdown overstiger taket, prioriter SELG/AVSTÅ inntil porteføljen er tilbake innenfor.
 
 ## PLATTFORM OG KONTOSTRUKTUR
 
@@ -39,11 +39,11 @@ Anbefalt allokering avhenger av tid igjen til mål-dato (april 2030):
 
 | Tid til mål | Aksjer | Rente | Likviditet | Tematisk |
 |---|---:|---:|---:|---:|
-| 4 år (nå) | 25 % | 35 % | 35 % | 5 % |
-| 3 år | 20 % | 35 % | 40 % | 5 % |
-| 2 år | 12 % | 35 % | 50 % | 3 % |
-| 1 år | 5 % | 25 % | 70 % | 0 % |
-| 6 mnd | 0 % | 10 % | 90 % | 0 % |
+| 4 år (nå) | 55 % | 25 % | 15 % | 5 % |
+| 3 år | 45 % | 30 % | 20 % | 5 % |
+| 2 år | 30 % | 40 % | 30 % | 0 % |
+| 1 år | 15 % | 35 % | 50 % | 0 % |
+| 6 mnd | 0 % | 20 % | 80 % | 0 % |
 
 Forslag til KJØP i Aksjer eller Tematisk skal ikke trekke porteføljen over takandelen for nåværende tidspunkt på glidebanen. Hvis takandelen er nådd: foreslå HOLD eller AVSTÅ, ikke KJØP.
 
@@ -116,7 +116,7 @@ For hvert kategoriutvalg:
   - b) Trend og momentum (eller rentenivå) støtter forslaget, og
   - c) Volatilitet ikke er "høy" for Aksjer/Tematisk-kategoriene, og
   - d) Begrunnelse kan gis i 2–3 korte punkter uten nyhetstolkning.
-- Hvis simulert drawdown >8 %: prioriter AVSTÅ/SELG i Aksjer og Tematisk; vurder å flytte til Likviditet.
+- Hvis simulert drawdown >12 %: prioriter AVSTÅ/SELG i Aksjer og Tematisk; vurder å flytte til Likviditet.
 - Hvis regime er "risiko-av": prioriter AVSTÅ eller HOLD; unngå kjøp-forslag i Aksjer/Tematisk.
 - For high yield (DNB-HY, KLP-HOYRENTE): kun ved entydig "risiko-på", maks 3 % allokering.
 - Likviditet-kategorien: foreslå AVSETT (sparekonto / pengemarked) hvis månedlig sparing skal plasseres trygt; ellers HOLD.
@@ -189,5 +189,5 @@ Effekt på sparemål (1 linje):
 OPPSUMMERING (4 linjer maks)
 - Foreslåtte handlinger: X
 - Avståelser: Y
-- Drawdown-status: [innenfor 8 %-taket / nær taket / over taket]
+- Drawdown-status: [innenfor 12 %-taket / nær taket / over taket]
 - Viktigste risikofaktor denne uken (kort, nøkternt):

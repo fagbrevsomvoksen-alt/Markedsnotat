@@ -13,18 +13,18 @@
   "regime": {
     "status": "Blandet",
     "cssClass": "blandet",
-    "desc": "Aksjer nær toppen, men inflasjon 3,3 % og rentenivå stabilt høyt – kapitalbevaring prioritert"
+    "desc": "Aksjer nær toppen, men inflasjon 3,3 % og rentenivå stabilt høyt – balansert mellom vekst og bevaring"
   },
   "glidebane": {
     "phase": "4 år",
-    "aksjerCap": "25 %",
-    "renteCap": "35 %",
-    "likviditetCap": "35 %",
+    "aksjerCap": "55 %",
+    "renteCap": "25 %",
+    "likviditetCap": "15 %",
     "tematiskCap": "5 %"
   },
   "drawdown": {
     "current": "0,0 %",
-    "cap": "8 %",
+    "cap": "12 %",
     "status": "Innenfor"
   },
   "categories": [
@@ -42,7 +42,7 @@
       "vol": "Lav",
       "bullets": [
         "Bank Norwegian tilbyr 4,75 % årlig rente på sparekonto – konkurransedyktig vs. korte rentefond",
-        "Full likviditet og innskuddsgaranti opp til 2 mill. NOK – passer kapitalbevaring-fokuset",
+        "Full likviditet og innskuddsgaranti opp til 2 mill. NOK – passer den balanserte profilen",
         "Månedlig sparing på 12 000 kr legges her i påvente av rebalansering mot rente/aksjer"
       ],
       "worstCase": "Realavkastning 1,4 % etter inflasjon 3,3 % – ingen nominell drawdown.",
@@ -63,7 +63,7 @@
       "bullets": [
         "Kort durasjon (~1 år) – minimal renterisiko hvis Norges Bank fortsatt holder styringsrenten høyt",
         "Effektiv rente ~4,3 % p.a., kostnader 0,15 % – netto fortsatt over inflasjon",
-        "Fyller renteandelen i glidebanen (mål 35 % – aktuell allokering under takandelen)"
+        "Fyller renteandelen i glidebanen (mål 25 % – aktuell allokering under takandelen)"
       ],
       "worstCase": "Plutselig renteoppgang +0,5 % gir kortvarig fall på ~0,5 %.",
       "goalEffect": "Et 0,5 %-fall på 1 % allokering ≈ 100 kr i tap – uvesentlig for målet."
@@ -82,11 +82,11 @@
       "vol": "Moderat",
       "bullets": [
         "Globalt indeksfond uten forvaltningskostnad på Nordnet – best i klassen for ASK-egnet aksje-eksponering",
-        "Trend og momentum positivt, men aksjeandel er allerede ved takandelen (25 %) på glidebanen",
+        "Trend og momentum positivt, men aksjeandel er allerede ved takandelen (55 %) på glidebanen",
         "Regel: ikke øk eksponering når takandelen er nådd – HOLD er rett valg"
       ],
       "worstCase": "Mag-7-skuffelse kan gi 12–18 % korreksjon globalt.",
-      "goalEffect": "12 % fall på 25 %-aksjeandel = ~3 % på samlet kapital ≈ 4 mnd ekstra sparing."
+      "goalEffect": "12 % fall på 55 %-aksjeandel = ~6,5 % på samlet kapital ≈ 9 mnd ekstra sparing."
     },
     {
       "num": "4",
@@ -102,7 +102,7 @@
       "vol": "Moderat",
       "bullets": [
         "Gull har steget 22 % YTD – attraktiv på papiret, men volatiliteten er over snittet",
-        "Tematisk-kategorien har et tak på 5 % i nåværende glidebane-fase – minimal plass å fylle",
+        "Tematisk-kategorien har et tak på 5 % i nåværende glidebane-fase – små defensive ankre (lavbeta, utbytte, gull) tillates som motvekt til aksjeandelen",
         "Begrunnelse for AVSTÅ: bedre risk/reward i Rente-kategorien gitt rentenivået"
       ],
       "worstCase": "Sterk USD eller risiko-av kan gi 10–15 % korreksjon på gull.",
@@ -112,7 +112,7 @@
   "summary": {
     "actions": 2,
     "abstentions": 1,
-    "drawdownStatus": "Innenfor 8 %-taket",
+    "drawdownStatus": "Innenfor 12 %-taket",
     "riskFactor": "Aksjeandel ved glidebane-tak; videre vekst krever rebalansering, ikke nye kjøp."
   }
 }
