@@ -1,6 +1,6 @@
 {
-  "edition": 2,
-  "date": "2026-04-30",
+  "edition": 3,
+  "date": "2026-05-01",
   "week": 18,
   "goal": {
     "label": "Egenkapital til bolig",
@@ -13,7 +13,7 @@
   "regime": {
     "status": "Blandet",
     "cssClass": "blandet",
-    "desc": "Aksjer nær toppen, men inflasjon 3,3 % og rentenivå stabilt høyt – balansert mellom vekst og bevaring"
+    "desc": "Aksjer nær ATH etter sterk april, men olje over 110 USD, gull i ATH og hawkish Norges Bank holder hale-risikoen åpen."
   },
   "glidebane": {
     "phase": "4 år",
@@ -23,7 +23,7 @@
     "tematiskCap": "5 %"
   },
   "drawdown": {
-    "current": "0,0 %",
+    "current": "0,8 %",
     "cap": "12 %",
     "status": "Innenfor"
   },
@@ -31,88 +31,88 @@
     {
       "num": "1",
       "name": "Likviditet",
-      "instrument": "Bank Norwegian Sparekonto",
+      "instrument": "NORDNET-PLUSS",
       "action": "AVSETT",
       "actionCss": "kjop",
-      "size": "12 000 kr (månedssparing)",
+      "size": "12 000 kr",
       "risk": "Lav",
       "data": "OK",
       "trend": "Stabil",
       "momentum": "Stabil",
       "vol": "Lav",
       "bullets": [
-        "Bank Norwegian tilbyr 4,75 % årlig rente på sparekonto – konkurransedyktig vs. korte rentefond",
-        "Full likviditet og innskuddsgaranti opp til 2 mill. NOK – passer den balanserte profilen",
-        "Månedlig sparing på 12 000 kr legges her i påvente av rebalansering mot rente/aksjer"
+        "Beste fleksible høyrentekontoer på Nordnet-plattformen ligger nær 5 % nominelt, godt over KPI på 3,6 %.",
+        "Norges Bank holdt 4 % i mars og signaliserte mulig heving til 4,25–4,5 % – kort likviditet beskyttes mot rentebevegelser.",
+        "Innskudd dekkes av Bankenes sikringsfond opp til 2 mill. kr; full likviditet inn mot mål-dato april 2030."
       ],
-      "worstCase": "Realavkastning 1,4 % etter inflasjon 3,3 % – ingen nominell drawdown.",
-      "goalEffect": "Renten ligger over forventet; bidrar med ~570 kr/mnd til mål."
+      "worstCase": "Realavkastning trekker seg sammen om Norges Bank kutter raskere enn ventet og inflasjon holder seg sticky.",
+      "goalEffect": "Bygger bufferdelen jevnt mot 15 %-taket og sikrer månedssparingen i et blandet regime."
     },
     {
       "num": "2",
       "name": "Rente",
-      "instrument": "KLP Obligasjon 1 år",
+      "instrument": "KLP-OBL1",
       "action": "KJØP",
       "actionCss": "kjop",
       "size": "1,0 %",
-      "risk": "Lav",
+      "risk": "Lav-til-moderat",
       "data": "OK",
-      "trend": "Stabil",
-      "momentum": "Positiv",
+      "trend": "Svakt opp",
+      "momentum": "Stabil",
       "vol": "Lav",
       "bullets": [
-        "Kort durasjon (~1 år) – minimal renterisiko hvis Norges Bank fortsatt holder styringsrenten høyt",
-        "Effektiv rente ~4,3 % p.a., kostnader 0,15 % – netto fortsatt over inflasjon",
-        "Fyller renteandelen i glidebanen (mål 25 % – aktuell allokering under takandelen)"
+        "Kort durasjon (1–3 år) demper kursrisiko dersom Norges Bank hever til 4,25–4,5 % senere i 2026.",
+        "Yield-to-maturity i nordisk IG ligger rundt 4,5–5 %, som gir solid løpende avkastning på 3–4 års horisont.",
+        "Inflasjonen sitter fast på ~3 % – kort rente leverer positiv realrente uten å binde durasjon."
       ],
-      "worstCase": "Plutselig renteoppgang +0,5 % gir kortvarig fall på ~0,5 %.",
-      "goalEffect": "Et 0,5 %-fall på 1 % allokering ≈ 100 kr i tap – uvesentlig for målet."
+      "worstCase": "Bredere kredittutgang ved oljesjokk og risiko-av kan gi 1–2 % midlertidig verdifall.",
+      "goalEffect": "Stabiliserer rentebenet og beskytter kapital de siste 3–4 årene før mål."
     },
     {
       "num": "3",
       "name": "Aksjer",
-      "instrument": "Nordnet Indeksfond Global",
+      "instrument": "VWCE",
       "action": "HOLD",
       "actionCss": "hold",
       "size": "0",
-      "risk": "Moderat",
+      "risk": "Moderat-til-høy",
       "data": "OK",
       "trend": "Positiv",
-      "momentum": "Positiv",
+      "momentum": "Sterk",
       "vol": "Moderat",
       "bullets": [
-        "Globalt indeksfond uten forvaltningskostnad på Nordnet – best i klassen for ASK-egnet aksje-eksponering",
-        "Trend og momentum positivt, men aksjeandel er allerede ved takandelen (55 %) på glidebanen",
-        "Regel: ikke øk eksponering når takandelen er nådd – HOLD er rett valg"
+        "S&P 500 ~7 136 og MSCI World +9 % i april gir sterk momentum, men prising er strukket (P/E ~23).",
+        "VIX 18,8 er moderat, men Iran-konflikten og Brent over 110 USD holder hale-risikoen åpen.",
+        "Eksisterende global eksponering beholdes – avventer pullback eller tegn på de-eskalering før påfyll."
       ],
-      "worstCase": "Mag-7-skuffelse kan gi 12–18 % korreksjon globalt.",
-      "goalEffect": "12 % fall på 55 %-aksjeandel = ~6,5 % på samlet kapital ≈ 9 mnd ekstra sparing."
+      "worstCase": "Eskalering i Midtøsten kan gi 10–15 % korreksjon globalt og presse drawdown-taket på 12 %.",
+      "goalEffect": "Beholder vekstmotoren mot 55 %-målet uten å øke eksponering på rekordnivåer."
     },
     {
       "num": "4",
       "name": "Tematisk",
-      "instrument": "iShares Physical Gold ETC (IGLN)",
-      "action": "AVSTÅ",
-      "actionCss": "avsta",
-      "size": "0",
+      "instrument": "IGLN",
+      "action": "KJØP",
+      "actionCss": "kjop",
+      "size": "0,5 %",
       "risk": "Moderat",
       "data": "OK",
-      "trend": "Positiv",
-      "momentum": "Positiv",
+      "trend": "Sterkt opp",
+      "momentum": "Sterk",
       "vol": "Moderat",
       "bullets": [
-        "Gull har steget 22 % YTD – attraktiv på papiret, men volatiliteten er over snittet",
-        "Tematisk-kategorien har et tak på 5 % i nåværende glidebane-fase – små defensive ankre (lavbeta, utbytte, gull) tillates som motvekt til aksjeandelen",
-        "Begrunnelse for AVSTÅ: bedre risk/reward i Rente-kategorien gitt rentenivået"
+        "Gull rundt 4 550 USD/oz – ATH-nivå drevet av sentralbankkjøp, geopolitikk og inflasjonshedge-etterspørsel.",
+        "iShares Physical Gold (IGLN) er fysisk dekket, UCITS-godkjent og handles i USD på Nordnet (ASK-egnet).",
+        "Liten posisjon innen 5 %-taket gir defensiv ballast og dekobler porteføljen fra aksjebenet."
       ],
-      "worstCase": "Sterk USD eller risiko-av kan gi 10–15 % korreksjon på gull.",
-      "goalEffect": "Med 0 % allokering: ingen effekt denne uken."
+      "worstCase": "Rask de-eskalering i Midtøsten kombinert med sterkere USD kan gi 8–12 % korreksjon i gull.",
+      "goalEffect": "Diversifiserer porteføljen og demper drawdown-risiko hvis aksjer korrigerer."
     }
   ],
   "summary": {
-    "actions": 2,
+    "actions": 3,
     "abstentions": 1,
     "drawdownStatus": "Innenfor 12 %-taket",
-    "riskFactor": "Aksjeandel ved glidebane-tak; videre vekst krever rebalansering, ikke nye kjøp."
+    "riskFactor": "Eskalering i Iran-konflikten med vedvarende oljesjokk og en hawkish Norges Bank som hever rentene."
   }
 }
