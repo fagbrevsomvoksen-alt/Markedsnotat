@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'espen-co-v9-ikoner';
+const CACHE_VERSION = 'espen-co-v10-risikoprofil';
 const APP_SHELL = [
   './index.html',
   './manifest.json',
