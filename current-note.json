@@ -1,7 +1,7 @@
 {
-  "edition": 3,
-  "date": "2026-05-01",
-  "week": 18,
+  "edition": 4,
+  "date": "2026-05-04",
+  "week": 19,
   "goal": {
     "label": "Egenkapital til bolig",
     "target": 200000,
@@ -11,9 +11,9 @@
     "currency": "NOK"
   },
   "regime": {
-    "status": "Blandet",
-    "cssClass": "blandet",
-    "desc": "Aksjer nær ATH etter sterk april, men olje over 110 USD, gull i ATH og hawkish Norges Bank holder hale-risikoen åpen."
+    "status": "Risiko-på",
+    "cssClass": "risikopaa",
+    "desc": "S&P 500 og NASDAQ stengte 1. mai i rekord, VIX nær 17 og Q1-rapportene slår estimater bredt – men Norges Bank-møtet 7. mai og oljepris over USD 100 holder hendelsesrisikoen levende."
   },
   "glidebane": {
     "phase": "4 år",
@@ -23,7 +23,7 @@
     "tematiskCap": "5 %"
   },
   "drawdown": {
-    "current": "0,8 %",
+    "current": "0,0 %",
     "cap": "12 %",
     "status": "Innenfor"
   },
@@ -41,78 +41,78 @@
       "momentum": "Stabil",
       "vol": "Lav",
       "bullets": [
-        "Beste fleksible høyrentekontoer på Nordnet-plattformen ligger nær 5 % nominelt, godt over KPI på 3,6 %.",
-        "Norges Bank holdt 4 % i mars og signaliserte mulig heving til 4,25–4,5 % – kort likviditet beskyttes mot rentebevegelser.",
-        "Innskudd dekkes av Bankenes sikringsfond opp til 2 mill. kr; full likviditet inn mot mål-dato april 2030."
+        "Norges Bank holdt styringsrenten uendret på 4,00 % i mars og rentebanen er løftet mot 4,25–4,50 % ved årsslutt.",
+        "Høyrentekontoer i Nordnet-universet ligger nå rundt 4,0–5,0 % og slår fortsatt KPI-veksten på 3,6 %.",
+        "Månedssparingen parkeres uten rentebinding rett foran rentemøtet 7. mai – maksimal fleksibilitet."
       ],
-      "worstCase": "Realavkastning trekker seg sammen om Norges Bank kutter raskere enn ventet og inflasjon holder seg sticky.",
-      "goalEffect": "Bygger bufferdelen jevnt mot 15 %-taket og sikrer månedssparingen i et blandet regime."
+      "worstCase": "Brå rentekutt fra Norges Bank kan presse innskuddsrenten ned mot inflasjon og gi nær null realavkastning.",
+      "goalEffect": "Sikrer kontant glidebane mot 2030 og dekker hele månedssparerate uten markedsrisiko."
     },
     {
       "num": "2",
       "name": "Rente",
-      "instrument": "KLP-OBL1",
+      "instrument": "KLP-OBL3",
       "action": "KJØP",
       "actionCss": "kjop",
-      "size": "1,0 %",
-      "risk": "Lav-til-moderat",
+      "size": "600 kr",
+      "risk": "Lav",
       "data": "OK",
-      "trend": "Svakt opp",
+      "trend": "Stigende",
       "momentum": "Stabil",
       "vol": "Lav",
       "bullets": [
-        "Kort durasjon (1–3 år) demper kursrisiko dersom Norges Bank hever til 4,25–4,5 % senere i 2026.",
-        "Yield-to-maturity i nordisk IG ligger rundt 4,5–5 %, som gir solid løpende avkastning på 3–4 års horisont.",
-        "Inflasjonen sitter fast på ~3 % – kort rente leverer positiv realrente uten å binde durasjon."
+        "Kort durasjon (1–3 år) gir attraktiv løpende rente med begrenset kursrisiko foran Norges Bank 7. mai.",
+        "Den oppjusterte rentebanen tilsier at korte renter holder seg høye gjennom resten av 2026.",
+        "UCITS-godkjent, Nordnet-tilgjengelig og passer godt inn i ASK-rammen for renteandelen."
       ],
-      "worstCase": "Bredere kredittutgang ved oljesjokk og risiko-av kan gi 1–2 % midlertidig verdifall.",
-      "goalEffect": "Stabiliserer rentebenet og beskytter kapital de siste 3–4 årene før mål."
+      "worstCase": "Ny inflasjonsoverraskelse løfter lange renter brått og gir kortvarig kursfall på 1–2 %.",
+      "goalEffect": "Bygger renteandelen mot taket på 25 % og demper volatiliteten i totalporteføljen."
     },
     {
       "num": "3",
       "name": "Aksjer",
       "instrument": "VWCE",
-      "action": "HOLD",
-      "actionCss": "hold",
-      "size": "0",
-      "risk": "Moderat-til-høy",
+      "action": "KJØP",
+      "actionCss": "kjop",
+      "size": "900 kr",
+      "risk": "Middels",
       "data": "OK",
-      "trend": "Positiv",
-      "momentum": "Sterk",
-      "vol": "Moderat",
+      "trend": "Stigende",
+      "momentum": "Positiv",
+      "vol": "Lav",
       "bullets": [
-        "S&P 500 ~7 136 og MSCI World +9 % i april gir sterk momentum, men prising er strukket (P/E ~23).",
-        "VIX 18,8 er moderat, men Iran-konflikten og Brent over 110 USD holder hale-risikoen åpen.",
-        "Eksisterende global eksponering beholdes – avventer pullback eller tegn på de-eskalering før påfyll."
+        "S&P 500 (7 230) og NASDAQ (25 114) avsluttet april i rekord, og 84 % av Q1-rapportene har slått estimater.",
+        "VIX rundt 17 og bred sektordeltakelse bekrefter risiko-på-regime tross overkjøpte indekser.",
+        "VWCE er bredt UCITS-globalfond på Nordnet, ASK-egnet og kostnadseffektiv kjernebyggekloss."
       ],
-      "worstCase": "Eskalering i Midtøsten kan gi 10–15 % korreksjon globalt og presse drawdown-taket på 12 %.",
-      "goalEffect": "Beholder vekstmotoren mot 55 %-målet uten å øke eksponering på rekordnivåer."
+      "worstCase": "Eskalering rundt Iran/olje eller en hauk-Norges Bank kan utløse 5–10 % korreksjon på kort sikt.",
+      "goalEffect": "Holder aksjeandelen rettet mot taket på 55 % og fanger opp vekst tidlig i glidebanen."
     },
     {
       "num": "4",
       "name": "Tematisk",
       "instrument": "IGLN",
-      "action": "KJØP",
-      "actionCss": "kjop",
-      "size": "0,5 %",
-      "risk": "Moderat",
+      "action": "AVSTÅ",
+      "actionCss": "avsta",
+      "size": "0",
+      "risk": "Middels",
       "data": "OK",
-      "trend": "Sterkt opp",
-      "momentum": "Sterk",
-      "vol": "Moderat",
+      "trend": "Stigende",
+      "momentum": "Positiv",
+      "vol": "Høy",
       "bullets": [
-        "Gull rundt 4 550 USD/oz – ATH-nivå drevet av sentralbankkjøp, geopolitikk og inflasjonshedge-etterspørsel.",
-        "iShares Physical Gold (IGLN) er fysisk dekket, UCITS-godkjent og handles i USD på Nordnet (ASK-egnet).",
-        "Liten posisjon innen 5 %-taket gir defensiv ballast og dekobler porteføljen fra aksjebenet."
+        "Gullprisen rundt USD 4 600/oz er historisk høy og volatiliteten i edelmetall er forhøyet.",
+        "Tematisk har kun 5 %-tak – ingen hast med å bygge eksponering ved disse nivåene.",
+        "I et tydelig risiko-på-regime gir defensive/utbytteposisjoner liten marginalnytte denne uken."
       ],
-      "worstCase": "Rask de-eskalering i Midtøsten kombinert med sterkere USD kan gi 8–12 % korreksjon i gull.",
-      "goalEffect": "Diversifiserer porteføljen og demper drawdown-risiko hvis aksjer korrigerer."
+      "worstCase": "Inngang nå risikerer 10–15 % retracement hvis oljerisikoen letter og gull faller tilbake.",
+      "goalEffect": "Bevarer fleksibilitet til å bygge tematisk posisjon ved bedre inngang senere i glidebanen."
     }
   ],
   "summary": {
     "actions": 3,
     "abstentions": 1,
     "drawdownStatus": "Innenfor 12 %-taket",
-    "riskFactor": "Eskalering i Iran-konflikten med vedvarende oljesjokk og en hawkish Norges Bank som hever rentene."
+    "riskFactor": "Norges Bank-møtet 7. mai kombinert med uavklart Iran-/oljerisiko er ukens viktigste sjokkfaktor."
   }
 }
