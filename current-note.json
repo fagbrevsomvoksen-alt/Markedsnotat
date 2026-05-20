@@ -1,7 +1,7 @@
 {
-  "edition": 5,
-  "date": "2026-05-04",
-  "week": 19,
+  "edition": 6,
+  "date": "2026-05-20",
+  "week": 21,
   "goal": {
     "label": "Egenkapital til bolig",
     "target": 200000,
@@ -13,7 +13,7 @@
   "regime": {
     "status": "Blandet",
     "cssClass": "blandet",
-    "desc": "Risk-på i aksjer (S&P 500 ~7 250, OBX nær all-time high, VIX ~17), men Norges Banks rentemøte 7. mai og inflasjon på 3,0 % skaper kortsiktig usikkerhet."
+    "desc": "Norges Banks hike til 4,25 % og fortsatt Midtøsten-usikkerhet drar diskonteringsrentene opp samtidig som Q1-resultatsesongen leverer godt – balansert risikobilde med svakere kortsiktig momentum."
   },
   "glidebane": {
     "phase": "4 år",
@@ -23,7 +23,7 @@
     "tematiskCap": "5 %"
   },
   "drawdown": {
-    "current": "0,0 %",
+    "current": "1,2 %",
     "cap": "12 %",
     "status": "Innenfor"
   },
@@ -38,81 +38,81 @@
       "risk": "Lav",
       "data": "OK",
       "trend": "Stabil",
-      "momentum": "Stabil",
+      "momentum": "Svakt positiv",
       "vol": "Lav",
       "bullets": [
-        "Styringsrente 4,0 % – høyrentekonto gir 4,5–5,0 % effektivt, attraktivt etter skatt på kort horisont",
-        "Trygg parkering for boligegenkapital uten markedsrisiko, full likviditet ved boligkjøp",
-        "Hele månedssparingen rutes til Nordnet-Pluss; ingen handelskostnad, fri uttak"
+        "Norges Bank hevet styringsrenten til 4,25 % den 6. mai – innskuddsrentene på Nordnet-platformen følger oppover.",
+        "Ingen markedsrisiko og full ASK-fleksibilitet for senere reallokering til aksjer/rente når regimet blir tydeligere.",
+        "Hele månedssparingen parkeres her i en uke preget av høyere renter og uavklart geopolitikk."
       ],
-      "worstCase": "Norges Bank kutter 7. mai → bankrente kan falle 0,25 % i etterkant, men kapital er fortsatt trygg.",
-      "goalEffect": "Innskudd løfter spart kapital fra 60 000 til 72 000 kr (36 % av 200 000-målet)."
+      "worstCase": "Inflasjon høyere enn nominell rente gir mild reell verdiforringelse, men ingen nominelle kapitaltap.",
+      "goalEffect": "Bygger likviditetsbuffer og gir forutsigbar progresjon mot 200 000 kr innen april 2030."
     },
     {
       "num": "2",
       "name": "Rente",
       "instrument": "KLP-OBL1",
-      "action": "AVSTÅ",
-      "actionCss": "avsta",
-      "size": "0",
-      "risk": "Lav-middels",
+      "action": "KJØP",
+      "actionCss": "kjop",
+      "size": "0,8 %",
+      "risk": "Lav-moderat",
       "data": "OK",
-      "trend": "Stabil",
-      "momentum": "Svak",
+      "trend": "Forsiktig stigende yield",
+      "momentum": "Positiv carry",
       "vol": "Lav",
       "bullets": [
-        "Norges Banks rentebeslutning 7. mai – marskommentaren antydet mulig økning pga. høy inflasjon og energiprisuro fra Midtøsten",
-        "Kort durasjon (1–3 år) er det rette segmentet, men vi avventer rentebeslutningen før påfyll",
-        "Inflasjon CPI-ATE 3,0 %, fortsatt over 2 %-mål – realavkastning på korte papirer er presset"
+        "Yield i 1–3 års segmentet er attraktiv etter Norges Banks hike – rundt 4 % nominell carry uten signifikant durasjonsrisiko.",
+        "Kort durasjon beskytter mot ytterligere renteoverraskelser hvis NB følger opp banen mot 4,5 % i 2026.",
+        "Diversifiserer porteføljen mot aksjeswings når 10y Treasury yield ligger på ettårstopp (4,61 %)."
       ],
-      "worstCase": "Renteøkning 0,25 % gir ~-0,5 % kursfall på 1–3 års papirer; minimal effekt på samlet portefølje.",
-      "goalEffect": "Ingen direkte effekt på sparemål denne uken; posisjon revurderes etter 7. mai."
+      "worstCase": "Brå ytterligere hike til 4,5–4,75 % gir 1–2 % midlertidig kurstap, hentes inn ved hold til forfall.",
+      "goalEffect": "Stabil positiv carry som demper porteføljevolatilitet inn mot mål-dato."
     },
     {
       "num": "3",
       "name": "Aksjer",
-      "instrument": "NORDNET-GLOBAL",
+      "instrument": "VWCE",
       "action": "KJØP",
       "actionCss": "kjop",
-      "size": "900 kr",
-      "risk": "Middels",
+      "size": "1,0 %",
+      "risk": "Moderat",
       "data": "OK",
-      "trend": "Positiv",
-      "momentum": "Sterk",
-      "vol": "Lav",
+      "trend": "Sideveis-til-stigende",
+      "momentum": "Avtagende",
+      "vol": "Moderat (VIX ~18)",
       "bullets": [
-        "S&P 500 på rekordnivå, VIX ~17 – risiko-på regime støtter eksponering innenfor glidebanen (55 %)",
-        "OBX og globale indekser har RSI > 70 – overkjøpt på kort sikt, derfor begrenset størrelse (1,5 % av kapital)",
-        "Lavkost ASK-egnet indeksfond gir bred global eksponering, ingen kurtasje, lav årlig kostnad"
+        "Globalt indeksbredt eksponering fanger sterk Q1-resultatsesong (≈78 % beat rate) uten enkeltlands- eller sektorrisiko.",
+        "S&P 500 konsoliderer etter +10,6 % i april og 10y yield på 4,61 % demper multipler – men trenden er fortsatt intakt.",
+        "Glidebanen (55 %) tillater fortsatt aksjekjøp; jevn DCA reduserer timing-risiko ved geopolitiske spikes."
       ],
-      "worstCase": "10–15 % korreksjon fra overkjøpte nivåer; ved 1,5 %-eksponering blir effekt på samlet portefølje under 0,5 %.",
-      "goalEffect": "Marginal direkte effekt; bidrar til langsiktig avkastning som trekker mot 200 000-målet over 4-årshorisonten."
+      "worstCase": "Eskalering av Iran-konflikten eller renteforventning mot 5 % i USA kan utløse 10–15 % korreksjon.",
+      "goalEffect": "Primær vekstmotor mot 200 000 kr – hver jevn innskuddsperiode senker gjennomsnittlig kostbasis."
     },
     {
       "num": "4",
       "name": "Tematisk",
-      "instrument": "KLP-LAVBETA",
-      "action": "HOLD",
-      "actionCss": "hold",
+      "instrument": "IGLN",
+      "action": "AVSTÅ",
+      "actionCss": "avsta",
       "size": "0",
-      "risk": "Middels",
+      "risk": "Forhøyet",
       "data": "OK",
-      "trend": "Positiv",
-      "momentum": "Stabil",
-      "vol": "Lav",
+      "trend": "Konsoliderende",
+      "momentum": "Avtagende",
+      "vol": "Forhøyet",
       "bullets": [
-        "Lavbeta-fond fungerer som defensiv balanse mot overkjøpte brede aksjemarkeder",
-        "Tematisk-tak er kun 5 % av portefølje – ingen behov for nye kjøp på dette nivået",
-        "Holder eksisterende posisjon; revurderes hvis aksjemarkedet korrigerer eller volatilitet stiger"
+        "Gull har trukket seg ned fra topp etter delvis ceasefire 8. april – kortsiktig momentum negativt.",
+        "Stigende realrenter og sterkere USD utgjør motvind for edelmetall denne uken.",
+        "Tematisk-cap (5 %) er tilnærmet utnyttet – ingen friskt rom uten først å selge eksisterende posisjon."
       ],
-      "worstCase": "Bredt aksjefall: lavbeta-fond ~5–8 % ned, dempet relativt til indeks.",
-      "goalEffect": "Stabiliserende rolle – reduserer risiko for større drawdown som ville forsinket boligkjøp."
+      "worstCase": "Ny gullkorreksjon på 8–12 % hvis yields fortsetter opp og dollar styrkes ytterligere.",
+      "goalEffect": "Nøytral denne uken; eksisterende posisjon fungerer fortsatt som geopolitisk forsikring."
     }
   ],
   "summary": {
-    "actions": 2,
+    "actions": 3,
     "abstentions": 1,
     "drawdownStatus": "Innenfor 12 %-taket",
-    "riskFactor": "Norges Banks rentebeslutning 7. mai – kan flytte både rente- og aksjemarkeder, og påvirker boliglånsutsiktene direkte i tidsperioden mot målet."
+    "riskFactor": "Re-akselerasjon av Midtøsten-konflikten kombinert med ytterligere stigning i amerikanske og norske renter."
   }
 }
